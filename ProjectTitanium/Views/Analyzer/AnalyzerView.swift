@@ -8,6 +8,8 @@ struct AnalyzerView: View {
     @State var viewModel: AnalyzerViewModel
     @State private var player: AVPlayer?
     @State private var showingElementTimeline = true
+    @State private var showScoreGlow = false
+    @State private var lastScoredClean = false
 
     private let hapticsService = HapticsService()
 
@@ -212,8 +214,23 @@ struct AnalyzerView: View {
 
     private var syncButton: some View {
         Button {
+            let wasClean = viewModel.selectedLanding == .stuck
+                && (viewModel.sportType == .skating ? viewModel.currentGOE > 0 : viewModel.currentDeductions == 0)
             viewModel.syncElement(modelContext: modelContext)
-            hapticsService.playStuckLanding()
+
+            if wasClean {
+                hapticsService.playStuckLanding()
+                lastScoredClean = true
+                withAnimation(.easeOut(duration: 0.6)) {
+                    showScoreGlow = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    showScoreGlow = false
+                }
+            } else {
+                hapticsService.playDeduction()
+                lastScoredClean = false
+            }
         } label: {
             Label("Sync Element", systemImage: "pin.fill")
                 .font(.headline)
@@ -224,8 +241,27 @@ struct AnalyzerView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(viewModel.selectedElementCode.isEmpty ? Color.gray : Color.accentColor)
                 )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.accentMint, lineWidth: showScoreGlow ? 3 : 0)
+                        .scaleEffect(showScoreGlow ? 1.05 : 1.0)
+                        .opacity(showScoreGlow ? 1 : 0)
+                )
         }
         .disabled(viewModel.selectedElementCode.isEmpty)
+    }
+
+    private var scoreGlowOverlay: some View {
+        Group {
+            if showScoreGlow {
+                Text(String(format: "%.1f", viewModel.runThrough.totalScore))
+                    .font(.system(size: 48, weight: .bold))
+                    .foregroundStyle(lastScoredClean ? Color.accentMint : Color.accentCoral)
+                    .transition(.scale.combined(with: .opacity))
+                    .allowsHitTesting(false)
+            }
+        }
+        .animation(.spring(duration: 0.5), value: showScoreGlow)
     }
 
     // MARK: - Helpers
