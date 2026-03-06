@@ -6,7 +6,7 @@ struct RunThroughListView: View {
     let athlete: Athlete
     @Environment(\.modelContext) private var modelContext
     @Query private var allRunThroughs: [RunThrough]
-    @Query(sort: \PlannedProgramContent.createdAt, order: .descending)
+    @Query(sort: \PlannedProgramContent.createdAt, order: .reverse)
     private var allPPCs: [PlannedProgramContent]
     @State private var selectedItem: PhotosPickerItem?
     @State private var showingPPCPicker = false

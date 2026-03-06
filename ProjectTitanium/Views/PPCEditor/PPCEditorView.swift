@@ -6,7 +6,7 @@ struct PPCEditorView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("selectedSport") private var selectedSport = SportType.skating.rawValue
 
-    @Query(sort: \PlannedProgramContent.createdAt, order: .descending)
+    @Query(sort: \PlannedProgramContent.createdAt, order: .reverse)
     private var allPPCs: [PlannedProgramContent]
 
     @State private var showingNewPPC = false
