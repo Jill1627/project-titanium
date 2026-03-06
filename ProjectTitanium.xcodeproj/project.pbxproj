@@ -19,6 +19,12 @@
 		A10010 /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10010; };
 		A10011 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10011; };
 		A10012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10012; };
+		A10013 /* AnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10014; };
+		A10014 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10015; };
+		A10015 /* ScoringTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10016; };
+		A10016 /* LandingButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10017; };
+		A10017 /* ElementTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10018; };
+		A10018 /* AnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10019; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +41,12 @@
 		B10011 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
 		B10012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B10013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10014 /* AnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerViewModel.swift; sourceTree = "<group>"; };
+		B10015 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		B10016 /* ScoringTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTrayView.swift; sourceTree = "<group>"; };
+		B10017 /* LandingButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButtonsView.swift; sourceTree = "<group>"; };
+		B10018 /* ElementTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTimelineView.swift; sourceTree = "<group>"; };
+		B10019 /* AnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerView.swift; sourceTree = "<group>"; };
 		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,8 +109,21 @@
 			children = (
 				D10006 /* Onboarding */,
 				D10007 /* AthleteList */,
+				D10011 /* Analyzer */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D10011 /* Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				B10019 /* AnalyzerView.swift */,
+				B10015 /* VideoPlayerView.swift */,
+				B10016 /* ScoringTrayView.swift */,
+				B10017 /* LandingButtonsView.swift */,
+				B10018 /* ElementTimelineView.swift */,
+			);
+			path = Analyzer;
 			sourceTree = "<group>";
 		};
 		D10006 /* Onboarding */ = {
@@ -121,6 +146,7 @@
 		D10008 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B10014 /* AnalyzerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -229,6 +255,12 @@
 				A10009 /* RunThroughListView.swift in Sources */,
 				A10010 /* PhotoLibraryService.swift in Sources */,
 				A10011 /* HapticsService.swift in Sources */,
+				A10013 /* AnalyzerViewModel.swift in Sources */,
+				A10014 /* VideoPlayerView.swift in Sources */,
+				A10015 /* ScoringTrayView.swift in Sources */,
+				A10016 /* LandingButtonsView.swift in Sources */,
+				A10017 /* ElementTimelineView.swift in Sources */,
+				A10018 /* AnalyzerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
