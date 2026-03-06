@@ -12,7 +12,7 @@ final class DashboardViewModel {
 
     func loadData(from allRunThroughs: [RunThrough]) {
         runThroughs = allRunThroughs
-            .filter { $0.athleteName == athlete.name }
+            .filter { $0.athleteID == athlete.id }
             .sorted { $0.date < $1.date }
     }
 

@@ -21,7 +21,7 @@ struct AnalyzerView: View {
                 portraitLayout
             }
         }
-        .navigationTitle(viewModel.runThrough.athleteName)
+        .navigationTitle("Analyzer")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

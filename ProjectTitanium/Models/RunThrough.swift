@@ -4,7 +4,7 @@ import SwiftData
 @Model
 final class RunThrough {
     var id: UUID
-    var athleteName: String
+    var athleteID: UUID
     var sport: String // SportType rawValue
     var videoLocalIdentifier: String
     var date: Date
@@ -14,14 +14,14 @@ final class RunThrough {
     var elements: [ElementScore]
 
     init(
-        athleteName: String,
+        athleteID: UUID,
         sport: SportType,
         videoLocalIdentifier: String,
         date: Date = Date(),
         totalScore: Double = 0.0
     ) {
         self.id = UUID()
-        self.athleteName = athleteName
+        self.athleteID = athleteID
         self.sport = sport.rawValue
         self.videoLocalIdentifier = videoLocalIdentifier
         self.date = date
