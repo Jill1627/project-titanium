@@ -63,6 +63,9 @@ struct AthleteListView: View {
             .navigationDestination(for: Athlete.self) { athlete in
                 RunThroughListView(athlete: athlete)
             }
+            .navigationDestination(for: DashboardDestination.self) { dest in
+                DashboardView(athlete: dest.athlete)
+            }
             .alert("Add Athlete", isPresented: $showingAddAthlete) {
                 TextField("Name", text: $newAthleteName)
                 Button("Cancel", role: .cancel) {
@@ -97,10 +100,26 @@ struct AthleteRow: View {
             Image(systemName: "person.circle.fill")
                 .font(.title2)
                 .foregroundStyle(.secondary)
-            Text(athlete.name)
-                .font(.body)
+
+            VStack(alignment: .leading) {
+                Text(athlete.name)
+                    .font(.body)
+            }
+
+            Spacer()
+
+            NavigationLink(value: DashboardDestination(athlete: athlete)) {
+                Image(systemName: "chart.bar")
+                    .font(.caption)
+                    .foregroundStyle(Color.accentColor)
+            }
+            .buttonStyle(.plain)
         }
     }
+}
+
+struct DashboardDestination: Hashable {
+    let athlete: Athlete
 }
 
 #Preview {

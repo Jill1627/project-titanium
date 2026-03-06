@@ -25,6 +25,13 @@
 		A10016 /* LandingButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10017; };
 		A10017 /* ElementTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10018; };
 		A10018 /* AnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10019; };
+		A10019 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10020; };
+		A10020 /* ConsistencyHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10021; };
+		A10021 /* TrendSplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10022; };
+		A10022 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10023; };
+		A10023 /* PlannedProgramContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10024; };
+		A10024 /* PPCEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10025; };
+		A10025 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10026; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +54,13 @@
 		B10017 /* LandingButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButtonsView.swift; sourceTree = "<group>"; };
 		B10018 /* ElementTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTimelineView.swift; sourceTree = "<group>"; };
 		B10019 /* AnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerView.swift; sourceTree = "<group>"; };
+		B10020 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		B10021 /* ConsistencyHeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsistencyHeatmapView.swift; sourceTree = "<group>"; };
+		B10022 /* TrendSplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendSplineView.swift; sourceTree = "<group>"; };
+		B10023 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		B10024 /* PlannedProgramContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannedProgramContent.swift; sourceTree = "<group>"; };
+		B10025 /* PPCEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCEditorView.swift; sourceTree = "<group>"; };
+		B10026 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +114,7 @@
 				B10004 /* ElementScore.swift */,
 				B10005 /* RunThrough.swift */,
 				B10006 /* Athlete.swift */,
+				B10024 /* PlannedProgramContent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,8 +125,37 @@
 				D10006 /* Onboarding */,
 				D10007 /* AthleteList */,
 				D10011 /* Analyzer */,
+				D10012 /* Dashboard */,
+				D10013 /* PPCEditor */,
+				D10014 /* Settings */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D10012 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B10023 /* DashboardView.swift */,
+				B10021 /* ConsistencyHeatmapView.swift */,
+				B10022 /* TrendSplineView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		D10013 /* PPCEditor */ = {
+			isa = PBXGroup;
+			children = (
+				B10025 /* PPCEditorView.swift */,
+			);
+			path = PPCEditor;
+			sourceTree = "<group>";
+		};
+		D10014 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B10026 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D10011 /* Analyzer */ = {
@@ -147,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B10014 /* AnalyzerViewModel.swift */,
+				B10020 /* DashboardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +306,13 @@
 				A10016 /* LandingButtonsView.swift in Sources */,
 				A10017 /* ElementTimelineView.swift in Sources */,
 				A10018 /* AnalyzerView.swift in Sources */,
+				A10019 /* DashboardViewModel.swift in Sources */,
+				A10020 /* ConsistencyHeatmapView.swift in Sources */,
+				A10021 /* TrendSplineView.swift in Sources */,
+				A10022 /* DashboardView.swift in Sources */,
+				A10023 /* PlannedProgramContent.swift in Sources */,
+				A10024 /* PPCEditorView.swift in Sources */,
+				A10025 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
