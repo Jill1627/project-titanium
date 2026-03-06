@@ -18,11 +18,25 @@ final class AnalyzerViewModel {
     var selectedLanding: LandingType = .stuck
     var coachNote: String = ""
 
+    // PPC pre-loaded element codes for one-tap review
+    var ppcElementCodes: [String] = []
+    var ppcCurrentIndex: Int = 0
+
     private var player: AVPlayer?
     private var timeObserver: Any?
+    private let scoringEngine: ScoringEngine
 
     var sportType: SportType {
         runThrough.sportType
+    }
+
+    var hasPPC: Bool {
+        !ppcElementCodes.isEmpty
+    }
+
+    var nextPPCElement: String? {
+        guard ppcCurrentIndex < ppcElementCodes.count else { return nil }
+        return ppcElementCodes[ppcCurrentIndex]
     }
 
     var elements: [ElementScore] {
@@ -33,8 +47,13 @@ final class AnalyzerViewModel {
         elements.reduce(0) { $0 + $1.executionValue }
     }
 
-    init(runThrough: RunThrough) {
+    init(runThrough: RunThrough, ppcElementCodes: [String] = []) {
         self.runThrough = runThrough
+        self.scoringEngine = ScoringEngineFactory.engine(for: runThrough.sportType)
+        self.ppcElementCodes = ppcElementCodes
+        if let first = ppcElementCodes.first {
+            self.selectedElementCode = first
+        }
     }
 
     func setupPlayer(with playerItem: AVPlayerItem) -> AVPlayer {
@@ -42,7 +61,7 @@ final class AnalyzerViewModel {
         self.player = avPlayer
 
         // Observe time
-        let interval = CMTime(seconds: 1.0 / 30.0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        let interval = CMTime(seconds: 1.0 / 60.0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         timeObserver = avPlayer.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
             self?.currentTime = time.seconds
         }
@@ -84,12 +103,18 @@ final class AnalyzerViewModel {
     func syncElement(modelContext: ModelContext) {
         guard !selectedElementCode.isEmpty else { return }
 
-        let executionValue: Double
+        let executionAdjustment: Double
         if sportType == .skating {
-            executionValue = currentGOE
+            executionAdjustment = currentGOE
         } else {
-            executionValue = -currentDeductions
+            executionAdjustment = -currentDeductions
         }
+
+        // Use ScoringEngine for the execution value calculation
+        let executionValue = scoringEngine.calculateScore(
+            baseValue: 0,
+            executionAdjustment: executionAdjustment
+        )
 
         let element = ElementScore(
             elementCode: selectedElementCode,
@@ -102,8 +127,16 @@ final class AnalyzerViewModel {
         runThrough.elements.append(element)
         runThrough.totalScore = computedTotalScore
 
-        // Reset scoring state
+        // Advance PPC index if using one-tap review
+        if hasPPC {
+            ppcCurrentIndex += 1
+        }
+
+        // Reset scoring state, pre-load next PPC element
         resetScoringState()
+        if let next = nextPPCElement {
+            selectedElementCode = next
+        }
     }
 
     func removeElement(_ element: ElementScore, modelContext: ModelContext) {
