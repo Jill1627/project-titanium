@@ -41,7 +41,7 @@ struct ScoringTrayView: View {
                 Text(String(format: "%+.1f", viewModel.currentGOE))
                     .font(.headline)
                     .monospacedDigit()
-                    .foregroundStyle(viewModel.currentGOE >= 0 ? Color("AccentMint") : Color("AccentCoral"))
+                    .foregroundStyle(viewModel.currentGOE >= 0 ? Color.accentMint : Color.accentCoral)
             }
 
             Slider(value: $viewModel.currentGOE, in: -5...5, step: 0.5)

@@ -32,6 +32,8 @@
 		A10023 /* PlannedProgramContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10024; };
 		A10024 /* PPCEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10025; };
 		A10025 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10026; };
+		A10026 /* ScoringEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10027; };
+		A10027 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10028; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		B10024 /* PlannedProgramContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannedProgramContent.swift; sourceTree = "<group>"; };
 		B10025 /* PPCEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCEditorView.swift; sourceTree = "<group>"; };
 		B10026 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B10027 /* ScoringEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringEngine.swift; sourceTree = "<group>"; };
+		B10028 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -201,6 +205,7 @@
 			children = (
 				B10010 /* PhotoLibraryService.swift */,
 				B10011 /* HapticsService.swift */,
+				B10027 /* ScoringEngine.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 		D10010 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B10028 /* Color+Theme.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,6 +319,8 @@
 				A10023 /* PlannedProgramContent.swift in Sources */,
 				A10024 /* PPCEditorView.swift in Sources */,
 				A10025 /* SettingsView.swift in Sources */,
+				A10026 /* ScoringEngine.swift in Sources */,
+				A10027 /* Color+Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
