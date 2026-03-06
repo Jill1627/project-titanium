@@ -185,7 +185,7 @@ struct AnalyzerView: View {
         HStack(spacing: 32) {
             // Frame back
             Button {
-                viewModel.seek(to: max(0, viewModel.currentTime - 1.0 / 30.0))
+                viewModel.seek(to: max(0, viewModel.currentTime - 1.0 / 240.0))
             } label: {
                 Image(systemName: "backward.frame")
                     .font(.title3)
@@ -201,7 +201,7 @@ struct AnalyzerView: View {
 
             // Frame forward
             Button {
-                viewModel.seek(to: min(viewModel.duration, viewModel.currentTime + 1.0 / 30.0))
+                viewModel.seek(to: min(viewModel.duration, viewModel.currentTime + 1.0 / 240.0))
             } label: {
                 Image(systemName: "forward.frame")
                     .font(.title3)
