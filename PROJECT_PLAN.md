@@ -10,14 +10,14 @@ PRD: `PRD.md`
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| UI | SwiftUI (iOS 17+) |
-| Video | AVFoundation + PhotosKit |
-| Local persistence | SwiftData |
-| Cloud sync | CloudKit (private DB) |
-| Charts | Swift Charts |
-| Haptics | CoreHaptics |
+| Layer             | Technology               |
+| ----------------- | ------------------------ |
+| UI                | SwiftUI (iOS 17+)        |
+| Video             | AVFoundation + PhotosKit |
+| Local persistence | SwiftData                |
+| Cloud sync        | CloudKit (private DB)    |
+| Charts            | Swift Charts             |
+| Haptics           | CoreHaptics              |
 
 ---
 
@@ -37,17 +37,17 @@ Design tool: **Pencil.dev** — design each screen before implementing.
 
 ## Screens
 
-| # | Screen | Status |
-|---|---|---|
-| 1 | Onboarding / Sport Setup | Not started |
-| 2 | Athlete List (Home) | Not started |
-| 3 | Run-Through List (per athlete) | Not started |
-| 4 | Video Analyzer | Not started |
-| 5 | Element Detail / Edit | Not started |
-| 6 | Consistency Heatmap | Not started |
-| 7 | Trend Spline | Not started |
-| 8 | PPC Editor | Not started |
-| 9 | Settings | Not started |
+| #   | Screen                         | Status                    |
+| --- | ------------------------------ | ------------------------- |
+| 1   | Onboarding / Sport Setup       | Done                      |
+| 2   | Athlete List (Home)            | Done                      |
+| 3   | Run-Through List (per athlete) | Done                      |
+| 4   | Video Analyzer                 | Done                      |
+| 5   | Element Detail / Edit          | Done (inline in Analyzer) |
+| 6   | Consistency Heatmap            | Done                      |
+| 7   | Trend Spline                   | Done                      |
+| 8   | PPC Editor                     | Done                      |
+| 9   | Settings                       | Done                      |
 
 **Design priority:** Screen 4 (Video Analyzer) first — it is the most complex.
 
@@ -90,9 +90,11 @@ VaultAndEdge/
 ## Scoring Logic
 
 **Skating:** `baseValue + (GOE × scaleFactor)`
+
 - GOE slider: -5 to +5, scale factor varies by element type
 
 **Gymnastics:** `DScore - Σ(deductions)`
+
 - Deduction chips: -0.1, -0.3, -0.5, -1.0
 
 Implement as a `ScoringEngine` protocol with sport-specific conformances.
@@ -112,20 +114,24 @@ Implement as a `ScoringEngine` protocol with sport-specific conformances.
 ## Phases
 
 ### Phase 1 — Foundation
-- [ ] Xcode project, SwiftData models, sport selection onboarding, PhotosKit permission flow
+
+- [x] Xcode project, SwiftData models, sport selection onboarding, PhotosKit permission flow
 
 ### Phase 2 — Analyzer (Core)
-- [ ] AVPlayer video view with 240fps scrubbing and pinch-zoom
-- [ ] Scoring tray (GOE slider / deduction chips, sport-aware)
-- [ ] Element timestamping (Sync button → CMTime pin)
-- [ ] Landing buttons + haptics
+
+- [x] AVPlayer video view with 240fps scrubbing and pinch-zoom
+- [x] Scoring tray (GOE slider / deduction chips, sport-aware)
+- [x] Element timestamping (Sync button → CMTime pin)
+- [x] Landing buttons + haptics
 
 ### Phase 3 — Dashboard
-- [ ] Consistency heatmap grid
-- [ ] Trend spline (Swift Charts)
-- [ ] PPC pre-load editor
+
+- [x] Consistency heatmap grid
+- [x] Trend spline (Swift Charts)
+- [x] PPC pre-load editor
 
 ### Phase 4 — Cloud & Polish
+
 - [ ] CloudKit sync
-- [ ] Athlete management and sharing
+- [x] Athlete management and sharing
 - [ ] Edge cases, accessibility, App Store prep

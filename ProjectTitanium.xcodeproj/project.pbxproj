@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10001 /* VaultAndEdgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10001 /* VaultAndEdgeApp.swift */; };
+		A10002 /* SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10002 /* SportType.swift */; };
+		A10003 /* LandingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10003 /* LandingType.swift */; };
+		A10004 /* ElementScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10004 /* ElementScore.swift */; };
+		A10005 /* RunThrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10005 /* RunThrough.swift */; };
+		A10006 /* Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10006 /* Athlete.swift */; };
+		A10007 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10007 /* OnboardingView.swift */; };
+		A10008 /* AthleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10008 /* AthleteListView.swift */; };
+		A10009 /* RunThroughListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10009 /* RunThroughListView.swift */; };
+		A10010 /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10010 /* PhotoLibraryService.swift */; };
+		A10011 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10011 /* HapticsService.swift */; };
+		A10012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10012 /* Assets.xcassets */; };
+		A10013 /* AnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10014 /* AnalyzerViewModel.swift */; };
+		A10014 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10015 /* VideoPlayerView.swift */; };
+		A10015 /* ScoringTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10016 /* ScoringTrayView.swift */; };
+		A10016 /* LandingButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10017 /* LandingButtonsView.swift */; };
+		A10017 /* ElementTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10018 /* ElementTimelineView.swift */; };
+		A10018 /* AnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10019 /* AnalyzerView.swift */; };
+		A10019 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10020 /* DashboardViewModel.swift */; };
+		A10020 /* ConsistencyHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10021 /* ConsistencyHeatmapView.swift */; };
+		A10021 /* TrendSplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10022 /* TrendSplineView.swift */; };
+		A10022 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10023 /* DashboardView.swift */; };
+		A10023 /* PlannedProgramContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10024 /* PlannedProgramContent.swift */; };
+		A10024 /* PPCEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10025 /* PPCEditorView.swift */; };
+		A10025 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10026 /* SettingsView.swift */; };
+		A10026 /* ScoringEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10027 /* ScoringEngine.swift */; };
+		A10027 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10028 /* Color+Theme.swift */; };
+		T10001 /* SportTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20001 /* SportTypeTests.swift */; };
+		T10002 /* LandingTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20002 /* LandingTypeTests.swift */; };
+		T10003 /* ScoringEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20003 /* ScoringEngineTests.swift */; };
+		T10004 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20004 /* ModelTests.swift */; };
+		T10005 /* AnalyzerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20005 /* AnalyzerViewModelTests.swift */; };
+		T10006 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20006 /* DashboardViewModelTests.swift */; };
+		T10007 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20007 /* IntegrationTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		T50001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E10099 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E10001;
+			remoteInfo = ProjectTitanium;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B10001 /* VaultAndEdgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultAndEdgeApp.swift; sourceTree = "<group>"; };
+		B10002 /* SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportType.swift; sourceTree = "<group>"; };
+		B10003 /* LandingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingType.swift; sourceTree = "<group>"; };
+		B10004 /* ElementScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementScore.swift; sourceTree = "<group>"; };
+		B10005 /* RunThrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunThrough.swift; sourceTree = "<group>"; };
+		B10006 /* Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete.swift; sourceTree = "<group>"; };
+		B10007 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B10008 /* AthleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteListView.swift; sourceTree = "<group>"; };
+		B10009 /* RunThroughListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunThroughListView.swift; sourceTree = "<group>"; };
+		B10010 /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
+		B10011 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		B10012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B10013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10014 /* AnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerViewModel.swift; sourceTree = "<group>"; };
+		B10015 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		B10016 /* ScoringTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTrayView.swift; sourceTree = "<group>"; };
+		B10017 /* LandingButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButtonsView.swift; sourceTree = "<group>"; };
+		B10018 /* ElementTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTimelineView.swift; sourceTree = "<group>"; };
+		B10019 /* AnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerView.swift; sourceTree = "<group>"; };
+		B10020 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		B10021 /* ConsistencyHeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsistencyHeatmapView.swift; sourceTree = "<group>"; };
+		B10022 /* TrendSplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendSplineView.swift; sourceTree = "<group>"; };
+		B10023 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		B10024 /* PlannedProgramContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannedProgramContent.swift; sourceTree = "<group>"; };
+		B10025 /* PPCEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCEditorView.swift; sourceTree = "<group>"; };
+		B10026 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B10027 /* ScoringEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringEngine.swift; sourceTree = "<group>"; };
+		B10028 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		T20001 /* SportTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeTests.swift; sourceTree = "<group>"; };
+		T20002 /* LandingTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTypeTests.swift; sourceTree = "<group>"; };
+		T20003 /* ScoringEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringEngineTests.swift; sourceTree = "<group>"; };
+		T20004 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		T20005 /* AnalyzerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerViewModelTests.swift; sourceTree = "<group>"; };
+		T20006 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
+		T20007 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		T30099 /* ProjectTitaniumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTitaniumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		T40001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D10001 = {
+			isa = PBXGroup;
+			children = (
+				D10002 /* ProjectTitanium */,
+				T70001 /* ProjectTitaniumTests */,
+				D10099 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D10002 /* ProjectTitanium */ = {
+			isa = PBXGroup;
+			children = (
+				D10003 /* App */,
+				D10004 /* Models */,
+				D10005 /* Views */,
+				D10008 /* ViewModels */,
+				D10009 /* Services */,
+				D10010 /* Extensions */,
+				B10012 /* Assets.xcassets */,
+				B10013 /* Info.plist */,
+			);
+			path = ProjectTitanium;
+			sourceTree = "<group>";
+		};
+		D10003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B10001 /* VaultAndEdgeApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D10004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B10002 /* SportType.swift */,
+				B10003 /* LandingType.swift */,
+				B10004 /* ElementScore.swift */,
+				B10005 /* RunThrough.swift */,
+				B10006 /* Athlete.swift */,
+				B10024 /* PlannedProgramContent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D10005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D10006 /* Onboarding */,
+				D10007 /* AthleteList */,
+				D10011 /* Analyzer */,
+				D10012 /* Dashboard */,
+				D10013 /* PPCEditor */,
+				D10014 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D10006 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B10007 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D10007 /* AthleteList */ = {
+			isa = PBXGroup;
+			children = (
+				B10008 /* AthleteListView.swift */,
+				B10009 /* RunThroughListView.swift */,
+			);
+			path = AthleteList;
+			sourceTree = "<group>";
+		};
+		D10008 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B10014 /* AnalyzerViewModel.swift */,
+				B10020 /* DashboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D10009 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B10010 /* PhotoLibraryService.swift */,
+				B10011 /* HapticsService.swift */,
+				B10027 /* ScoringEngine.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D10010 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B10028 /* Color+Theme.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D10011 /* Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				B10019 /* AnalyzerView.swift */,
+				B10015 /* VideoPlayerView.swift */,
+				B10016 /* ScoringTrayView.swift */,
+				B10017 /* LandingButtonsView.swift */,
+				B10018 /* ElementTimelineView.swift */,
+			);
+			path = Analyzer;
+			sourceTree = "<group>";
+		};
+		D10012 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B10023 /* DashboardView.swift */,
+				B10021 /* ConsistencyHeatmapView.swift */,
+				B10022 /* TrendSplineView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		D10013 /* PPCEditor */ = {
+			isa = PBXGroup;
+			children = (
+				B10025 /* PPCEditorView.swift */,
+			);
+			path = PPCEditor;
+			sourceTree = "<group>";
+		};
+		D10014 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B10026 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D10099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B10099 /* ProjectTitanium.app */,
+				T30099 /* ProjectTitaniumTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		T70001 /* ProjectTitaniumTests */ = {
+			isa = PBXGroup;
+			children = (
+				T20001 /* SportTypeTests.swift */,
+				T20002 /* LandingTypeTests.swift */,
+				T20003 /* ScoringEngineTests.swift */,
+				T20004 /* ModelTests.swift */,
+				T20005 /* AnalyzerViewModelTests.swift */,
+				T20006 /* DashboardViewModelTests.swift */,
+				T20007 /* IntegrationTests.swift */,
+			);
+			path = ProjectTitaniumTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E10001 /* ProjectTitanium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F10003 /* Build configuration list for PBXNativeTarget "ProjectTitanium" */;
+			buildPhases = (
+				C10002 /* Sources */,
+				C10001 /* Frameworks */,
+				C10003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProjectTitanium;
+			productName = ProjectTitanium;
+			productReference = B10099 /* ProjectTitanium.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E10002 /* ProjectTitaniumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F10005 /* Build configuration list for PBXNativeTarget "ProjectTitaniumTests" */;
+			buildPhases = (
+				T80001 /* Sources */,
+				T40001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				T60001 /* PBXTargetDependency */,
+			);
+			name = ProjectTitaniumTests;
+			productName = ProjectTitaniumTests;
+			productReference = T30099 /* ProjectTitaniumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E10099 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					E10001 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					E10002 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = E10001;
+					};
+				};
+			};
+			buildConfigurationList = F10001 /* Build configuration list for PBXProject "ProjectTitanium" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D10001;
+			productRefGroup = D10099 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E10001 /* ProjectTitanium */,
+				E10002 /* ProjectTitaniumTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10012 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10001 /* VaultAndEdgeApp.swift in Sources */,
+				A10002 /* SportType.swift in Sources */,
+				A10003 /* LandingType.swift in Sources */,
+				A10004 /* ElementScore.swift in Sources */,
+				A10005 /* RunThrough.swift in Sources */,
+				A10006 /* Athlete.swift in Sources */,
+				A10007 /* OnboardingView.swift in Sources */,
+				A10008 /* AthleteListView.swift in Sources */,
+				A10009 /* RunThroughListView.swift in Sources */,
+				A10010 /* PhotoLibraryService.swift in Sources */,
+				A10011 /* HapticsService.swift in Sources */,
+				A10013 /* AnalyzerViewModel.swift in Sources */,
+				A10014 /* VideoPlayerView.swift in Sources */,
+				A10015 /* ScoringTrayView.swift in Sources */,
+				A10016 /* LandingButtonsView.swift in Sources */,
+				A10017 /* ElementTimelineView.swift in Sources */,
+				A10018 /* AnalyzerView.swift in Sources */,
+				A10019 /* DashboardViewModel.swift in Sources */,
+				A10020 /* ConsistencyHeatmapView.swift in Sources */,
+				A10021 /* TrendSplineView.swift in Sources */,
+				A10022 /* DashboardView.swift in Sources */,
+				A10023 /* PlannedProgramContent.swift in Sources */,
+				A10024 /* PPCEditorView.swift in Sources */,
+				A10025 /* SettingsView.swift in Sources */,
+				A10026 /* ScoringEngine.swift in Sources */,
+				A10027 /* Color+Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		T80001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				T10001 /* SportTypeTests.swift in Sources */,
+				T10002 /* LandingTypeTests.swift in Sources */,
+				T10003 /* ScoringEngineTests.swift in Sources */,
+				T10004 /* ModelTests.swift in Sources */,
+				T10005 /* AnalyzerViewModelTests.swift in Sources */,
+				T10006 /* DashboardViewModelTests.swift in Sources */,
+				T10007 /* IntegrationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		T60001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E10001 /* ProjectTitanium */;
+			targetProxy = T50001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F10D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F10D02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9Q2US64BK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProjectTitanium/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vaultandedge.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F10D03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vaultandedge.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectTitanium.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProjectTitanium";
+			};
+			name = Debug;
+		};
+		F10R01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F10R02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9Q2US64BK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProjectTitanium/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vaultandedge.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F10R03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vaultandedge.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectTitanium.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProjectTitanium";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F10001 /* Build configuration list for PBXProject "ProjectTitanium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10D01 /* Debug */,
+				F10R01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F10003 /* Build configuration list for PBXNativeTarget "ProjectTitanium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10D02 /* Debug */,
+				F10R02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F10005 /* Build configuration list for PBXNativeTarget "ProjectTitaniumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10D03 /* Debug */,
+				F10R03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E10099 /* Project object */;
+}
