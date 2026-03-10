@@ -11,6 +11,8 @@ struct PPCEditorView: View {
 
     @State private var showingNewPPC = false
     @State private var newPPCName = ""
+    @State private var ppcToRename: PlannedProgramContent?
+    @State private var renameText = ""
 
     private var currentSport: SportType {
         SportType(rawValue: selectedSport) ?? .skating
@@ -43,10 +45,19 @@ struct PPCEditorView: View {
                                         .foregroundStyle(.secondary)
                                 }
                             }
-                        }
-                        .onDelete { offsets in
-                            for index in offsets {
-                                modelContext.delete(filteredPPCs[index])
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(role: .destructive) {
+                                    modelContext.delete(ppc)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                Button {
+                                    renameText = ppc.name
+                                    ppcToRename = ppc
+                                } label: {
+                                    Label("Rename", systemImage: "pencil")
+                                }
+                                .tint(.orange)
                             }
                         }
                     }
@@ -55,11 +66,34 @@ struct PPCEditorView: View {
             .navigationTitle("Programs")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showingNewPPC = true
-                    } label: {
-                        Image(systemName: "plus")
+                    HStack {
+                        if !filteredPPCs.isEmpty {
+                            EditButton()
+                        }
+                        Button {
+                            showingNewPPC = true
+                        } label: {
+                            Image(systemName: "plus")
+                        }
                     }
+                }
+            }
+            .alert("Rename Program", isPresented: Binding(
+                get: { ppcToRename != nil },
+                set: { if !$0 { ppcToRename = nil } }
+            )) {
+                TextField("Program Name", text: $renameText)
+                Button("Cancel", role: .cancel) {
+                    ppcToRename = nil
+                    renameText = ""
+                }
+                Button("Save") {
+                    if let ppc = ppcToRename,
+                       !renameText.trimmingCharacters(in: .whitespaces).isEmpty {
+                        ppc.name = renameText.trimmingCharacters(in: .whitespaces)
+                    }
+                    ppcToRename = nil
+                    renameText = ""
                 }
             }
             .alert("New Program", isPresented: $showingNewPPC) {
