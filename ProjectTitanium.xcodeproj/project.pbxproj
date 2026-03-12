@@ -16,8 +16,11 @@
 		A10007 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10007 /* OnboardingView.swift */; };
 		A10008 /* AthleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10008 /* AthleteListView.swift */; };
 		A10009 /* RunThroughListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10009 /* RunThroughListView.swift */; };
+		A10009A /* RunThroughDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10009A /* RunThroughDetailView.swift */; };
+		A10009B /* ElementScoringSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10009B /* ElementScoringSheet.swift */; };
 		A10010 /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10010 /* PhotoLibraryService.swift */; };
 		A10011 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10011 /* HapticsService.swift */; };
+		A10011A /* SeedDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10011A /* SeedDataService.swift */; };
 		A10012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10012 /* Assets.xcassets */; };
 		A10013 /* AnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10014 /* AnalyzerViewModel.swift */; };
 		A10014 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10015 /* VideoPlayerView.swift */; };
@@ -63,8 +66,11 @@
 		B10007 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B10008 /* AthleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteListView.swift; sourceTree = "<group>"; };
 		B10009 /* RunThroughListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunThroughListView.swift; sourceTree = "<group>"; };
+		B10009A /* RunThroughDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunThroughDetailView.swift; sourceTree = "<group>"; };
+		B10009B /* ElementScoringSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementScoringSheet.swift; sourceTree = "<group>"; };
 		B10010 /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
 		B10011 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		B10011A /* SeedDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedDataService.swift; sourceTree = "<group>"; };
 		B10012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B10013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10014 /* AnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerViewModel.swift; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 			children = (
 				B10008 /* AthleteListView.swift */,
 				B10009 /* RunThroughListView.swift */,
+				B10009A /* RunThroughDetailView.swift */,
+				B10009B /* ElementScoringSheet.swift */,
 			);
 			path = AthleteList;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 			children = (
 				B10010 /* PhotoLibraryService.swift */,
 				B10011 /* HapticsService.swift */,
+				B10011A /* SeedDataService.swift */,
 				B10027 /* ScoringEngine.swift */,
 			);
 			path = Services;
@@ -374,8 +383,11 @@
 				A10007 /* OnboardingView.swift in Sources */,
 				A10008 /* AthleteListView.swift in Sources */,
 				A10009 /* RunThroughListView.swift in Sources */,
+				A10009A /* RunThroughDetailView.swift in Sources */,
+				A10009B /* ElementScoringSheet.swift in Sources */,
 				A10010 /* PhotoLibraryService.swift in Sources */,
 				A10011 /* HapticsService.swift in Sources */,
+				A10011A /* SeedDataService.swift in Sources */,
 				A10013 /* AnalyzerViewModel.swift in Sources */,
 				A10014 /* VideoPlayerView.swift in Sources */,
 				A10015 /* ScoringTrayView.swift in Sources */,

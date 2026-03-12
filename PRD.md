@@ -35,7 +35,9 @@
 * **Gymnastics:** $D-Score - \sum(Deductions)$.
 
 
-* **PPC (Planned Program Content):** Ability to pre-load a sequence of elements for a "one-tap" review experience.
+* **PPC (Planned Program Content):** Optional coach-created program templates for pre-loading element sequences.
+  * **MVP approach:** First runthrough starts blank (manual entry); subsequent runthroughs auto-copy elements from the latest runthrough of the same program.
+  * **Future enhancement:** "Save as template" and template picker for reusable program layouts.
 
 ### **3.2 The Analyzer (Review Interface)**
 
@@ -89,10 +91,12 @@ struct ElementScore: Identifiable, Codable {
 struct RunThrough: Identifiable, Codable {
     var id = UUID()
     var athleteID: UUID
+    var programName: String // e.g., "Short Program 2026" - groups runthroughs
     var videoLocalIdentifier: String // Reference to iOS Photo Library
     var date: Date
     var totalScore: Double
     var elements: [ElementScore]
+    var coachNote: String? // Overall notes for this runthrough
 }
 
 ```
@@ -114,11 +118,26 @@ A SwiftUI Chart showing the progression of the "Total Score" over the course of 
 
 ---
 
-## **7. Roadmap / Future Scope**
+## **7. Navigation Architecture**
+
+**App hierarchy:**
+1. **Athlete List** — All athletes for the selected sport
+2. **Single Athlete** — Programs and runthroughs for this athlete
+3. **Runthrough Detail** — Summary view of a completed runthrough (program name, date, final score, coach notes, list of scored elements with timestamps)
+4. **Analyzer** — Active video scoring interface (real-time element timestamping and scoring)
+
+**Element entry workflow (MVP):**
+- **First runthrough:** Coach manually selects/enters elements during analysis
+- **Subsequent runthroughs:** Elements auto-copy from latest runthrough of the same program; coach can edit inline if program layout changed
+
+---
+
+## **8. Roadmap / Future Scope**
 
 * **v1.1:** Side-by-side video comparison (Video A vs. Video B).
 * **v1.2:** "Burn-in" export (Exporting the video with the score overlaid on the frame).
 * **v1.3:** Apple Watch remote "Tagging" (Coach taps watch while filming to drop pins).
+* **v1.4:** Template management — "Save as template" and template picker for program reuse across athletes.
 
 ---
 

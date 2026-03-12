@@ -32,7 +32,7 @@ struct RunThroughListView: View {
                 )
             } else {
                 List(runThroughs) { run in
-                    NavigationLink(value: AnalyzerDestination(runThrough: run, ppcCodes: [])) {
+                    NavigationLink(value: run) {
                         RunThroughRow(runThrough: run)
                     }
                 }
@@ -52,6 +52,9 @@ struct RunThroughListView: View {
         .onChange(of: selectedItem) { _, newItem in
             guard let newItem else { return }
             importVideo(from: newItem)
+        }
+        .navigationDestination(for: RunThrough.self) { runThrough in
+            RunThroughDetailView(runThrough: runThrough)
         }
         .navigationDestination(for: AnalyzerDestination.self) { dest in
             AnalyzerView(viewModel: AnalyzerViewModel(
@@ -89,6 +92,7 @@ struct RunThroughListView: View {
         let sport = SportType(rawValue: athlete.sport) ?? .skating
         let run = RunThrough(
             athleteID: athlete.id,
+            programName: "Untitled Program",
             sport: sport,
             videoLocalIdentifier: assetIdentifier
         )

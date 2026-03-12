@@ -37,19 +37,22 @@ Design tool: **Pencil.dev** — design each screen before implementing.
 
 ## Screens
 
-| #   | Screen                         | Status                    |
-| --- | ------------------------------ | ------------------------- |
-| 1   | Onboarding / Sport Setup       | Done                      |
-| 2   | Athlete List (Home)            | Done                      |
-| 3   | Run-Through List (per athlete) | Done                      |
-| 4   | Video Analyzer                 | Done                      |
-| 5   | Element Detail / Edit          | Done (inline in Analyzer) |
-| 6   | Consistency Heatmap            | Done                      |
-| 7   | Trend Spline                   | Done                      |
-| 8   | PPC Editor                     | Done                      |
-| 9   | Settings                       | Done                      |
+| #   | Screen                           | Status                    |
+| --- | -------------------------------- | ------------------------- |
+| 1   | Onboarding / Sport Setup         | Done                      |
+| 2   | Athlete List (Home)              | Done                      |
+| 3   | Run-Through List (per athlete)   | Done                      |
+| 3b  | **Runthrough Detail View**       | **To Do** (design ready)  |
+| 4   | Video Analyzer                   | Done                      |
+| 5   | Element Detail / Edit            | Done (inline in Analyzer) |
+| 6   | Consistency Heatmap              | Done                      |
+| 7   | Trend Spline                     | Done                      |
+| 8   | PPC Editor                       | Done (optional for MVP)   |
+| 9   | Settings                         | Done                      |
 
 **Design priority:** Screen 4 (Video Analyzer) first — it is the most complex.
+
+**Screen 3b (Runthrough Detail View):** Summary page showing program name, runthrough date, final score, coach notes, and list of scored elements with timestamps. Design completed in Pencil.dev. Navigates from Runthrough List → Detail → Analyzer.
 
 ---
 
@@ -63,19 +66,23 @@ VaultAndEdge/
 │   ├── SportType.swift            # enum: .skating, .gymnastics
 │   ├── LandingType.swift          # enum: .stuck, .hop, .step, .fall
 │   ├── ElementScore.swift         # elementCode, timestamp, executionValue, landing, note
-│   └── RunThrough.swift           # athleteID, videoLocalIdentifier, date, totalScore, elements
+│   ├── RunThrough.swift           # athleteID, programName, videoLocalIdentifier, date, totalScore, elements, coachNote
+│   └── PlannedProgramContent.swift # Optional coach-created templates (not required for MVP)
 ├── Views/
 │   ├── Onboarding/
 │   ├── AthleteList/
+│   │   ├── AthleteListView.swift
+│   │   ├── RunThroughListView.swift       # List of runthroughs per athlete
+│   │   └── RunThroughDetailView.swift     # **NEW** Summary of single runthrough
 │   ├── Analyzer/
-│   │   ├── VideoPlayerView.swift       # AVPlayer, 240fps scrubbing, pinch-zoom
-│   │   ├── ScoringTrayView.swift       # GOE slider (-5→+5) OR deduction chips
-│   │   ├── LandingButtonsView.swift    # Stuck / Hop / Step / Fall
-│   │   └── ElementTimelineView.swift   # Timestamped element list
+│   │   ├── VideoPlayerView.swift          # AVPlayer, 240fps scrubbing, pinch-zoom
+│   │   ├── ScoringTrayView.swift          # GOE slider (-5→+5) OR deduction chips
+│   │   ├── LandingButtonsView.swift       # Stuck / Hop / Step / Fall
+│   │   └── ElementTimelineView.swift      # Timestamped element list
 │   ├── Dashboard/
 │   │   ├── ConsistencyHeatmapView.swift
 │   │   └── TrendSplineView.swift
-│   └── PPCEditor/
+│   └── PPCEditor/                         # Optional (future enhancement)
 ├── ViewModels/
 │   ├── AnalyzerViewModel.swift         # Scoring logic engine, sync pin logic
 │   └── DashboardViewModel.swift
@@ -108,6 +115,8 @@ Implement as a `ScoringEngine` protocol with sport-specific conformances.
 - **CloudKit:** SwiftData with CloudKit private database for sync. Video bytes never leave the device/iCloud Photos.
 - **Haptics:** `CoreHaptics` — success pattern for Stuck, short taps for deductions/falls.
 - **Dashboard heatmap:** Color buckets — Mint if avg execution > 80% of max; Coral if < 50%.
+- **Element entry (MVP):** First runthrough for a program starts blank; subsequent runthroughs auto-copy elements from the latest runthrough of the same `programName`. Coach can edit inline if program layout changes.
+- **Navigation flow:** Athlete List → Runthrough List → **Runthrough Detail (new)** → Analyzer (for live scoring).
 
 ---
 
@@ -124,14 +133,18 @@ Implement as a `ScoringEngine` protocol with sport-specific conformances.
 - [x] Element timestamping (Sync button → CMTime pin)
 - [x] Landing buttons + haptics
 
-### Phase 3 — Dashboard
+### Phase 3 — Dashboard & Runthrough Detail
 
 - [x] Consistency heatmap grid
 - [x] Trend spline (Swift Charts)
-- [x] PPC pre-load editor
+- [ ] **Runthrough Detail View** (design ready, needs implementation)
+- [x] PPC editor (optional for MVP)
 
-### Phase 4 — Cloud & Polish
+### Phase 4 — Smart Element Copy & Polish
 
+- [ ] Add `programName` and `coachNote` fields to `RunThrough` model
+- [ ] Implement auto-copy from latest runthrough logic
+- [ ] Update navigation: List → Detail → Analyzer
 - [ ] CloudKit sync
 - [x] Athlete management and sharing
 - [ ] Edge cases, accessibility, App Store prep
