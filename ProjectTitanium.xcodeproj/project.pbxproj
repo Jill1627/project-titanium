@@ -44,6 +44,15 @@
 		T10005 /* AnalyzerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20005 /* AnalyzerViewModelTests.swift */; };
 		T10006 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20006 /* DashboardViewModelTests.swift */; };
 		T10007 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20007 /* IntegrationTests.swift */; };
+		A20001 /* SFPRODISPLAYBLACKITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20001 /* SFPRODISPLAYBLACKITALIC.OTF */; };
+		A20002 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20002 /* SFPRODISPLAYBOLD.OTF */; };
+		A20003 /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20003 /* SFPRODISPLAYHEAVYITALIC.OTF */; };
+		A20004 /* SFPRODISPLAYLIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20004 /* SFPRODISPLAYLIGHTITALIC.OTF */; };
+		A20005 /* SFPRODISPLAYMEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20005 /* SFPRODISPLAYMEDIUM.OTF */; };
+		A20006 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20006 /* SFPRODISPLAYREGULAR.OTF */; };
+		A20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */; };
+		A20008 /* SFPRODISPLAYTHINITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20008 /* SFPRODISPLAYTHINITALIC.OTF */; };
+		A20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +106,15 @@
 		T20006 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
 		T20007 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		T30099 /* ProjectTitaniumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTitaniumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B20001 /* SFPRODISPLAYBLACKITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBLACKITALIC.OTF; sourceTree = "<group>"; };
+		B20002 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
+		B20003 /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
+		B20004 /* SFPRODISPLAYLIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYLIGHTITALIC.OTF; sourceTree = "<group>"; };
+		B20005 /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
+		B20006 /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
+		B20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
+		B20008 /* SFPRODISPLAYTHINITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYTHINITALIC.OTF; sourceTree = "<group>"; };
+		B20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYULTRALIGHTITALIC.OTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +153,7 @@
 				D10008 /* ViewModels */,
 				D10009 /* Services */,
 				D10010 /* Extensions */,
+				D10015 /* resources */,
 				B10012 /* Assets.xcassets */,
 				B10013 /* Info.plist */,
 			);
@@ -260,6 +279,30 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		D10015 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				D10016 /* fonts */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		D10016 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B20001 /* SFPRODISPLAYBLACKITALIC.OTF */,
+				B20002 /* SFPRODISPLAYBOLD.OTF */,
+				B20003 /* SFPRODISPLAYHEAVYITALIC.OTF */,
+				B20004 /* SFPRODISPLAYLIGHTITALIC.OTF */,
+				B20005 /* SFPRODISPLAYMEDIUM.OTF */,
+				B20006 /* SFPRODISPLAYREGULAR.OTF */,
+				B20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */,
+				B20008 /* SFPRODISPLAYTHINITALIC.OTF */,
+				B20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		D10099 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +407,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A10012 /* Assets.xcassets in Resources */,
+				A20001 /* SFPRODISPLAYBLACKITALIC.OTF in Resources */,
+				A20002 /* SFPRODISPLAYBOLD.OTF in Resources */,
+				A20003 /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */,
+				A20004 /* SFPRODISPLAYLIGHTITALIC.OTF in Resources */,
+				A20005 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
+				A20006 /* SFPRODISPLAYREGULAR.OTF in Resources */,
+				A20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */,
+				A20008 /* SFPRODISPLAYTHINITALIC.OTF in Resources */,
+				A20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

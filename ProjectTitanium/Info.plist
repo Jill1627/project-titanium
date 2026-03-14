@@ -6,5 +6,17 @@
 	<string>Vault &amp; Edge needs access to your photo library to import and analyze skating and gymnastics videos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Vault &amp; Edge needs permission to save annotated videos to your library.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFPRODISPLAYBLACKITALIC.OTF</string>
+		<string>SFPRODISPLAYBOLD.OTF</string>
+		<string>SFPRODISPLAYHEAVYITALIC.OTF</string>
+		<string>SFPRODISPLAYLIGHTITALIC.OTF</string>
+		<string>SFPRODISPLAYMEDIUM.OTF</string>
+		<string>SFPRODISPLAYREGULAR.OTF</string>
+		<string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
+		<string>SFPRODISPLAYTHINITALIC.OTF</string>
+		<string>SFPRODISPLAYULTRALIGHTITALIC.OTF</string>
+	</array>
 </dict>
 </plist>
