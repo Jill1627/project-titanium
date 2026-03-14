@@ -18,6 +18,13 @@ final class AnalyzerViewModel {
     var selectedLanding: LandingType = .stuck
     var coachNote: String = ""
 
+    // Figure skating technical scoring
+    var baseValue: Double = 10.0  // Default stub value for skating elements
+    var rotationCall: RotationCall = .clean
+    var edgeCall: EdgeCall = .correct
+    var isRepeat: Bool = false
+    var isSecondHalf: Bool = false
+
     // PPC pre-loaded element codes for one-tap review
     var ppcElementCodes: [String] = []
     var ppcCurrentIndex: Int = 0
@@ -44,7 +51,7 @@ final class AnalyzerViewModel {
     }
 
     var computedTotalScore: Double {
-        elements.reduce(0) { $0 + $1.executionValue }
+        runThrough.calculatedTotalScore
     }
 
     init(runThrough: RunThrough, ppcElementCodes: [String] = []) {
@@ -103,25 +110,25 @@ final class AnalyzerViewModel {
     func syncElement(modelContext: ModelContext) {
         guard !selectedElementCode.isEmpty else { return }
 
-        let executionAdjustment: Double
+        // Store raw execution value (GOE for skating, -deductions for gymnastics)
+        let executionValue: Double
         if sportType == .skating {
-            executionAdjustment = currentGOE
+            executionValue = currentGOE
         } else {
-            executionAdjustment = -currentDeductions
+            executionValue = -currentDeductions
         }
-
-        // Use ScoringEngine for the execution value calculation
-        let executionValue = scoringEngine.calculateScore(
-            baseValue: 0,
-            executionAdjustment: executionAdjustment
-        )
 
         let element = ElementScore(
             elementCode: selectedElementCode,
             timestamp: currentTime,
             executionValue: executionValue,
             landing: selectedLanding,
-            coachNote: coachNote.isEmpty ? nil : coachNote
+            coachNote: coachNote.isEmpty ? nil : coachNote,
+            baseValue: baseValue,
+            rotationCall: rotationCall,
+            edgeCall: edgeCall,
+            isRepeat: isRepeat,
+            isSecondHalf: isSecondHalf
         )
 
         runThrough.elements.append(element)
@@ -151,6 +158,11 @@ final class AnalyzerViewModel {
         currentDeductions = 0
         selectedLanding = .stuck
         coachNote = ""
+        baseValue = sportType == .skating ? 10.0 : 0.0
+        rotationCall = .clean
+        edgeCall = .correct
+        isRepeat = false
+        isSecondHalf = false
     }
 
     func addDeduction(_ value: Double) {

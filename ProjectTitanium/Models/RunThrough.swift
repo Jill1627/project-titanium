@@ -39,4 +39,11 @@ final class RunThrough: Hashable {
         get { SportType(rawValue: sport) ?? .skating }
         set { sport = newValue.rawValue }
     }
+
+    /// Calculate the total score using sport-specific rules
+    var calculatedTotalScore: Double {
+        elements.reduce(0) { total, element in
+            total + element.calculatedScore(sport: sportType)
+        }
+    }
 }

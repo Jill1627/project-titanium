@@ -37,6 +37,8 @@
 		A10025 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10026 /* SettingsView.swift */; };
 		A10026 /* ScoringEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10027 /* ScoringEngine.swift */; };
 		A10027 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10028 /* Color+Theme.swift */; };
+		A10028 /* RotationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10029 /* RotationCall.swift */; };
+		A10029 /* EdgeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10030 /* EdgeCall.swift */; };
 		T10001 /* SportTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20001 /* SportTypeTests.swift */; };
 		T10002 /* LandingTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20002 /* LandingTypeTests.swift */; };
 		T10003 /* ScoringEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20003 /* ScoringEngineTests.swift */; };
@@ -97,6 +99,8 @@
 		B10026 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B10027 /* ScoringEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringEngine.swift; sourceTree = "<group>"; };
 		B10028 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		B10029 /* RotationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCall.swift; sourceTree = "<group>"; };
+		B10030 /* EdgeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeCall.swift; sourceTree = "<group>"; };
 		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		T20001 /* SportTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeTests.swift; sourceTree = "<group>"; };
 		T20002 /* LandingTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTypeTests.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			children = (
 				B10002 /* SportType.swift */,
 				B10003 /* LandingType.swift */,
+				B10029 /* RotationCall.swift */,
+				B10030 /* EdgeCall.swift */,
 				B10004 /* ElementScore.swift */,
 				B10005 /* RunThrough.swift */,
 				B10006 /* Athlete.swift */,
@@ -429,6 +435,8 @@
 				A10001 /* VaultAndEdgeApp.swift in Sources */,
 				A10002 /* SportType.swift in Sources */,
 				A10003 /* LandingType.swift in Sources */,
+				A10028 /* RotationCall.swift in Sources */,
+				A10029 /* EdgeCall.swift in Sources */,
 				A10004 /* ElementScore.swift in Sources */,
 				A10005 /* RunThrough.swift in Sources */,
 				A10006 /* Athlete.swift in Sources */,

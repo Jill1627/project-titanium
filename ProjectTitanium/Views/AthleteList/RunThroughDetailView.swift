@@ -68,7 +68,7 @@ struct RunThroughDetailView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack(spacing: 8) {
                             // Score
-                            Text(String(format: "%.2f", runThrough.totalScore))
+                            Text(String(format: "%.2f", runThrough.calculatedTotalScore))
                                 .font(.system(size: 44, weight: .heavy))
                                 .foregroundStyle(.white)
 
@@ -122,7 +122,7 @@ struct RunThroughDetailView: View {
                 // Elements List
                 LazyVStack(spacing: 12) {
                     ForEach(runThrough.elements) { element in
-                        ElementRowView(element: element)
+                        ElementRowView(element: element, sportType: runThrough.sportType)
                             .onTapGesture {
                                 selectedElement = element
                             }
@@ -224,6 +224,7 @@ struct RunThroughDetailView: View {
 
 struct ElementRowView: View {
     let element: ElementScore
+    let sportType: SportType
 
     var body: some View {
         HStack(spacing: 12) {
@@ -251,7 +252,7 @@ struct ElementRowView: View {
             Spacer()
 
             // Score
-            Text(String(format: "%.2f", element.executionValue))
+            Text(String(format: "%.2f", element.calculatedScore(sport: sportType)))
                 .font(.system(size: 24, weight: .bold))
                 .foregroundStyle(.primary)
         }
@@ -333,7 +334,8 @@ struct AddElementSheet: View {
             elementCode: elementCode,
             timestamp: 0,
             executionValue: 0,
-            landing: LandingType.stuck
+            landing: LandingType.stuck,
+            baseValue: runThrough.sportType == .skating ? 10.0 : 0.0
         )
         runThrough.elements.append(newElement)
         dismiss()

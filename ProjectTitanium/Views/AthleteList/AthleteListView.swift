@@ -5,6 +5,7 @@ struct AthleteListView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage("selectedSport") private var selectedSport = SportType.skating.rawValue
     @Query(sort: \Athlete.name) private var athletes: [Athlete]
+    @Query private var allRunThroughs: [RunThrough]
     @State private var showingAddAthlete = false
     @State private var newAthleteName = ""
 
@@ -26,13 +27,18 @@ struct AthleteListView: View {
                         description: Text("Add your first athlete to get started.")
                     )
                 } else {
-                    List {
-                        ForEach(filteredAthletes) { athlete in
-                            NavigationLink(value: athlete) {
-                                AthleteRow(athlete: athlete)
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            ForEach(filteredAthletes) { athlete in
+                                NavigationLink(value: athlete) {
+                                    AthleteCard(athlete: athlete, runThroughs: runThroughs(for: athlete))
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
-                        .onDelete(perform: deleteAthletes)
+                        .padding(.horizontal, 24)
+                        .padding(.top, 16)
+                        .padding(.bottom, 24)
                     }
                 }
             }
@@ -78,43 +84,95 @@ struct AthleteListView: View {
         }
     }
 
+    private func runThroughs(for athlete: Athlete) -> [RunThrough] {
+        allRunThroughs.filter { $0.athleteID == athlete.id }
+    }
+
     private func addAthlete() {
         guard !newAthleteName.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         let athlete = Athlete(name: newAthleteName.trimmingCharacters(in: .whitespaces), sport: currentSport)
         modelContext.insert(athlete)
         newAthleteName = ""
     }
-
-    private func deleteAthletes(at offsets: IndexSet) {
-        for index in offsets {
-            modelContext.delete(filteredAthletes[index])
-        }
-    }
 }
 
-struct AthleteRow: View {
+struct AthleteCard: View {
     let athlete: Athlete
+    let runThroughs: [RunThrough]
+
+    private var highestScore: Double {
+        runThroughs.map(\.calculatedTotalScore).max() ?? 0
+    }
+
+    private var latestScore: Double {
+        runThroughs.sorted { $0.date > $1.date }.first?.calculatedTotalScore ?? 0
+    }
 
     var body: some View {
-        HStack {
-            Image(systemName: "person.circle.fill")
-                .font(.title2)
-                .foregroundStyle(.secondary)
+        VStack(spacing: 0) {
+            // Top row: Avatar, Name, Highest Score
+            HStack(alignment: .center, spacing: 12) {
+                // Avatar
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.systemGray6))
+                    .frame(width: 56, height: 56)
+                    .overlay {
+                        Image(systemName: "person.fill")
+                            .font(.system(size: 24))
+                            .foregroundStyle(.secondary)
+                    }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
 
-            VStack(alignment: .leading) {
+                // Name
                 Text(athlete.name)
-                    .font(.body)
-            }
+                    .font(.system(size: 20, weight: .heavy))
+                    .foregroundStyle(.black)
+                    .lineLimit(1)
 
-            Spacer()
+                Spacer()
 
-            NavigationLink(value: DashboardDestination(athlete: athlete)) {
-                Image(systemName: "chart.bar")
-                    .font(.caption)
-                    .foregroundStyle(Color.accentColor)
+                // Highest Score
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("Highest")
+                        .font(.system(size: 9, weight: .semibold))
+                        .foregroundStyle(.secondary)
+                        .textCase(.uppercase)
+                        .tracking(0.5)
+
+                    Text(String(format: "%.0f", highestScore))
+                        .font(.system(size: 20, weight: .heavy))
+                        .foregroundStyle(.black)
+                }
             }
-            .buttonStyle(.plain)
+            .padding(16)
+            .background(Color.white)
+
+            // Bottom row: Latest Score
+            HStack {
+                Text("LATEST")
+                    .font(.system(size: 9, weight: .bold))
+                    .foregroundStyle(.white.opacity(0.6))
+                    .tracking(1)
+
+                Spacer()
+
+                Text(String(format: "%.0f", latestScore))
+                    .font(.system(size: 20, weight: .heavy))
+                    .foregroundStyle(.white)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(Color(hex: "1A1A1A"))
         }
+        .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.black, lineWidth: 2)
+        )
+        .shadow(color: .black, radius: 0, x: 6, y: 6)
     }
 }
 

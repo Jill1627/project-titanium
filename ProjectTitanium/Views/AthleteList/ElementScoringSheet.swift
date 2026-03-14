@@ -6,48 +6,81 @@ struct ElementScoringSheet: View {
     let sportType: SportType
 
     @State private var selectedGOE: Int = 0
-    @State private var isUnderrotated = false
-    @State private var hasWrongEdge = false
-    @State private var isQuarter = false
+    @State private var baseValue: String = ""
+    @State private var selectedRotationCall: RotationCall = .clean
+    @State private var selectedEdgeCall: EdgeCall = .correct
+    @State private var isRepeat: Bool = false
+    @State private var isSecondHalf: Bool = false
 
     private let goeRange = -5...5
 
+    private var calculatedScore: Double {
+        guard sportType == .skating else {
+            return Double(selectedGOE)
+        }
+
+        let base = Double(baseValue) ?? 10.0  // Default to 10.0 if empty
+        let engine = SkatingScoring()
+        return engine.calculateElementScore(
+            baseValue: base,
+            goe: Double(selectedGOE),
+            rotationCall: selectedRotationCall,
+            edgeCall: selectedEdgeCall,
+            isRepeat: isRepeat,
+            isSecondHalf: isSecondHalf,
+            landing: element.landingType
+        )
+    }
+
     var body: some View {
-        VStack(spacing: 24) {
-            // Header Section
-            HStack(alignment: .bottom) {
-                // Element Code
-                Text(element.elementCode)
-                    .font(.system(size: 64, weight: .heavy))
-                    .foregroundStyle(.primary)
-
-                Spacer()
-
-                // Scores
-                VStack(alignment: .trailing, spacing: 4) {
-                    Text("Base")
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundStyle(.secondary)
-
-                    Text("1.50")
-                        .font(.system(size: 20, weight: .bold))
+        VStack(spacing: 0) {
+            // Fixed Header Section
+            VStack(spacing: 16) {
+                HStack(alignment: .bottom) {
+                    // Element Code
+                    Text(element.elementCode)
+                        .font(.system(size: 64, weight: .heavy))
                         .foregroundStyle(.primary)
+
+                    Spacer()
+
+                    // Base Value Input
+                    if sportType == .skating {
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text("Base")
+                                .font(.system(size: 11, weight: .semibold))
+                                .foregroundStyle(.secondary)
+
+                            TextField("0.0", text: $baseValue)
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundStyle(.primary)
+                                .keyboardType(.decimalPad)
+                                .multilineTextAlignment(.trailing)
+                                .frame(width: 60)
+                        }
+                    }
+
+                    // Total Score Badge
+                    Text(String(format: "%.2f", calculatedScore))
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 20)
+                        .background(Color.black)
+                        .cornerRadius(12)
                 }
 
-                // Total Score Badge
-                Text(String(format: "%.2f", element.executionValue))
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 20)
-                    .background(Color.black)
-                    .cornerRadius(12)
+                Divider()
             }
-            .padding(.bottom, 8)
+            .padding(.horizontal, 24)
+            .padding(.top, 24)
+            .padding(.bottom, 16)
+            .background(Color(.systemBackground))
 
-            Divider()
-
-            // GOE Slider Section
+            // Scrollable Content Section
+            ScrollView {
+                VStack(spacing: 24) {
+                    // GOE Slider Section
             if sportType == .skating {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Grade of Execution")
@@ -72,6 +105,25 @@ struct ElementScoringSheet: View {
                             RoundedRectangle(cornerRadius: 12)
                                 .fill(Color(.systemGray6))
                                 .frame(height: 60)
+
+                            // Background bars
+                            GeometryReader { geometry in
+                                HStack(spacing: 0) {
+                                    ForEach(Array(goeRange), id: \.self) { value in
+                                        Rectangle()
+                                            .fill(Color.black.opacity(0.05))
+                                            .frame(maxWidth: .infinity)
+                                            .overlay(
+                                                Rectangle()
+                                                    .fill(Color.black.opacity(0.1))
+                                                    .frame(width: 2)
+                                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                            )
+                                    }
+                                }
+                            }
+                            .frame(height: 60)
+                            .cornerRadius(12)
 
                             // Current value indicator
                             GeometryReader { geometry in
@@ -112,28 +164,75 @@ struct ElementScoringSheet: View {
                 }
             }
 
-            // Toggle Buttons
+            // Rotation Calls Row
+            if sportType == .skating {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Rotation")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.secondary)
+
+                    HStack(spacing: 12) {
+                        RotationCallButton(
+                            label: "<<",
+                            call: .downgraded,
+                            selectedCall: $selectedRotationCall
+                        )
+
+                        RotationCallButton(
+                            label: "<",
+                            call: .underRotated,
+                            selectedCall: $selectedRotationCall
+                        )
+
+                        RotationCallButton(
+                            label: "q",
+                            call: .quarter,
+                            selectedCall: $selectedRotationCall
+                        )
+                    }
+                }
+
+                // Edge Calls Row
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Edge")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.secondary)
+
+                    HStack(spacing: 12) {
+                        EdgeCallButton(
+                            label: "e",
+                            call: .wrongEdge,
+                            selectedCall: $selectedEdgeCall
+                        )
+
+                        EdgeCallButton(
+                            label: "!",
+                            call: .attention,
+                            selectedCall: $selectedEdgeCall
+                        )
+                    }
+                }
+
+                // Other Flags Row
+                HStack(spacing: 12) {
+                    ToggleButton(
+                        label: "+REP",
+                        isSelected: $isRepeat,
+                        color: .purple
+                    )
+
+                    ToggleButton(
+                        label: "2nd Half",
+                        isSelected: $isSecondHalf,
+                        color: .blue
+                    )
+                }
+            }
+
+            // Landing Row
             HStack(spacing: 12) {
                 ToggleButton(
-                    label: "<<",
-                    isSelected: $isUnderrotated,
-                    color: .orange
-                )
-
-                ToggleButton(
-                    label: "Q",
-                    isSelected: $isQuarter,
-                    color: .orange
-                )
-
-                ToggleButton(
-                    label: "E",
-                    isSelected: $hasWrongEdge,
-                    color: .orange
-                )
-
-                ToggleButton(
-                    label: "F",
+                    label: "FALL",
                     isSelected: Binding(
                         get: { element.landingType == .fall },
                         set: { if $0 { element.landingType = .fall } else { element.landingType = .stuck } }
@@ -141,10 +240,13 @@ struct ElementScoringSheet: View {
                     color: .red
                 )
             }
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 8)
+                .padding(.bottom, 24)
+            }
 
-            Spacer()
-
-            // Save Button
+            // Fixed Save Button
             Button {
                 saveAndDismiss()
             } label: {
@@ -156,10 +258,17 @@ struct ElementScoringSheet: View {
                     .background(Color.black)
                     .cornerRadius(16)
             }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 24)
         }
-        .padding(24)
         .onAppear {
             selectedGOE = Int(element.executionValue)
+            // Default to 10.00 for skating if no base value set yet
+            baseValue = element.baseValue > 0 ? String(format: "%.2f", element.baseValue) : (sportType == .skating ? "10.00" : "")
+            selectedRotationCall = element.rotationCallType
+            selectedEdgeCall = element.edgeCallType
+            isRepeat = element.isRepeat
+            isSecondHalf = element.isSecondHalf
         }
     }
 
@@ -174,6 +283,15 @@ struct ElementScoringSheet: View {
 
     private func saveAndDismiss() {
         element.executionValue = Double(selectedGOE)
+
+        if sportType == .skating {
+            element.baseValue = Double(baseValue) ?? 0.0
+            element.rotationCallType = selectedRotationCall
+            element.edgeCallType = selectedEdgeCall
+            element.isRepeat = isRepeat
+            element.isSecondHalf = isSecondHalf
+        }
+
         dismiss()
     }
 }
@@ -192,7 +310,57 @@ struct ToggleButton: View {
                 .foregroundStyle(isSelected ? .white : .primary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(isSelected ? color : Color(.systemGray6))
+                .background(isSelected ? color : Color.white)
+                .cornerRadius(16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
+        }
+    }
+}
+
+struct RotationCallButton: View {
+    let label: String
+    let call: RotationCall
+    @Binding var selectedCall: RotationCall
+
+    var body: some View {
+        Button {
+            selectedCall = selectedCall == call ? .clean : call
+        } label: {
+            Text(label)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundStyle(selectedCall == call ? .white : .primary)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56)
+                .background(selectedCall == call ? Color.orange : Color.white)
+                .cornerRadius(16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
+        }
+    }
+}
+
+struct EdgeCallButton: View {
+    let label: String
+    let call: EdgeCall
+    @Binding var selectedCall: EdgeCall
+
+    var body: some View {
+        Button {
+            selectedCall = selectedCall == call ? .correct : call
+        } label: {
+            Text(label)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundStyle(selectedCall == call ? .white : .primary)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56)
+                .background(selectedCall == call ? Color.orange : Color.white)
                 .cornerRadius(16)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
