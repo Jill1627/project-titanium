@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B039AAC2F666A1400618992 /* FigureSkatingElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B039AAB2F666A1400618992 /* FigureSkatingElement.swift */; };
+		5B039AAE2F666A2300618992 /* ElementPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B039AAD2F666A2300618992 /* ElementPickerSheet.swift */; };
 		A10001 /* VaultAndEdgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10001 /* VaultAndEdgeApp.swift */; };
 		A10002 /* SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10002 /* SportType.swift */; };
 		A10003 /* LandingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10003 /* LandingType.swift */; };
@@ -39,13 +41,6 @@
 		A10027 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10028 /* Color+Theme.swift */; };
 		A10028 /* RotationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10029 /* RotationCall.swift */; };
 		A10029 /* EdgeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10030 /* EdgeCall.swift */; };
-		T10001 /* SportTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20001 /* SportTypeTests.swift */; };
-		T10002 /* LandingTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20002 /* LandingTypeTests.swift */; };
-		T10003 /* ScoringEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20003 /* ScoringEngineTests.swift */; };
-		T10004 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20004 /* ModelTests.swift */; };
-		T10005 /* AnalyzerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20005 /* AnalyzerViewModelTests.swift */; };
-		T10006 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20006 /* DashboardViewModelTests.swift */; };
-		T10007 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20007 /* IntegrationTests.swift */; };
 		A20001 /* SFPRODISPLAYBLACKITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20001 /* SFPRODISPLAYBLACKITALIC.OTF */; };
 		A20002 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20002 /* SFPRODISPLAYBOLD.OTF */; };
 		A20003 /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20003 /* SFPRODISPLAYHEAVYITALIC.OTF */; };
@@ -55,6 +50,13 @@
 		A20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */; };
 		A20008 /* SFPRODISPLAYTHINITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20008 /* SFPRODISPLAYTHINITALIC.OTF */; };
 		A20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF */; };
+		T10001 /* SportTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20001 /* SportTypeTests.swift */; };
+		T10002 /* LandingTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20002 /* LandingTypeTests.swift */; };
+		T10003 /* ScoringEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20003 /* ScoringEngineTests.swift */; };
+		T10004 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20004 /* ModelTests.swift */; };
+		T10005 /* AnalyzerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20005 /* AnalyzerViewModelTests.swift */; };
+		T10006 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20006 /* DashboardViewModelTests.swift */; };
+		T10007 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T20007 /* IntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B039AAB2F666A1400618992 /* FigureSkatingElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigureSkatingElement.swift; sourceTree = "<group>"; };
+		5B039AAD2F666A2300618992 /* ElementPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementPickerSheet.swift; sourceTree = "<group>"; };
 		B10001 /* VaultAndEdgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultAndEdgeApp.swift; sourceTree = "<group>"; };
 		B10002 /* SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportType.swift; sourceTree = "<group>"; };
 		B10003 /* LandingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingType.swift; sourceTree = "<group>"; };
@@ -102,14 +106,6 @@
 		B10029 /* RotationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCall.swift; sourceTree = "<group>"; };
 		B10030 /* EdgeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeCall.swift; sourceTree = "<group>"; };
 		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		T20001 /* SportTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeTests.swift; sourceTree = "<group>"; };
-		T20002 /* LandingTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTypeTests.swift; sourceTree = "<group>"; };
-		T20003 /* ScoringEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringEngineTests.swift; sourceTree = "<group>"; };
-		T20004 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
-		T20005 /* AnalyzerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerViewModelTests.swift; sourceTree = "<group>"; };
-		T20006 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
-		T20007 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
-		T30099 /* ProjectTitaniumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTitaniumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20001 /* SFPRODISPLAYBLACKITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBLACKITALIC.OTF; sourceTree = "<group>"; };
 		B20002 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
 		B20003 /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
@@ -119,6 +115,14 @@
 		B20007 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
 		B20008 /* SFPRODISPLAYTHINITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYTHINITALIC.OTF; sourceTree = "<group>"; };
 		B20009 /* SFPRODISPLAYULTRALIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYULTRALIGHTITALIC.OTF; sourceTree = "<group>"; };
+		T20001 /* SportTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeTests.swift; sourceTree = "<group>"; };
+		T20002 /* LandingTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTypeTests.swift; sourceTree = "<group>"; };
+		T20003 /* ScoringEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringEngineTests.swift; sourceTree = "<group>"; };
+		T20004 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		T20005 /* AnalyzerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerViewModelTests.swift; sourceTree = "<group>"; };
+		T20006 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
+		T20007 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		T30099 /* ProjectTitaniumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTitaniumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 		D10004 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B039AAB2F666A1400618992 /* FigureSkatingElement.swift */,
 				B10002 /* SportType.swift */,
 				B10003 /* LandingType.swift */,
 				B10029 /* RotationCall.swift */,
@@ -211,6 +216,7 @@
 		D10007 /* AthleteList */ = {
 			isa = PBXGroup;
 			children = (
+				5B039AAD2F666A2300618992 /* ElementPickerSheet.swift */,
 				B10008 /* AthleteListView.swift */,
 				B10009 /* RunThroughListView.swift */,
 				B10009A /* RunThroughDetailView.swift */,
@@ -449,7 +455,9 @@
 				A10011 /* HapticsService.swift in Sources */,
 				A10011A /* SeedDataService.swift in Sources */,
 				A10013 /* AnalyzerViewModel.swift in Sources */,
+				5B039AAE2F666A2300618992 /* ElementPickerSheet.swift in Sources */,
 				A10014 /* VideoPlayerView.swift in Sources */,
+				5B039AAC2F666A1400618992 /* FigureSkatingElement.swift in Sources */,
 				A10015 /* ScoringTrayView.swift in Sources */,
 				A10016 /* LandingButtonsView.swift in Sources */,
 				A10017 /* ElementTimelineView.swift in Sources */,

@@ -12,7 +12,8 @@ final class ElementScore {
     var createdAt: Date
 
     // Figure skating technical calls
-    var baseValue: Double = 0.0 // Base value of the element
+    var baseValue: Double = 0.0 // Base value of the element (for display/legacy)
+    var level: String? = nil // Level for spins/sequences (LB, L1, L2, L3, L4)
     var rotationCall: String = "" // RotationCall rawValue (default: clean)
     var edgeCall: String = "" // EdgeCall rawValue (default: correct)
     var isRepeat: Bool = false // +REP flag (70% base value)
@@ -28,6 +29,7 @@ final class ElementScore {
         landing: LandingType = .stuck,
         coachNote: String? = nil,
         baseValue: Double = 0.0,
+        level: String? = nil,
         rotationCall: RotationCall = .clean,
         edgeCall: EdgeCall = .correct,
         isRepeat: Bool = false,
@@ -41,6 +43,7 @@ final class ElementScore {
         self.coachNote = coachNote
         self.createdAt = Date()
         self.baseValue = baseValue
+        self.level = level
         self.rotationCall = rotationCall.rawValue
         self.edgeCall = edgeCall.rawValue
         self.isRepeat = isRepeat
@@ -62,7 +65,7 @@ final class ElementScore {
         set { edgeCall = newValue.rawValue }
     }
 
-    /// Calculate the final score for this element using figure skating rules
+    /// Calculate the final score for this element using ISU 2025-2026 rules
     func calculatedScore(sport: SportType) -> Double {
         guard sport == .skating else {
             // Fallback for non-skating sports
@@ -70,14 +73,41 @@ final class ElementScore {
         }
 
         let engine = SkatingScoring()
-        return engine.calculateElementScore(
-            baseValue: baseValue,
-            goe: executionValue,
+        let goeInt = Int(executionValue.rounded())
+
+        // Use ISU-compliant scoring with element registry
+        let result = engine.calculateElementScore(
+            elementCode: elementCode,
+            level: level,
+            goe: goeInt,
             rotationCall: rotationCallType,
             edgeCall: edgeCallType,
             isRepeat: isRepeat,
             isSecondHalf: isSecondHalf,
             landing: landingType
         )
+
+        return result.score
+    }
+
+    /// Get detailed scoring breakdown for this element
+    func scoreBreakdown(sport: SportType) -> SkatingScoring.ScoreBreakdown? {
+        guard sport == .skating else { return nil }
+
+        let engine = SkatingScoring()
+        let goeInt = Int(executionValue.rounded())
+
+        let result = engine.calculateElementScore(
+            elementCode: elementCode,
+            level: level,
+            goe: goeInt,
+            rotationCall: rotationCallType,
+            edgeCall: edgeCallType,
+            isRepeat: isRepeat,
+            isSecondHalf: isSecondHalf,
+            landing: landingType
+        )
+
+        return result.breakdown
     }
 }

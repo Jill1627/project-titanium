@@ -6,30 +6,53 @@ struct ElementScoringSheet: View {
     let sportType: SportType
 
     @State private var selectedGOE: Int = 0
-    @State private var baseValue: String = ""
+    @State private var selectedElementCode: String = ""
+    @State private var selectedLevel: String? = nil
     @State private var selectedRotationCall: RotationCall = .clean
     @State private var selectedEdgeCall: EdgeCall = .correct
     @State private var isRepeat: Bool = false
     @State private var isSecondHalf: Bool = false
+    @State private var showElementPicker = false
 
     private let goeRange = -5...5
+    private let registry = FigureSkatingElementRegistry.shared
+
+    private var selectedElement: FigureSkatingElement? {
+        registry.element(forCode: selectedElementCode)
+    }
+
+    private var resolvedBaseValue: Double {
+        guard let element = selectedElement else { return 0.0 }
+
+        if element.requiresLevel {
+            guard let level = selectedLevel,
+                  let levelValue = element.levels?[level] else {
+                return 0.0
+            }
+            return levelValue
+        }
+
+        return element.baseValue ?? 0.0
+    }
 
     private var calculatedScore: Double {
         guard sportType == .skating else {
             return Double(selectedGOE)
         }
 
-        let base = Double(baseValue) ?? 10.0  // Default to 10.0 if empty
         let engine = SkatingScoring()
-        return engine.calculateElementScore(
-            baseValue: base,
-            goe: Double(selectedGOE),
+        let result = engine.calculateElementScore(
+            elementCode: selectedElementCode,
+            level: selectedLevel,
+            goe: selectedGOE,
             rotationCall: selectedRotationCall,
             edgeCall: selectedEdgeCall,
             isRepeat: isRepeat,
             isSecondHalf: isSecondHalf,
             landing: element.landingType
         )
+
+        return result.score
     }
 
     var body: some View {
@@ -37,26 +60,52 @@ struct ElementScoringSheet: View {
             // Fixed Header Section
             VStack(spacing: 16) {
                 HStack(alignment: .bottom) {
-                    // Element Code
-                    Text(element.elementCode)
-                        .font(.system(size: 64, weight: .heavy))
-                        .foregroundStyle(.primary)
+                    VStack(alignment: .leading, spacing: 4) {
+                        // Element Code
+                        if selectedElementCode.isEmpty {
+                            Button {
+                                showElementPicker = true
+                            } label: {
+                                Text("Select Element")
+                                    .font(.system(size: 32, weight: .heavy))
+                                    .foregroundStyle(.blue)
+                            }
+                        } else {
+                            HStack(spacing: 12) {
+                                Text(selectedElementCode)
+                                    .font(.system(size: 64, weight: .heavy))
+                                    .foregroundStyle(.primary)
+
+                                Button {
+                                    showElementPicker = true
+                                } label: {
+                                    Image(systemName: "pencil.circle.fill")
+                                        .font(.system(size: 32))
+                                        .foregroundStyle(.blue)
+                                }
+                            }
+
+                            // Element Name
+                            if let element = selectedElement {
+                                Text(element.name)
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
 
                     Spacer()
 
-                    // Base Value Input
-                    if sportType == .skating {
+                    // Base Value Display (read-only from registry)
+                    if sportType == .skating && !selectedElementCode.isEmpty {
                         VStack(alignment: .trailing, spacing: 4) {
                             Text("Base")
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(.secondary)
 
-                            TextField("0.0", text: $baseValue)
+                            Text(String(format: "%.2f", resolvedBaseValue))
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundStyle(.primary)
-                                .keyboardType(.decimalPad)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 60)
                         }
                     }
 
@@ -80,8 +129,31 @@ struct ElementScoringSheet: View {
             // Scrollable Content Section
             ScrollView {
                 VStack(spacing: 24) {
+                    // Level Picker (for spins and sequences)
+                    if sportType == .skating,
+                       let element = selectedElement,
+                       element.requiresLevel,
+                       let levels = element.levels {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Level")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(.secondary)
+
+                            HStack(spacing: 12) {
+                                ForEach(["LB", "L1", "L2", "L3", "L4"], id: \.self) { level in
+                                    if levels[level] != nil {
+                                        LevelButton(
+                                            level: level,
+                                            selectedLevel: $selectedLevel
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     // GOE Slider Section
-            if sportType == .skating {
+            if sportType == .skating && !selectedElementCode.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Grade of Execution")
                         .font(.system(size: 14, weight: .semibold))
@@ -261,10 +333,16 @@ struct ElementScoringSheet: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
         }
+        .sheet(isPresented: $showElementPicker) {
+            ElementPickerSheet(
+                selectedElementCode: $selectedElementCode,
+                selectedLevel: $selectedLevel
+            )
+        }
         .onAppear {
             selectedGOE = Int(element.executionValue)
-            // Default to 10.00 for skating if no base value set yet
-            baseValue = element.baseValue > 0 ? String(format: "%.2f", element.baseValue) : (sportType == .skating ? "10.00" : "")
+            selectedElementCode = element.elementCode
+            selectedLevel = element.level
             selectedRotationCall = element.rotationCallType
             selectedEdgeCall = element.edgeCallType
             isRepeat = element.isRepeat
@@ -283,9 +361,11 @@ struct ElementScoringSheet: View {
 
     private func saveAndDismiss() {
         element.executionValue = Double(selectedGOE)
+        element.elementCode = selectedElementCode
 
         if sportType == .skating {
-            element.baseValue = Double(baseValue) ?? 0.0
+            element.baseValue = resolvedBaseValue  // Store resolved value for reference
+            element.level = selectedLevel
             element.rotationCallType = selectedRotationCall
             element.edgeCallType = selectedEdgeCall
             element.isRepeat = isRepeat
@@ -361,6 +441,30 @@ struct EdgeCallButton: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(selectedCall == call ? Color.orange : Color.white)
+                .cornerRadius(16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
+        }
+    }
+}
+
+struct LevelButton: View {
+    let level: String
+    @Binding var selectedLevel: String?
+
+    var body: some View {
+        Button {
+            selectedLevel = level
+        } label: {
+            Text(level)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundStyle(selectedLevel == level ? .white : .primary)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56)
+                .background(selectedLevel == level ? Color.purple : Color.white)
                 .cornerRadius(16)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)

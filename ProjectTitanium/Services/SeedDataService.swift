@@ -31,11 +31,13 @@ struct SeedDataService {
             programName: "Short Program 2026",
             date: Calendar.current.date(byAdding: .day, value: -7, to: Date())!,
             elements: [
-                ("3A", 60.0, 8.5, .stuck),
-                ("4T", 120.0, 9.8, .hop),
-                ("CCoSp4", 180.0, 3.5, .stuck),
-                ("StSq4", 240.0, 3.9, .stuck),
-                ("3Lz+3T", 300.0, 11.2, .step)
+                ("3A", nil, 15.0, 2, .clean, .correct, false, false, .stuck),
+                ("3Lz", nil, 30.0, 1, .clean, .correct, false, false, .stuck),
+                ("3T", nil, 45.0, 1, .clean, .correct, false, false, .stuck),
+                ("CCoSp", "L4", 60.0, 2, .clean, .correct, false, false, .stuck),
+                ("StSq", "L4", 75.0, 3, .clean, .correct, false, false, .stuck),
+                ("3F", nil, 90.0, 2, .underRotated, .correct, false, true, .hop),
+                ("SSp", "L3", 105.0, 1, .clean, .correct, false, false, .stuck)
             ]
         )
 
@@ -44,11 +46,13 @@ struct SeedDataService {
             programName: "Short Program 2026",
             date: Calendar.current.date(byAdding: .day, value: -3, to: Date())!,
             elements: [
-                ("3A", 58.0, 8.8, .stuck),
-                ("4T", 118.0, 10.2, .stuck),
-                ("CCoSp4", 178.0, 3.5, .stuck),
-                ("StSq4", 238.0, 3.9, .stuck),
-                ("3Lz+3T", 298.0, 11.5, .stuck)
+                ("3A", nil, 15.0, 3, .clean, .correct, false, false, .stuck),
+                ("3Lz", nil, 30.0, 2, .clean, .correct, false, false, .stuck),
+                ("3T", nil, 45.0, 2, .clean, .correct, false, false, .stuck),
+                ("CCoSp", "L4", 60.0, 3, .clean, .correct, false, false, .stuck),
+                ("StSq", "L4", 75.0, 3, .clean, .correct, false, false, .stuck),
+                ("3F", nil, 90.0, 2, .clean, .correct, false, true, .stuck),
+                ("SSp", "L4", 105.0, 2, .clean, .correct, false, false, .stuck)
             ]
         )
 
@@ -57,12 +61,15 @@ struct SeedDataService {
             programName: "Free Skate 2026",
             date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
             elements: [
-                ("4S", 45.0, 9.7, .stuck),
-                ("3A", 105.0, 8.2, .hop),
-                ("3Lz", 165.0, 5.9, .stuck),
-                ("FCSp4", 225.0, 3.2, .stuck),
-                ("3F+3T", 285.0, 9.8, .stuck),
-                ("ChSq1", 345.0, 3.0, .stuck)
+                ("4S", nil, 20.0, 3, .clean, .correct, false, false, .stuck),
+                ("3A", nil, 40.0, 2, .clean, .correct, false, false, .hop),
+                ("3Lz", nil, 60.0, 1, .clean, .wrongEdge, false, false, .stuck),
+                ("CCoSp", "L3", 80.0, 2, .clean, .correct, false, false, .stuck),
+                ("3F", nil, 100.0, 3, .clean, .correct, false, true, .stuck),
+                ("3T", nil, 120.0, 2, .clean, .correct, false, true, .stuck),
+                ("StSq", "L3", 140.0, 2, .clean, .correct, false, false, .stuck),
+                ("2A", nil, 160.0, 1, .clean, .correct, false, true, .stuck),
+                ("ChSq", nil, 180.0, 2, .clean, .correct, false, false, .stuck)
             ]
         )
 
@@ -72,10 +79,13 @@ struct SeedDataService {
             programName: "Short Program 2026",
             date: Calendar.current.date(byAdding: .day, value: -5, to: Date())!,
             elements: [
-                ("3Lz+3T", 55.0, 10.5, .stuck),
-                ("3F", 115.0, 5.3, .stuck),
-                ("CCoSp3", 175.0, 3.0, .stuck),
-                ("StSq3", 235.0, 3.3, .stuck)
+                ("3Lz", nil, 15.0, 2, .clean, .correct, false, false, .stuck),
+                ("3T", nil, 30.0, 1, .clean, .correct, false, false, .stuck),
+                ("3F", nil, 45.0, 1, .clean, .attention, false, false, .stuck),
+                ("CCoSp", "L3", 60.0, 1, .clean, .correct, false, false, .stuck),
+                ("StSq", "L3", 75.0, 1, .clean, .correct, false, false, .stuck),
+                ("2A", nil, 90.0, 2, .clean, .correct, false, true, .stuck),
+                ("LSp", "L2", 105.0, 1, .clean, .correct, false, false, .stuck)
             ]
         )
 
@@ -111,7 +121,7 @@ struct SeedDataService {
         athleteID: UUID,
         programName: String,
         date: Date,
-        elements: [(code: String, timestamp: Double, score: Double, landing: LandingType)]
+        elements: [(code: String, level: String?, timestamp: Double, goe: Int, rotation: RotationCall, edge: EdgeCall, isRepeat: Bool, isSecondHalf: Bool, landing: LandingType)]
     ) -> RunThrough {
         let run = RunThrough(
             athleteID: athleteID,
@@ -122,14 +132,35 @@ struct SeedDataService {
             coachNote: "Great energy! Keep working on landings and transitions."
         )
 
+        let registry = FigureSkatingElementRegistry.shared
         var totalScore = 0.0
-        for (code, timestamp, score, landing) in elements {
+
+        for (code, level, timestamp, goe, rotation, edge, isRepeat, isSecondHalf, landing) in elements {
+            // Resolve base value from registry
+            var baseValue = 0.0
+            if let registryElement = registry.element(forCode: code) {
+                if registryElement.requiresLevel, let level = level {
+                    baseValue = registryElement.levels?[level] ?? 0.0
+                } else {
+                    baseValue = registryElement.baseValue ?? 0.0
+                }
+            }
+
             let element = ElementScore(
                 elementCode: code,
                 timestamp: timestamp,
-                executionValue: score,
-                landing: landing
+                executionValue: Double(goe),
+                landing: landing,
+                baseValue: baseValue,
+                level: level,
+                rotationCall: rotation,
+                edgeCall: edge,
+                isRepeat: isRepeat,
+                isSecondHalf: isSecondHalf
             )
+
+            // Calculate ISU-compliant score
+            let score = element.calculatedScore(sport: .skating)
             run.elements.append(element)
             totalScore += score
         }

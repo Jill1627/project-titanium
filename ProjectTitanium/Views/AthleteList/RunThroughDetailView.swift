@@ -28,6 +28,7 @@ struct RunThroughDetailView: View {
     @State private var showingAddElement = false
     @State private var showingEditNote = false
     @State private var selectedElement: ElementScore?
+    @State private var newElement: ElementScore?
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -138,7 +139,7 @@ struct RunThroughDetailView: View {
 
                 // Add Element Button
                 Button {
-                    showingAddElement = true
+                    createAndShowNewElement()
                 } label: {
                     Text("+ Add Element")
                         .font(.system(size: 16, weight: .bold))
@@ -194,8 +195,12 @@ struct RunThroughDetailView: View {
                 }
             }
         }
-        .sheet(isPresented: $showingAddElement) {
-            AddElementSheet(runThrough: runThrough)
+        .sheet(item: $newElement) { element in
+            ElementScoringSheet(
+                element: element,
+                sportType: runThrough.sportType
+            )
+            .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: $showingEditNote) {
             EditNoteSheet(runThrough: runThrough)
@@ -209,12 +214,23 @@ struct RunThroughDetailView: View {
         }
     }
 
+    private func createAndShowNewElement() {
+        // Create a new blank element and add to runthrough
+        let element = ElementScore(
+            elementCode: "",
+            timestamp: 0,
+            executionValue: 0,
+            landing: .stuck
+        )
+        runThrough.elements.append(element)
+        // Store reference and show sheet
+        newElement = element
+    }
+
     private func deleteElement(_ element: ElementScore) {
         withAnimation {
             if let index = runThrough.elements.firstIndex(where: { $0.id == element.id }) {
                 runThrough.elements.remove(at: index)
-                // Recalculate total score
-                // TODO: Use ScoringEngine to recalculate
             }
         }
     }
@@ -292,53 +308,6 @@ struct ElementRowView: View {
         let mins = Int(seconds) / 60
         let secs = Int(seconds) % 60
         return String(format: "%d:%02d", mins, secs)
-    }
-}
-
-// MARK: - Add Element Sheet
-
-struct AddElementSheet: View {
-    @Environment(\.dismiss) private var dismiss
-    @Bindable var runThrough: RunThrough
-    @State private var elementCode = ""
-
-    var body: some View {
-        NavigationStack {
-            Form {
-                Section("Element Details") {
-                    TextField("Element Code", text: $elementCode)
-                        .textInputAutocapitalization(.characters)
-                }
-            }
-            .navigationTitle("Add Element")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Add") {
-                        addElement()
-                    }
-                    .disabled(elementCode.isEmpty)
-                }
-            }
-        }
-    }
-
-    private func addElement() {
-        let newElement = ElementScore(
-            elementCode: elementCode,
-            timestamp: 0,
-            executionValue: 0,
-            landing: LandingType.stuck,
-            baseValue: runThrough.sportType == .skating ? 10.0 : 0.0
-        )
-        runThrough.elements.append(newElement)
-        dismiss()
     }
 }
 

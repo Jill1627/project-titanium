@@ -13,17 +13,19 @@ final class AnalyzerViewModel {
 
     // Scoring state
     var selectedElementCode: String = ""
+    var selectedLevel: String? = nil
     var currentGOE: Double = 0
     var currentDeductions: Double = 0
     var selectedLanding: LandingType = .stuck
     var coachNote: String = ""
 
     // Figure skating technical scoring
-    var baseValue: Double = 10.0  // Default stub value for skating elements
     var rotationCall: RotationCall = .clean
     var edgeCall: EdgeCall = .correct
     var isRepeat: Bool = false
     var isSecondHalf: Bool = false
+
+    private let registry = FigureSkatingElementRegistry.shared
 
     // PPC pre-loaded element codes for one-tap review
     var ppcElementCodes: [String] = []
@@ -118,13 +120,27 @@ final class AnalyzerViewModel {
             executionValue = -currentDeductions
         }
 
+        // Get resolved base value from registry
+        let resolvedBaseValue: Double
+        if sportType == .skating,
+           let elementDef = registry.element(forCode: selectedElementCode) {
+            if elementDef.requiresLevel {
+                resolvedBaseValue = elementDef.levels?[selectedLevel ?? "L4"] ?? 0.0
+            } else {
+                resolvedBaseValue = elementDef.baseValue ?? 0.0
+            }
+        } else {
+            resolvedBaseValue = 0.0
+        }
+
         let element = ElementScore(
             elementCode: selectedElementCode,
             timestamp: currentTime,
             executionValue: executionValue,
             landing: selectedLanding,
             coachNote: coachNote.isEmpty ? nil : coachNote,
-            baseValue: baseValue,
+            baseValue: resolvedBaseValue,
+            level: selectedLevel,
             rotationCall: rotationCall,
             edgeCall: edgeCall,
             isRepeat: isRepeat,
@@ -154,11 +170,11 @@ final class AnalyzerViewModel {
 
     func resetScoringState() {
         selectedElementCode = ""
+        selectedLevel = nil
         currentGOE = 0
         currentDeductions = 0
         selectedLanding = .stuck
         coachNote = ""
-        baseValue = sportType == .skating ? 10.0 : 0.0
         rotationCall = .clean
         edgeCall = .correct
         isRepeat = false

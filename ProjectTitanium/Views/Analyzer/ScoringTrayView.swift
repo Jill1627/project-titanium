@@ -4,12 +4,91 @@ struct ScoringTrayView: View {
     @Bindable var viewModel: AnalyzerViewModel
     let hapticsService: HapticsService
 
+    @State private var showElementPicker = false
+
+    private let registry = FigureSkatingElementRegistry.shared
+
+    private var selectedElement: FigureSkatingElement? {
+        guard viewModel.sportType == .skating else { return nil }
+        return registry.element(forCode: viewModel.selectedElementCode)
+    }
+
     var body: some View {
         VStack(spacing: 12) {
-            // Element code input
-            TextField("Element Code (e.g., 3A, 2Lz)", text: $viewModel.selectedElementCode)
-                .textFieldStyle(.roundedBorder)
-                .font(.headline)
+            // Element selection button
+            if viewModel.sportType == .skating {
+                Button {
+                    showElementPicker = true
+                } label: {
+                    HStack {
+                        if viewModel.selectedElementCode.isEmpty {
+                            Text("Select Element")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(viewModel.selectedElementCode)
+                                    .font(.headline)
+                                    .foregroundStyle(.primary)
+
+                                if let element = selectedElement {
+                                    Text(element.name)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                        }
+
+                        Spacer()
+
+                        Image(systemName: "chevron.down")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                }
+                .sheet(isPresented: $showElementPicker) {
+                    ElementPickerSheet(
+                        selectedElementCode: $viewModel.selectedElementCode,
+                        selectedLevel: $viewModel.selectedLevel
+                    )
+                }
+
+                // Level picker for elements that require it
+                if let element = selectedElement,
+                   element.requiresLevel,
+                   let levels = element.levels {
+                    HStack(spacing: 8) {
+                        Text("Level:")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        ForEach(["LB", "L1", "L2", "L3", "L4"], id: \.self) { level in
+                            if levels[level] != nil {
+                                Button {
+                                    viewModel.selectedLevel = level
+                                } label: {
+                                    Text(level)
+                                        .font(.caption)
+                                        .fontWeight(viewModel.selectedLevel == level ? .bold : .regular)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(viewModel.selectedLevel == level ? Color.purple : Color(.systemGray5))
+                                        .foregroundStyle(viewModel.selectedLevel == level ? .white : .primary)
+                                        .cornerRadius(6)
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                // Manual element code for gymnastics
+                TextField("Element Code", text: $viewModel.selectedElementCode)
+                    .textFieldStyle(.roundedBorder)
+                    .font(.headline)
+            }
 
             if viewModel.sportType == .skating {
                 skatingScoring
