@@ -42,6 +42,11 @@ extension View {
             .lineSpacing(32 * (1.1 - 1.0))
     }
     
+    func headerLGStyle() -> some View {
+        self.font(.headerLG)
+            .lineSpacing(26 * (1.1 - 1.0))
+    }
+    
     func headerMDStyle() -> some View {
         self.font(.headerMD)
             .lineSpacing(22 * (1.1 - 1.0))

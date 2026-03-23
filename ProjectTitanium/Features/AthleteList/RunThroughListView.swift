@@ -27,36 +27,40 @@ struct RunThroughListView: View {
         Group {
             if runThroughs.isEmpty {
                 ContentUnavailableView(
-                    "No Run-Throughs",
+                    "No Run-Throughs for \(athlete.name)",
                     systemImage: "video",
-                    description: Text("Import a video from your photo library to analyze.")
+                    description: Text("Import a video for analysis to get started.")
                 )
             } else {
                 ScrollView {
-                    VStack(spacing: 24) {
+                    VStack(alignment: .leading, spacing: 32) {
+                        Text(athlete.name)
+                            .headerXLStyle()
+                            .foregroundStyle(Color.textPrimary)
+
                         // Score trend chart
                         if runThroughs.count > 1 {
                             ScoreTrendChart(runThroughs: runThroughs)
                         }
 
                         // Runthrough cards
-                        ForEach(Array(runThroughs.enumerated()), id: \.element.id) { index, run in
-                            NavigationLink(value: run) {
-                                BrutalistRunThroughCard(
-                                    runThrough: run,
-                                    colorIndex: index
-                                )
+                        VStack(spacing: 24) {
+                            ForEach(Array(runThroughs.enumerated()), id: \.element.id) { index, run in
+                                NavigationLink(value: run) {
+                                    RunThroughCard(runThrough: run)
+                                }
+                                .buttonStyle(.plain)
                             }
-                            .buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal, 24)
-                    .padding(.top, 32)
+                    .padding(.top, 24)
                     .padding(.bottom, 24)
                 }
             }
         }
-        .navigationTitle(athlete.name)
+        .navigationTitle("Run-Throughs")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 PhotosPicker(
@@ -155,6 +159,7 @@ struct PPCPickerSheet: View {
 }
 
 struct ScoreTrendChart: View {
+    @Environment(\.theme) var theme
     let runThroughs: [RunThrough]
 
     private var chartData: [(date: Date, score: Double)] {
@@ -175,9 +180,8 @@ struct ScoreTrendChart: View {
         VStack(alignment: .leading, spacing: 12) {
             // Title
             Text("SCORE TREND")
-                .font(.system(size: 11, weight: .bold))
-                .tracking(1)
-                .foregroundStyle(.black)
+                .labelCapsStyle()
+                .foregroundStyle(Color.textPrimary)
 
             // Chart
             Chart(chartData, id: \.date) { item in
@@ -185,14 +189,14 @@ struct ScoreTrendChart: View {
                     x: .value("Date", item.date),
                     y: .value("Score", item.score)
                 )
-                .foregroundStyle(.black)
+                .foregroundStyle(theme.primary)
                 .lineStyle(StrokeStyle(lineWidth: 3))
 
                 PointMark(
                     x: .value("Date", item.date),
                     y: .value("Score", item.score)
                 )
-                .foregroundStyle(.black)
+                .foregroundStyle(theme.primary)
                 .symbol {
                     Circle()
                         .fill(.black)
@@ -203,43 +207,33 @@ struct ScoreTrendChart: View {
                 AxisMarks(position: .bottom) { value in
                     AxisValueLabel(format: .dateTime.month(.abbreviated).day())
                         .font(.system(size: 10, weight: .semibold))
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.textTertiary)
                 }
             }
             .chartYAxis {
                 AxisMarks(position: .leading) { value in
                     AxisGridLine()
-                        .foregroundStyle(Color.black.opacity(0.1))
+                        .foregroundStyle(Color.borderSubtle.opacity(0.5))
                     AxisValueLabel()
                         .font(.system(size: 10, weight: .semibold))
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.textTertiary)
                 }
             }
             .chartYScale(domain: (minScore * 0.9)...(maxScore * 1.1))
             .frame(height: 180)
         }
         .padding(20)
-        .background(Color(hex: "F9FAFB"))
-        .cornerRadius(16)
+        .background(Color.surfaceCardSubtle, in: RoundedRectangle(cornerRadius: 16))
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.black, lineWidth: 2)
+                .stroke(Color.borderSubtle, lineWidth: 1)
         )
-        .shadow(color: .black, radius: 0, x: 6, y: 6)
     }
 }
 
-struct BrutalistRunThroughCard: View {
+struct RunThroughCard: View {
+    @Environment(\.theme) var theme
     let runThrough: RunThrough
-    let colorIndex: Int
-
-    private var rotations: [Double] {
-        [-1.5, 1.2, -0.8, 1.8, -1.2]
-    }
-
-    private var rotation: Double {
-        rotations[colorIndex % rotations.count]
-    }
 
     private var landingCounts: [(LandingType, Int)] {
         let grouped = Dictionary(grouping: runThrough.elements) { $0.landingType }
@@ -253,24 +247,23 @@ struct BrutalistRunThroughCard: View {
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
             // Left: Info section
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 10) {
                 // Date
                 Text(runThrough.date.formatted(date: .abbreviated, time: .omitted).uppercased())
-                    .font(.system(size: 11, weight: .bold))
-                    .tracking(1)
-                    .foregroundStyle(.black)
+                    .labelCapsStyle()
+                    .foregroundStyle(Color.textSecondary)
 
                 // Program name
                 Text(runThrough.programName)
-                    .font(.system(size: 24, weight: .heavy))
-                    .foregroundStyle(.black)
-                    .lineLimit(2)
+                    .headerLGStyle()
+                    .foregroundStyle(Color.textPrimary)
+                    .lineLimit(1)
 
                 // Element count and badges
                 HStack(spacing: 8) {
                     Text("\(runThrough.elements.count) elements")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(.black)
+                        .bodyMDStyle()
+                        .foregroundStyle(Color.textTertiary)
 
                     ForEach(landingCounts, id: \.0) { landing, count in
                         LandingBadge(landing: landing, count: count)
@@ -279,25 +272,27 @@ struct BrutalistRunThroughCard: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            // Right: Score badge
-            VStack {
+            // Score Badge
+            VStack(spacing: 2) {
                 Text(String(format: "%.2f", runThrough.calculatedTotalScore))
-                    .font(.system(size: 20, weight: .heavy))
-                    .foregroundStyle(.white)
+                    .scoreMediumStyle()
+                    .foregroundStyle(theme.primary)
+                
+                Text("PTS")
+                    .labelCapsStyle(isWider: true)
+                    .font(.system(size: 9))
+                    .foregroundStyle(Color.textTertiary)
             }
-            .frame(width: 80, height: 56)
-            .background(Color(hex: "1A1A1A"))
-            .cornerRadius(16)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(theme.primary.opacity(0.08))
+            .cornerRadius(14)
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(theme.primary.opacity(0.15), lineWidth: 1)
+            )
         }
-        .padding(20)
-        .background(Color.white)
-        .cornerRadius(16)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.black, lineWidth: 2)
-        )
-        .shadow(color: .black, radius: 0, x: 6, y: 6)
-        .rotationEffect(.degrees(rotation))
+        .titaniumCardStyle(hasBloom: true)
     }
 }
 

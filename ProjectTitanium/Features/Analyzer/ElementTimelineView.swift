@@ -1,15 +1,16 @@
 import SwiftUI
 
 struct ElementTimelineView: View {
+    @Environment(\.theme) var theme
     let elements: [ElementScore]
     let duration: Double
     let onSeek: (Double) -> Void
     let onDelete: (ElementScore) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 12) {
             Text("Elements")
-                .font(.headline)
+                .headerMDStyle()
                 .padding(.horizontal)
 
             if elements.isEmpty {
@@ -42,35 +43,36 @@ struct ElementTimelineView: View {
 }
 
 struct ElementRow: View {
+    @Environment(\.theme) var theme
     let element: ElementScore
 
     var body: some View {
         HStack(spacing: 12) {
             // Timestamp
             Text(formatTimestamp(element.timestamp))
-                .font(.caption)
+                .captionStyle()
                 .monospacedDigit()
-                .foregroundStyle(.secondary)
-                .frame(width: 50, alignment: .leading)
+                .foregroundStyle(Color.textSecondary)
+                .frame(width: 54, alignment: .leading)
 
             // Element code
             Text(element.elementCode)
-                .font(.subheadline)
-                .fontWeight(.semibold)
+                .bodyMDStyle()
+                .foregroundStyle(Color.textPrimary)
 
             // Landing indicator
             Circle()
-                .fill(element.landingType.isClean ? Color.accentColor : .red)
-                .frame(width: 8, height: 8)
+                .fill(element.landingType.isClean ? theme.primary : .red.opacity(0.8))
+                .frame(width: 10, height: 10)
+                .overlay(Circle().stroke(Color.borderDefault.opacity(0.1), lineWidth: 1))
 
             Spacer()
 
             // Execution value
             Text(String(format: "%+.1f", element.executionValue))
-                .font(.subheadline)
-                .fontWeight(.medium)
+                .bodyMDStyle()
                 .monospacedDigit()
-                .foregroundStyle(element.executionValue >= 0 ? Color.accentColor : .red)
+                .foregroundStyle(element.executionValue >= 0 ? theme.primary : .red.opacity(0.8))
 
             // Note indicator
             if element.coachNote != nil {
@@ -79,11 +81,15 @@ struct ElementRow: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
         .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.systemGray6))
+            RoundedRectangle(cornerRadius: 14) // radius-md
+                .fill(Color.surfaceCardSubtle)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .strokeBorder(Color.borderSubtle, lineWidth: 1)
         )
     }
 

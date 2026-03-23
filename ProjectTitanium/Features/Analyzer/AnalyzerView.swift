@@ -4,6 +4,7 @@ import SwiftData
 import SwiftUI
 
 struct AnalyzerView: View {
+    @Environment(\.theme) var theme
     @Environment(\.modelContext) private var modelContext
     @State var viewModel: AnalyzerViewModel
     @State private var player: AVPlayer?
@@ -177,9 +178,9 @@ struct AnalyzerView: View {
                 Spacer()
                 Text(formatTime(viewModel.duration))
             }
-            .brandFont(.regular, size: 12, relativeTo: .caption2)
+            .bodyLGStyle()
             .monospacedDigit()
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.textSecondary)
         }
     }
 
@@ -233,20 +234,21 @@ struct AnalyzerView: View {
             }
         } label: {
             Label("Sync Element", systemImage: "pin.fill")
-                .brandFont(.bold, size: 18, relativeTo: .headline)
+                .font(.custom("Sharpie-Bold", size: 18))
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
-                .padding()
+                .frame(height: 52) // Primary Button standard height
                 .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(viewModel.selectedElementCode.isEmpty ? Color.gray : Color.accentMint)
+                    Capsule()
+                        .fill(viewModel.selectedElementCode.isEmpty ? Color.gray : theme.primary)
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.accentMint, lineWidth: showScoreGlow ? 3 : 0)
+                    Capsule()
+                        .strokeBorder(theme.primary, lineWidth: showScoreGlow ? 3 : 0)
                         .scaleEffect(showScoreGlow ? 1.05 : 1.0)
                         .opacity(showScoreGlow ? 1 : 0)
                 )
+                .shadow(color: Color.borderDefault.opacity(0.35), radius: 0, x: 4, y: 4) // Hard 4pt shadow
         }
         .disabled(viewModel.selectedElementCode.isEmpty)
     }
@@ -255,8 +257,8 @@ struct AnalyzerView: View {
         Group {
             if showScoreGlow {
                 Text(String(format: "%.1f", viewModel.runThrough.totalScore))
-                    .brandFont(.black, size: 52, relativeTo: .largeTitle)
-                    .foregroundStyle(lastScoredClean ? Color.accentMint : Color.accentCoral)
+                    .font(.custom("Sharpie-Extrabold", size: 52))
+                    .foregroundStyle(lastScoredClean ? theme.primary : .red.opacity(0.8))
                     .transition(.scale.combined(with: .opacity))
                     .allowsHitTesting(false)
             }

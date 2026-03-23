@@ -191,32 +191,7 @@ struct AthleteCard: View {
             }
             .layoutPriority(1)
         }
-        .padding(24) // space-3
-        .background(
-            ZStack {
-                // Hard Shadow
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(theme.shadow.opacity(0.6))
-                    .offset(x: 4, y: 4)
-
-                // Main Card Surface
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.surfaceCard)
-                
-                // Corner Bloom (Visual Interest)
-                RadialGradient(
-                    colors: [theme.primary.opacity(0.12), .clear],
-                    center: .bottomTrailing,
-                    startRadius: 0,
-                    endRadius: 180
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-            }
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .strokeBorder(Color.borderDefault, lineWidth: 1.5)
-        )
+        .titaniumCardStyle(hasBloom: true)
     }
 
     private func scoreColumn(label: String, value: Double) -> some View {

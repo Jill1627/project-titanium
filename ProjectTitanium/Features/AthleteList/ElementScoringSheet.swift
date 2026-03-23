@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ElementScoringSheet: View {
+    @Environment(\.theme) var theme
     @Environment(\.dismiss) private var dismiss
     @Bindable var element: ElementScore
     let sportType: SportType
@@ -57,281 +58,27 @@ struct ElementScoringSheet: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Fixed Header Section
-            VStack(spacing: 16) {
-                HStack(alignment: .bottom) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        // Element Code
-                        if selectedElementCode.isEmpty {
-                            Button {
-                                showElementPicker = true
-                            } label: {
-                                Text("Select Element")
-                                    .font(.system(size: 32, weight: .heavy))
-                                    .foregroundStyle(.blue)
-                            }
-                        } else {
-                            HStack(spacing: 12) {
-                                Text(selectedElementCode)
-                                    .font(.system(size: 64, weight: .heavy))
-                                    .foregroundStyle(.primary)
-
-                                Button {
-                                    showElementPicker = true
-                                } label: {
-                                    Image(systemName: "pencil.circle.fill")
-                                        .font(.system(size: 32))
-                                        .foregroundStyle(.blue)
-                                }
-                            }
-
-                            // Element Name
-                            if let element = selectedElement {
-                                Text(element.name)
-                                    .font(.system(size: 14, weight: .medium))
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                    }
-
-                    Spacer()
-
-                    // Base Value Display (read-only from registry)
-                    if sportType == .skating && !selectedElementCode.isEmpty {
-                        VStack(alignment: .trailing, spacing: 4) {
-                            Text("Base")
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundStyle(.secondary)
-
-                            Text(String(format: "%.2f", resolvedBaseValue))
-                                .font(.system(size: 20, weight: .bold))
-                                .foregroundStyle(.primary)
-                        }
-                    }
-
-                    // Total Score Badge
-                    Text(String(format: "%.2f", calculatedScore))
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 20)
-                        .background(Color.black)
-                        .cornerRadius(12)
+            // Top Bar
+            HStack {
+                Spacer()
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundStyle(Color.textTertiary)
                 }
-
-                Divider()
             }
             .padding(.horizontal, 24)
-            .padding(.top, 24)
-            .padding(.bottom, 16)
-            .background(Color(.systemBackground))
-
-            // Scrollable Content Section
+            .padding(.top, 16)
+            
+            headerSection
+            
             ScrollView {
-                VStack(spacing: 24) {
-                    // Level Picker (for spins and sequences)
-                    if sportType == .skating,
-                       let element = selectedElement,
-                       element.requiresLevel,
-                       let levels = element.levels {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Level")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(.secondary)
-
-                            HStack(spacing: 12) {
-                                ForEach(["LB", "L1", "L2", "L3", "L4"], id: \.self) { level in
-                                    if levels[level] != nil {
-                                        LevelButton(
-                                            level: level,
-                                            selectedLevel: $selectedLevel
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    // GOE Slider Section
-            if sportType == .skating && !selectedElementCode.isEmpty {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Grade of Execution")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(.secondary)
-
-                    // GOE Track
-                    VStack(spacing: 8) {
-                        // Value labels
-                        HStack(spacing: 0) {
-                            ForEach(Array(goeRange), id: \.self) { value in
-                                Text(value >= 0 ? "+\(value)" : "\(value)")
-                                    .font(.system(size: 12, weight: value == selectedGOE ? .bold : .regular))
-                                    .foregroundStyle(value == selectedGOE ? .white : .secondary)
-                                    .frame(maxWidth: .infinity)
-                            }
-                        }
-
-                        // Slider track with current value
-                        ZStack(alignment: .leading) {
-                            // Background track
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(.systemGray6))
-                                .frame(height: 60)
-
-                            // Background bars
-                            GeometryReader { geometry in
-                                HStack(spacing: 0) {
-                                    ForEach(Array(goeRange), id: \.self) { value in
-                                        Rectangle()
-                                            .fill(Color.black.opacity(0.05))
-                                            .frame(maxWidth: .infinity)
-                                            .overlay(
-                                                Rectangle()
-                                                    .fill(Color.black.opacity(0.1))
-                                                    .frame(width: 2)
-                                                    .frame(maxWidth: .infinity, alignment: .trailing)
-                                            )
-                                    }
-                                }
-                            }
-                            .frame(height: 60)
-                            .cornerRadius(12)
-
-                            // Current value indicator
-                            GeometryReader { geometry in
-                                let thumbWidth: CGFloat = 60
-                                let trackWidth = geometry.size.width - thumbWidth
-                                let normalizedValue = CGFloat(selectedGOE + 5) / CGFloat(goeRange.count - 1)
-                                let offset = trackWidth * normalizedValue
-
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(selectedGOE >= 0 ? Color.green : Color.red)
-                                    .frame(width: thumbWidth, height: 60)
-                                    .offset(x: offset)
-                            }
-                            .frame(height: 60)
-
-                            // Large current value
-                            GeometryReader { geometry in
-                                let thumbWidth: CGFloat = 60
-                                let trackWidth = geometry.size.width - thumbWidth
-                                let normalizedValue = CGFloat(selectedGOE + 5) / CGFloat(goeRange.count - 1)
-                                let offset = trackWidth * normalizedValue
-
-                                Text(selectedGOE >= 0 ? "+\(selectedGOE)" : "\(selectedGOE)")
-                                    .font(.system(size: 24, weight: .bold))
-                                    .foregroundStyle(.white)
-                                    .frame(width: thumbWidth, height: 60)
-                                    .offset(x: offset)
-                            }
-                            .frame(height: 60)
-                        }
-                        .gesture(
-                            DragGesture(minimumDistance: 0)
-                                .onChanged { value in
-                                    updateGOE(from: value.location.x, width: UIScreen.main.bounds.width - 48 - 48)
-                                }
-                        )
-                    }
-                }
+                controlsSection
             }
-
-            // Rotation Calls Row
-            if sportType == .skating {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Rotation")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(.secondary)
-
-                    HStack(spacing: 12) {
-                        RotationCallButton(
-                            label: "<<",
-                            call: .downgraded,
-                            selectedCall: $selectedRotationCall
-                        )
-
-                        RotationCallButton(
-                            label: "<",
-                            call: .underRotated,
-                            selectedCall: $selectedRotationCall
-                        )
-
-                        RotationCallButton(
-                            label: "q",
-                            call: .quarter,
-                            selectedCall: $selectedRotationCall
-                        )
-                    }
-                }
-
-                // Edge Calls Row
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Edge")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(.secondary)
-
-                    HStack(spacing: 12) {
-                        EdgeCallButton(
-                            label: "e",
-                            call: .wrongEdge,
-                            selectedCall: $selectedEdgeCall
-                        )
-
-                        EdgeCallButton(
-                            label: "!",
-                            call: .attention,
-                            selectedCall: $selectedEdgeCall
-                        )
-                    }
-                }
-
-                // Other Flags Row
-                HStack(spacing: 12) {
-                    ToggleButton(
-                        label: "+REP",
-                        isSelected: $isRepeat,
-                        color: .purple
-                    )
-
-                    ToggleButton(
-                        label: "2nd Half",
-                        isSelected: $isSecondHalf,
-                        color: .blue
-                    )
-                }
-            }
-
-            // Landing Row
-            HStack(spacing: 12) {
-                ToggleButton(
-                    label: "FALL",
-                    isSelected: Binding(
-                        get: { element.landingType == .fall },
-                        set: { if $0 { element.landingType = .fall } else { element.landingType = .stuck } }
-                    ),
-                    color: .red
-                )
-            }
-                }
-                .padding(.horizontal, 24)
-                .padding(.top, 8)
-                .padding(.bottom, 24)
-            }
-
-            // Fixed Save Button
-            Button {
-                saveAndDismiss()
-            } label: {
-                Text("Save")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(Color.black)
-                    .cornerRadius(16)
-            }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 24)
+            
+            saveButtonSection
         }
         .sheet(isPresented: $showElementPicker) {
             ElementPickerSheet(
@@ -349,7 +96,305 @@ struct ElementScoringSheet: View {
             isSecondHalf = element.isSecondHalf
         }
     }
+    
+    // MARK: - Subviews
+    
+    @ViewBuilder
+    private var headerSection: some View {
+        VStack(spacing: 16) {
+            HStack(alignment: .bottom) {
+                VStack(alignment: .leading, spacing: 4) {
+                    // Element Code
+                    elementCodeDisplay
+                }
 
+                Spacer()
+
+                // Base Value Display
+                if sportType == .skating && !selectedElementCode.isEmpty {
+                    baseValueDisplay
+                }
+
+                // Total Score Badge
+                totalScoreBadge
+            }
+
+            Divider()
+        }
+        .padding(.horizontal, 24)
+        .padding(.top, 24)
+        .padding(.bottom, 16)
+        .background(Color(.systemBackground))
+    }
+    
+    @ViewBuilder
+    private var elementCodeDisplay: some View {
+        if selectedElementCode.isEmpty {
+            Button {
+                showElementPicker = true
+            } label: {
+                Text("Select Element")
+                    .headerXLStyle()
+                    .foregroundStyle(theme.primary)
+            }
+        } else {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 12) {
+                    Text(selectedElementCode)
+                        .font(.custom("Sharpie-Extrabold", size: 48))
+                        .foregroundStyle(Color.textPrimary)
+
+                    Button {
+                        showElementPicker = true
+                    } label: {
+                        Image(systemName: "pencil.circle.fill")
+                            .font(.system(size: 28))
+                            .foregroundStyle(theme.primary)
+                    }
+                }
+
+                if let element = selectedElement {
+                    Text(element.name)
+                        .font(.custom("DM Sans", size: 14).weight(.medium))
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var baseValueDisplay: some View {
+        VStack(alignment: .trailing, spacing: 4) {
+            Text("Base")
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(.secondary)
+
+            Text(String(format: "%.2f", resolvedBaseValue))
+                .font(.system(size: 20, weight: .bold))
+                .foregroundStyle(.primary)
+        }
+    }
+    
+    @ViewBuilder
+    private var totalScoreBadge: some View {
+        VStack(spacing: 2) {
+            Text(String(format: "%.2f", calculatedScore))
+                .scoreMediumStyle()
+                .foregroundStyle(theme.primary)
+            
+            Text("PTS")
+                .labelCapsStyle(isWider: true)
+                .font(.system(size: 9))
+                .foregroundStyle(Color.textTertiary)
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
+        .background(theme.primary.opacity(0.08))
+        .cornerRadius(14)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(theme.primary.opacity(0.15), lineWidth: 1)
+        )
+    }
+    
+    @ViewBuilder
+    private var controlsSection: some View {
+        VStack(spacing: 24) {
+            // Level Picker
+            if sportType == .skating,
+               let element = selectedElement,
+               element.requiresLevel,
+               let levels = element.levels {
+                levelPickerSection(levels: levels)
+            }
+
+            // GOE Slider Section
+            if sportType == .skating && !selectedElementCode.isEmpty {
+                goeSliderSection
+            }
+
+            // Rotation/Edge/Flags
+            if sportType == .skating {
+                rotationAndEdgeSection
+            }
+
+            // Landing Row
+            landingSection
+        }
+        .padding(.horizontal, 24)
+        .padding(.top, 8)
+        .padding(.bottom, 24)
+    }
+    
+    @ViewBuilder
+    private func levelPickerSection(levels: [String: Double]) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("LEVEL")
+                .labelCapsStyle()
+                .foregroundStyle(Color.textTertiary)
+
+            HStack(spacing: 12) {
+                ForEach(["LB", "L1", "L2", "L3", "L4"], id: \.self) { level in
+                    if levels[level] != nil {
+                        LevelButton(
+                            level: level,
+                            selectedLevel: $selectedLevel,
+                            theme: theme
+                        )
+                    }
+                }
+            }
+        }
+        .padding(16)
+        .background(Color.surfaceCardSubtle)
+        .cornerRadius(14)
+        .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.borderSubtle, lineWidth: 1))
+    }
+    
+    @ViewBuilder
+    private var goeSliderSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("GRADE OF EXECUTION")
+                .labelCapsStyle()
+                .foregroundStyle(Color.textTertiary)
+
+            VStack(spacing: 8) {
+                HStack(spacing: 0) {
+                    ForEach(Array(goeRange), id: \.self) { value in
+                        Text(value >= 0 ? "+\(value)" : "\(value)")
+                            .captionStyle()
+                            .foregroundStyle(value == selectedGOE ? Color.textPrimary : Color.textTertiary)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+
+                goeSliderTrack
+            }
+        }
+        .padding(16)
+        .background(Color.surfaceCardSubtle)
+        .cornerRadius(14)
+        .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.borderSubtle, lineWidth: 1))
+    }
+    
+    @ViewBuilder
+    private var goeSliderTrack: some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.surfaceInput)
+                .frame(height: 52)
+                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.borderSubtle, lineWidth: 1))
+
+            GeometryReader { geometry in
+                let thumbWidth: CGFloat = 52
+                let trackWidth = geometry.size.width - thumbWidth
+                let normalizedValue = CGFloat(selectedGOE + 5) / CGFloat(goeRange.count - 1)
+                let offset = trackWidth * normalizedValue
+
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(selectedGOE >= 0 ? theme.primary : .red.opacity(0.8))
+                    .frame(width: thumbWidth, height: 44)
+                    .padding(4)
+                    .offset(x: offset)
+            }
+            .frame(height: 52)
+
+            GeometryReader { geometry in
+                let thumbWidth: CGFloat = 52
+                let trackWidth = geometry.size.width - thumbWidth
+                let normalizedValue = CGFloat(selectedGOE + 5) / CGFloat(goeRange.count - 1)
+                let offset = trackWidth * normalizedValue
+
+                Text(selectedGOE >= 0 ? "+\(selectedGOE)" : "\(selectedGOE)")
+                    .headerSMStyle()
+                    .foregroundStyle(.white)
+                    .frame(width: thumbWidth, height: 52)
+                    .offset(x: offset)
+            }
+            .frame(height: 52)
+        }
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { value in
+                    updateGOE(from: value.location.x, width: UIScreen.main.bounds.width - 48 - 48)
+                }
+        )
+    }
+    
+    @ViewBuilder
+    private var rotationAndEdgeSection: some View {
+        VStack(spacing: 24) {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("ROTATION")
+                    .labelCapsStyle()
+                    .foregroundStyle(Color.textTertiary)
+
+                HStack(spacing: 12) {
+                    RotationCallButton(label: "<<", call: .downgraded, selectedCall: $selectedRotationCall, theme: theme)
+                    RotationCallButton(label: "<", call: .underRotated, selectedCall: $selectedRotationCall, theme: theme)
+                    RotationCallButton(label: "q", call: .quarter, selectedCall: $selectedRotationCall, theme: theme)
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 12) {
+                Text("EDGE")
+                    .labelCapsStyle()
+                    .foregroundStyle(Color.textTertiary)
+
+                HStack(spacing: 12) {
+                    EdgeCallButton(label: "e", call: .wrongEdge, selectedCall: $selectedEdgeCall, theme: theme)
+                    EdgeCallButton(label: "!", call: .attention, selectedCall: $selectedEdgeCall, theme: theme)
+                }
+            }
+
+            HStack(spacing: 12) {
+                ToggleButton(label: "+REP", isSelected: $isRepeat, color: theme.primary, theme: theme)
+                ToggleButton(label: "2nd Half", isSelected: $isSecondHalf, color: theme.primary, theme: theme)
+            }
+        }
+        .padding(16)
+        .background(Color.surfaceCardSubtle)
+        .cornerRadius(14)
+        .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.borderSubtle, lineWidth: 1))
+    }
+    
+    @ViewBuilder
+    private var landingSection: some View {
+        HStack(spacing: 12) {
+            ToggleButton(
+                label: "FALL",
+                isSelected: Binding(
+                    get: { element.landingType == .fall },
+                    set: { if $0 { element.landingType = .fall } else { element.landingType = .stuck } }
+                ),
+                color: .red.opacity(0.8),
+                theme: theme
+            )
+        }
+        .padding(16)
+        .background(Color.surfaceCardSubtle)
+        .cornerRadius(14)
+        .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.borderSubtle, lineWidth: 1))
+    }
+    
+    @ViewBuilder
+    private var saveButtonSection: some View {
+        Button {
+            saveAndDismiss()
+        } label: {
+            Text("Save")
+                .headerSMStyle()
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56)
+                .background(theme.primary)
+                .cornerRadius(16)
+                .shadow(color: theme.shadow.opacity(0.35), radius: 0, x: 4, y: 4)
+        }
+        .padding(.horizontal, 24)
+        .padding(.bottom, 24)
+    }
+    
     private func updateGOE(from x: CGFloat, width: CGFloat) {
         let thumbWidth: CGFloat = 60
         let trackWidth = width - thumbWidth
@@ -380,23 +425,23 @@ struct ToggleButton: View {
     let label: String
     @Binding var isSelected: Bool
     let color: Color
+    let theme: ThemeManager
 
     var body: some View {
         Button {
             isSelected.toggle()
         } label: {
             Text(label)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(isSelected ? .white : .primary)
+                .headerSMStyle()
+                .foregroundStyle(isSelected ? .white : Color.textPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(isSelected ? color : Color.white)
-                .cornerRadius(16)
+                .background(isSelected ? color : Color.surfaceInput)
+                .cornerRadius(14)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.black, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 14)
+                        .strokeBorder(isSelected ? Color.clear : Color.borderSubtle, lineWidth: 1)
                 )
-                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
         }
     }
 }
@@ -405,23 +450,23 @@ struct RotationCallButton: View {
     let label: String
     let call: RotationCall
     @Binding var selectedCall: RotationCall
+    let theme: ThemeManager
 
     var body: some View {
         Button {
             selectedCall = selectedCall == call ? .clean : call
         } label: {
             Text(label)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(selectedCall == call ? .white : .primary)
+                .headerSMStyle()
+                .foregroundStyle(selectedCall == call ? .white : Color.textPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(selectedCall == call ? Color.orange : Color.white)
-                .cornerRadius(16)
+                .background(selectedCall == call ? .orange.opacity(0.8) : Color.surfaceInput)
+                .cornerRadius(14)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.black, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 14)
+                        .strokeBorder(selectedCall == call ? Color.clear : Color.borderSubtle, lineWidth: 1)
                 )
-                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
         }
     }
 }
@@ -430,23 +475,23 @@ struct EdgeCallButton: View {
     let label: String
     let call: EdgeCall
     @Binding var selectedCall: EdgeCall
+    let theme: ThemeManager
 
     var body: some View {
         Button {
             selectedCall = selectedCall == call ? .correct : call
         } label: {
             Text(label)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(selectedCall == call ? .white : .primary)
+                .headerSMStyle()
+                .foregroundStyle(selectedCall == call ? .white : Color.textPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(selectedCall == call ? Color.orange : Color.white)
-                .cornerRadius(16)
+                .background(selectedCall == call ? .orange.opacity(0.8) : Color.surfaceInput)
+                .cornerRadius(14)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.black, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 14)
+                        .strokeBorder(selectedCall == call ? Color.clear : Color.borderSubtle, lineWidth: 1)
                 )
-                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
         }
     }
 }
@@ -454,23 +499,23 @@ struct EdgeCallButton: View {
 struct LevelButton: View {
     let level: String
     @Binding var selectedLevel: String?
+    let theme: ThemeManager
 
     var body: some View {
         Button {
             selectedLevel = level
         } label: {
             Text(level)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(selectedLevel == level ? .white : .primary)
+                .headerSMStyle()
+                .foregroundStyle(selectedLevel == level ? .white : Color.textPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(selectedLevel == level ? Color.purple : Color.white)
-                .cornerRadius(16)
+                .background(selectedLevel == level ? theme.primary : Color.surfaceInput)
+                .cornerRadius(14)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.black, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 14)
+                        .strokeBorder(selectedLevel == level ? Color.clear : Color.borderSubtle, lineWidth: 1)
                 )
-                .shadow(color: Color.black, radius: 0, x: 3, y: 3)
         }
     }
 }

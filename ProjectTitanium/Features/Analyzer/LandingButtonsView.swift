@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LandingButtonsView: View {
+    @Environment(\.theme) var theme
     @Binding var selectedLanding: LandingType
     let hapticsService: HapticsService
 
@@ -13,17 +14,29 @@ struct LandingButtonsView: View {
                 } label: {
                     VStack(spacing: 4) {
                         Image(systemName: iconName(for: landing))
-                            .font(.title3)
+                            .font(.system(size: 16, weight: .bold))
                         Text(landing.displayName)
-                            .brandFont(.medium, size: 10, relativeTo: .caption2)
+                            .labelCapsStyle()
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 12)
                     .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(selectedLanding == landing ? backgroundColor(for: landing) : Color(.systemGray6))
+                        ZStack {
+                            if selectedLanding == landing {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .fill(theme.shadow.opacity(0.4))
+                                    .offset(x: 3, y: 3)
+                            }
+                            
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(selectedLanding == landing ? backgroundColor(for: landing) : Color.surfaceInput)
+                        }
                     )
-                    .foregroundStyle(selectedLanding == landing ? .white : .primary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .strokeBorder(selectedLanding == landing ? Color.borderDefault : Color.clear, lineWidth: 1.5)
+                    )
+                    .foregroundStyle(selectedLanding == landing ? .white : Color.textPrimary)
                 }
                 .buttonStyle(.plain)
             }
@@ -40,7 +53,7 @@ struct LandingButtonsView: View {
     }
 
     private func backgroundColor(for landing: LandingType) -> Color {
-        landing.isClean ? Color.accentColor : .red.opacity(0.8)
+        landing.isClean ? theme.primary : .red.opacity(0.8)
     }
 
     private func triggerHaptic(for landing: LandingType) {

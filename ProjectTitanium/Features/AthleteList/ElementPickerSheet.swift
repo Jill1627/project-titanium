@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ElementPickerSheet: View {
+    @Environment(\.theme) var theme
     @Environment(\.dismiss) private var dismiss
     @Binding var selectedElementCode: String
     @Binding var selectedLevel: String?
@@ -49,22 +50,23 @@ struct ElementPickerSheet: View {
                             searchText = ""
                         } label: {
                             Image(systemName: "xmark.circle.fill")
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Color.textTertiary)
                         }
                     }
                 }
                 .padding(12)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+                .background(Color.surfaceInput)
+                .cornerRadius(12)
                 .padding(.horizontal)
-                .padding(.top, 8)
+                .padding(.top, 16)
 
                 // Category Filters
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         CategoryButton(
                             title: "All",
-                            isSelected: selectedCategory == nil
+                            isSelected: selectedCategory == nil,
+                            theme: theme
                         ) {
                             selectedCategory = nil
                         }
@@ -72,7 +74,8 @@ struct ElementPickerSheet: View {
                         ForEach(categories, id: \.self) { category in
                             CategoryButton(
                                 title: category.displayName,
-                                isSelected: selectedCategory == category
+                                isSelected: selectedCategory == category,
+                                theme: theme
                             ) {
                                 selectedCategory = category
                             }
@@ -90,7 +93,8 @@ struct ElementPickerSheet: View {
                         ForEach(filteredElements, id: \.code) { element in
                             ElementPickerRow(
                                 element: element,
-                                isSelected: selectedElementCode == element.code
+                                isSelected: selectedElementCode == element.code,
+                                theme: theme
                             ) {
                                 selectElement(element)
                             }
@@ -127,6 +131,7 @@ struct ElementPickerSheet: View {
 struct ElementPickerRow: View {
     let element: FigureSkatingElement
     let isSelected: Bool
+    let theme: ThemeManager
     let action: () -> Void
 
     var body: some View {
@@ -134,42 +139,35 @@ struct ElementPickerRow: View {
             HStack(spacing: 16) {
                 // Element Code
                 Text(element.code)
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundStyle(.primary)
+                    .headerSMStyle()
+                    .foregroundStyle(Color.textPrimary)
                     .frame(width: 80, alignment: .leading)
 
                 // Element Info
                 VStack(alignment: .leading, spacing: 4) {
                     Text(element.name)
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(.primary)
+                        .bodyMDStyle()
+                        .foregroundStyle(Color.textPrimary)
 
                     HStack(spacing: 8) {
                         // Category badge
                         Text(element.category.displayName)
-                            .font(.system(size: 11, weight: .medium))
+                            .font(.system(size: 10, weight: .bold))
                             .foregroundStyle(.white)
                             .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
+                            .padding(.vertical, 2)
                             .background(element.category.color)
-                            .cornerRadius(6)
+                            .cornerRadius(10)
 
                         // Base value or level indicator
                         if element.requiresLevel {
                             Text("Levels: LB-L4")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
+                                .captionStyle()
+                                .foregroundStyle(Color.textSecondary)
                         } else if let baseValue = element.baseValue {
-                            Text(String(format: "Base: %.1f", baseValue))
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                        }
-
-                        // Second half bonus indicator
-                        if element.secondHalfBonusEligible {
-                            Image(systemName: "star.fill")
-                                .font(.system(size: 10))
-                                .foregroundStyle(.yellow)
+                            Text(String(format: "Base: %.2f", baseValue))
+                                .captionStyle()
+                                .foregroundStyle(Color.textSecondary)
                         }
                     }
                 }
@@ -179,13 +177,13 @@ struct ElementPickerRow: View {
                 // Selection indicator
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 24))
-                        .foregroundStyle(.green)
+                        .font(.system(size: 20))
+                        .foregroundStyle(theme.primary)
                 }
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .background(isSelected ? Color.green.opacity(0.1) : Color.clear)
+            .background(isSelected ? theme.primary.opacity(0.08) : Color.clear)
         }
         .buttonStyle(.plain)
 
@@ -197,17 +195,22 @@ struct ElementPickerRow: View {
 struct CategoryButton: View {
     let title: String
     let isSelected: Bool
+    let theme: ThemeManager
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.system(size: 14, weight: isSelected ? .bold : .medium))
-                .foregroundStyle(isSelected ? .white : .primary)
+                .font(.custom("Sharpie-Bold", size: 14))
+                .foregroundStyle(isSelected ? .white : Color.textPrimary)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
-                .background(isSelected ? Color.black : Color(.systemGray6))
-                .cornerRadius(20)
+                .background(isSelected ? theme.primary : Color.surfaceInput)
+                .cornerRadius(20) // radius-pill
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .strokeBorder(isSelected ? Color.clear : Color.borderSubtle, lineWidth: 1)
+                )
         }
     }
 }

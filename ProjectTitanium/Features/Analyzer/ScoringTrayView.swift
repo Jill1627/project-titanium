@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ScoringTrayView: View {
+    @Environment(\.theme) var theme
     @Bindable var viewModel: AnalyzerViewModel
     let hapticsService: HapticsService
 
@@ -27,8 +28,8 @@ struct ScoringTrayView: View {
                         } else {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(viewModel.selectedElementCode)
-                                    .brandFont(.bold, size: 17, relativeTo: .headline)
-                                    .foregroundStyle(.primary)
+                                    .headerMDStyle()
+                                    .foregroundStyle(Color.textPrimary)
 
                                 if let element = selectedElement {
                                     Text(element.name)
@@ -99,13 +100,9 @@ struct ScoringTrayView: View {
             // Coach note
             TextField("Coach note (optional)", text: $viewModel.coachNote)
                 .textFieldStyle(.roundedBorder)
-                .font(.caption)
+                .captionStyle()
         }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-        )
+        .titaniumCardStyle(hasBloom: true)
     }
 
     // MARK: - Skating: GOE Slider
@@ -114,17 +111,17 @@ struct ScoringTrayView: View {
         VStack(spacing: 8) {
             HStack {
                 Text("GOE")
-                    .font(.caption)
-                    .fontWeight(.semibold)
+                    .labelCapsStyle()
+                    .foregroundStyle(Color.textTertiary)
                 Spacer()
                 Text(String(format: "%+.1f", viewModel.currentGOE))
-                    .brandFont(.bold, size: 17, relativeTo: .headline)
+                    .headerMDStyle()
                     .monospacedDigit()
-                    .foregroundStyle(viewModel.currentGOE >= 0 ? Color.accentMint : Color.accentCoral)
+                    .foregroundStyle(viewModel.currentGOE >= 0 ? theme.primary : .red.opacity(0.8))
             }
 
             Slider(value: $viewModel.currentGOE, in: -5...5, step: 0.5)
-                .tint(viewModel.currentGOE >= 0 ? Color.accentColor : .red)
+                .tint(viewModel.currentGOE >= 0 ? theme.primary : .red)
         }
     }
 
@@ -134,13 +131,13 @@ struct ScoringTrayView: View {
         VStack(spacing: 8) {
             HStack {
                 Text("Deductions")
-                    .font(.caption)
-                    .fontWeight(.semibold)
+                    .labelCapsStyle()
+                    .foregroundStyle(Color.textTertiary)
                 Spacer()
                 Text(String(format: "-%.1f", viewModel.currentDeductions))
-                    .brandFont(.bold, size: 17, relativeTo: .headline)
+                    .headerMDStyle()
                     .monospacedDigit()
-                    .foregroundStyle(.red)
+                    .foregroundStyle(.red.opacity(0.8))
             }
 
             HStack(spacing: 12) {

@@ -85,6 +85,7 @@
 		5B56BED72F6FB9A400A0765F /* DMSans-Italic-VariableFont_opsz,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B56BED42F6FB9A400A0765F /* DMSans-Italic-VariableFont_opsz,wght.ttf */; };
 		5B56BED82F6FB9A400A0765F /* DMSans-VariableFont_opsz,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B56BED52F6FB9A400A0765F /* DMSans-VariableFont_opsz,wght.ttf */; };
 		5BA878E92F70D41900D70A3F /* SparkleIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA878E82F70D41900D70A3F /* SparkleIllustration.swift */; };
+		5BA878EB2F70EA7100D70A3F /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA878EA2F70EA7100D70A3F /* CardStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		5B56BED42F6FB9A400A0765F /* DMSans-Italic-VariableFont_opsz,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Italic-VariableFont_opsz,wght.ttf"; sourceTree = "<group>"; };
 		5B56BED52F6FB9A400A0765F /* DMSans-VariableFont_opsz,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-VariableFont_opsz,wght.ttf"; sourceTree = "<group>"; };
 		5BA878E82F70D41900D70A3F /* SparkleIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleIllustration.swift; sourceTree = "<group>"; };
+		5BA878EA2F70EA7100D70A3F /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
 		B10099 /* ProjectTitanium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTitanium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		T30099 /* ProjectTitaniumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTitaniumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -265,6 +267,7 @@
 		5B56BE2B2F6F357800A0765F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5BA878EA2F70EA7100D70A3F /* CardStyle.swift */,
 				5BA878E82F70D41900D70A3F /* SparkleIllustration.swift */,
 			);
 			path = Components;
@@ -655,6 +658,7 @@
 				5B56BECA2F6FB93100A0765F /* Radius.swift in Sources */,
 				5B56BECB2F6FB93100A0765F /* ThemeManager.swift in Sources */,
 				5B56BECC2F6FB93100A0765F /* Shadows.swift in Sources */,
+				5BA878EB2F70EA7100D70A3F /* CardStyle.swift in Sources */,
 				5B56BECD2F6FB93100A0765F /* Spacing.swift in Sources */,
 				5B56BECE2F6FB93100A0765F /* Typography.swift in Sources */,
 				5B56BECF2F6FB93100A0765F /* Color+Tokens.swift in Sources */,

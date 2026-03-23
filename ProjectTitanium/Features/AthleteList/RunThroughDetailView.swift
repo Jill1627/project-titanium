@@ -24,24 +24,26 @@ struct RoundedCorner: Shape {
 struct RunThroughDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.theme) var theme
     @Bindable var runThrough: RunThrough
     @State private var showingAddElement = false
     @State private var showingEditNote = false
+    @State private var showingPlayer = false
     @State private var selectedElement: ElementScore?
     @State private var newElement: ElementScore?
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
-            VStack(spacing: 24) {
+            VStack(spacing: 32) {
                 // Header
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text(runThrough.programName)
-                        .font(.system(size: 32, weight: .heavy))
-                        .foregroundStyle(.primary)
+                        .headerXLStyle()
+                        .foregroundStyle(Color.textPrimary)
 
                     Text("Runthrough - \(runThrough.date.formatted(date: .abbreviated, time: .omitted))")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.secondary)
+                        .labelCapsStyle()
+                        .foregroundStyle(Color.textSecondary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -66,23 +68,34 @@ struct RunThroughDetailView: View {
                     .frame(height: 120)
 
                     // Score and note overlay
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack(spacing: 8) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack(alignment: .bottom, spacing: 20) {
                             // Score
-                            Text(String(format: "%.2f", runThrough.calculatedTotalScore))
-                                .font(.system(size: 44, weight: .heavy))
-                                .foregroundStyle(.white)
+                            VStack(alignment: .leading, spacing: -8) {
+                                Text(String(format: "%.2f", runThrough.calculatedTotalScore))
+                                    .font(.custom("Sharpie-Bold", size: 56))
+                                    .foregroundStyle(.white)
+                                
+                                Text("TOTAL SCORE")
+                                    .labelCapsStyle(isWider: true)
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(.white.opacity(0.8))
+                            }
+
+                            Spacer()
 
                             // Play button
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 40, height: 40)
-                                .overlay {
-                                    Image(systemName: "play.fill")
-                                        .font(.system(size: 16))
-                                        .foregroundStyle(.black)
-                                        .offset(x: 2)
-                                }
+                            Button {
+                                showingPlayer = true
+                            } label: {
+                                Image(systemName: "play.fill")
+                                    .font(.system(size: 28))
+                                    .foregroundStyle(.white)
+                                    .frame(width: 72, height: 72)
+                                    .background(theme.primary)
+                                    .cornerRadius(36)
+                                    .shadow(color: theme.shadow.opacity(0.35), radius: 0, x: 4, y: 4)
+                            }
                         }
 
                         // Coach note
@@ -101,23 +114,23 @@ struct RunThroughDetailView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.black, lineWidth: 2)
+                        .stroke(Color.borderDefault, lineWidth: 1.5)
                 )
-                .shadow(color: Color.black, radius: 0, x: 4, y: 4)
+                .shadow(color: Color.borderDefault.opacity(0.2), radius: 0, x: 4, y: 4)
 
                 Divider()
 
                 // Elements Header
                 HStack {
                     Text("Elements")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundStyle(.primary)
+                        .headerMDStyle()
+                        .foregroundStyle(Color.textPrimary)
 
                     Spacer()
 
                     Text("\(runThrough.elements.count) elements")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundStyle(.secondary)
+                        .bodyMDStyle()
+                        .foregroundStyle(Color.textTertiary)
                 }
 
                 // Elements List
@@ -141,21 +154,24 @@ struct RunThroughDetailView: View {
                 Button {
                     createAndShowNewElement()
                 } label: {
-                    Text("+ Add Element")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(Color(.systemBackground))
-                        .cornerRadius(16)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(
-                                    Color.black,
-                                    style: StrokeStyle(lineWidth: 2, dash: [8, 4])
-                                )
-                        )
-                        .shadow(color: Color.black, radius: 0, x: 4, y: 4)
+                    HStack(spacing: 8) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 14, weight: .black))
+                        Text("Add Element")
+                            .headerSMStyle()
+                    }
+                    .foregroundStyle(theme.primary)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(theme.primary.opacity(0.08))
+                    .cornerRadius(16)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(
+                                theme.primary.opacity(0.2),
+                                lineWidth: 1.5
+                            )
+                    )
                 }
             }
             .padding(24)
@@ -167,12 +183,15 @@ struct RunThroughDetailView: View {
                 Button {
                     dismiss()
                 } label: {
-                    HStack(spacing: 8) {
+                    HStack(spacing: 6) {
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundStyle(theme.primary)
+                        
                         Text("Back")
+                            .headerSMStyle()
+                            .foregroundStyle(Color.textSecondary)
                     }
-                    .foregroundStyle(.primary)
                 }
             }
 
@@ -191,7 +210,8 @@ struct RunThroughDetailView: View {
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
-                        .foregroundStyle(.primary)
+                        .font(.system(size: 18))
+                        .foregroundStyle(Color.textSecondary)
                 }
             }
         }
@@ -239,6 +259,7 @@ struct RunThroughDetailView: View {
 // MARK: - Element Row View
 
 struct ElementRowView: View {
+    @Environment(\.theme) var theme
     let element: ElementScore
     let sportType: SportType
 
@@ -257,39 +278,38 @@ struct ElementRowView: View {
             // Element Info
             VStack(alignment: .leading, spacing: 2) {
                 Text(element.elementCode)
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundStyle(.primary)
+                    .headerSMStyle()
+                    .foregroundStyle(Color.textPrimary)
 
                 Text(formatTime(element.timestamp))
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(.secondary)
+                    .captionStyle()
+                    .foregroundStyle(Color.textSecondary)
             }
 
             Spacer()
 
             // Score
             Text(String(format: "%.2f", element.calculatedScore(sport: sportType)))
-                .font(.system(size: 24, weight: .bold))
-                .foregroundStyle(.primary)
+                .headerLGStyle()
+                .foregroundStyle(Color.textPrimary)
         }
         .padding(16)
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
+        .background(Color.surfaceCardSubtle)
+        .cornerRadius(14) // radius-md
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.black, lineWidth: 2)
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(Color.borderSubtle, lineWidth: 1)
         )
-        .shadow(color: Color.black, radius: 0, x: 4, y: 4)
     }
 
     private var statusColor: Color {
         switch element.landingType {
         case .stuck:
-            return .green
+            return theme.primary
         case .hop, .step:
-            return .orange
+            return .orange.opacity(0.8)
         case .fall:
-            return .red
+            return .red.opacity(0.8)
         }
     }
 
@@ -315,6 +335,7 @@ struct ElementRowView: View {
 
 struct EditNoteSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.theme) var theme
     @Bindable var runThrough: RunThrough
     @State private var noteText: String
 
@@ -335,15 +356,23 @@ struct EditNoteSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button {
                         dismiss()
+                    } label: {
+                        Text("Cancel")
+                            .headerSMStyle()
+                            .foregroundStyle(Color.textSecondary)
                     }
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button {
                         runThrough.coachNote = noteText.isEmpty ? nil : noteText
                         dismiss()
+                    } label: {
+                        Text("Save")
+                            .headerSMStyle()
+                            .foregroundStyle(theme.primary)
                     }
                 }
             }
