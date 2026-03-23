@@ -1,5 +1,5 @@
 {
-  "version": "2.8",
+  "version": "2.9",
   "children": [
     {
       "type": "frame",
@@ -214,7 +214,7 @@
       "y": 98,
       "name": "Badge - STUCK",
       "reusable": true,
-      "fill": "$warning-badge",
+      "fill": "#ffe712",
       "cornerRadius": 8,
       "padding": [
         4,
@@ -226,7 +226,7 @@
           "type": "text",
           "id": "CSR79",
           "name": "stuckText",
-          "fill": "$text-primary",
+          "fill": "#101828",
           "content": "STUCK",
           "fontFamily": "Urbanist",
           "fontSize": 11,
@@ -241,7 +241,7 @@
       "y": 28,
       "name": "Badge - FALL",
       "reusable": true,
-      "fill": "$error-primary",
+      "fill": "#EF4444",
       "cornerRadius": 8,
       "padding": [
         4,
@@ -253,7 +253,7 @@
           "type": "text",
           "id": "8sBCe",
           "name": "fallText",
-          "fill": "$text-inverse",
+          "fill": "#FFFFFF",
           "content": "FALL",
           "fontFamily": "Urbanist",
           "fontSize": 11,
@@ -268,7 +268,7 @@
       "y": 61,
       "name": "Badge - HOP",
       "reusable": true,
-      "fill": "$neutral-badge",
+      "fill": "#F3F4F6",
       "cornerRadius": 8,
       "padding": [
         4,
@@ -280,7 +280,7 @@
           "type": "text",
           "id": "hCJev",
           "name": "hopText",
-          "fill": "$text-primary",
+          "fill": "#101828",
           "content": "HOP",
           "fontFamily": "Urbanist",
           "fontSize": 11,
@@ -295,7 +295,7 @@
       "y": 77,
       "name": "Badge - STEP",
       "reusable": true,
-      "fill": "$neutral-badge",
+      "fill": "#F3F4F6",
       "cornerRadius": 8,
       "padding": [
         4,
@@ -307,7 +307,7 @@
           "type": "text",
           "id": "vIGyb",
           "name": "stepText",
-          "fill": "$text-primary",
+          "fill": "#101828",
           "content": "STEP",
           "fontFamily": "Urbanist",
           "fontSize": 11,
@@ -324,7 +324,7 @@
       "reusable": true,
       "width": 400,
       "height": 240,
-      "fill": "$background-video",
+      "fill": "#1A1A1A",
       "cornerRadius": 20,
       "layout": "vertical",
       "justifyContent": "end",
@@ -362,7 +362,7 @@
                   "name": "progressFill",
                   "width": 120,
                   "height": 4,
-                  "fill": "$error-primary",
+                  "fill": "#EF4444",
                   "cornerRadius": 2
                 }
               ]
@@ -371,7 +371,7 @@
               "type": "text",
               "id": "uuQLM",
               "name": "timeText",
-              "fill": "$text-inverse",
+              "fill": "#FFFFFF",
               "content": "0:42",
               "fontFamily": "Urbanist",
               "fontSize": 13,
@@ -382,7 +382,7 @@
               "id": "RsGzf",
               "name": "syncButton",
               "height": 32,
-              "fill": "$background-primary",
+              "fill": "#FFFFFF",
               "cornerRadius": 9999,
               "padding": [
                 8,
@@ -395,7 +395,7 @@
                   "type": "text",
                   "id": "UN1ED",
                   "name": "syncText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "SYNC",
                   "fontFamily": "Urbanist",
                   "fontSize": 12,
@@ -434,8 +434,8 @@
       "fill": "#FFFFFF",
       "cornerRadius": "$radius-lg",
       "layout": "vertical",
-      "gap": "$spacing-24",
-      "padding": "$spacing-24",
+      "gap": 24,
+      "padding": 24,
       "children": [
         {
           "type": "frame",
@@ -457,7 +457,7 @@
                   "type": "text",
                   "id": "rrSfD",
                   "name": "scoreValue",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "3Lo",
                   "fontFamily": "Urbanist",
                   "fontSize": 64,
@@ -471,7 +471,7 @@
               "name": "Frame 1",
               "clip": true,
               "fill": "#FFFFFF",
-              "gap": "$spacing-16",
+              "gap": 16,
               "justifyContent": "end",
               "children": [
                 {
@@ -480,14 +480,14 @@
                   "name": "Single element base score total",
                   "layout": "vertical",
                   "gap": 4,
-                  "padding": "$spacing-8",
+                  "padding": 8,
                   "alignItems": "end",
                   "children": [
                     {
                       "type": "text",
                       "id": "S6HQo",
                       "name": "totalLabel",
-                      "fill": "$text-secondary",
+                      "fill": "#6B7280",
                       "content": "Base",
                       "fontFamily": "Urbanist",
                       "fontSize": 11,
@@ -497,7 +497,7 @@
                       "type": "text",
                       "id": "Ehvum",
                       "name": "totalValue",
-                      "fill": "$text-secondary",
+                      "fill": "#6B7280",
                       "content": "1.50",
                       "fontFamily": "Urbanist",
                       "fontSize": 32,
@@ -510,18 +510,18 @@
                   "id": "nQvYf",
                   "name": "Single element total",
                   "height": 72,
-                  "fill": "$background-video",
+                  "fill": "#1A1A1A",
                   "cornerRadius": "$radius-sm",
                   "layout": "vertical",
                   "gap": 4,
-                  "padding": "$spacing-8",
+                  "padding": 8,
                   "alignItems": "end",
                   "children": [
                     {
                       "type": "text",
                       "id": "uiJg4",
                       "name": "totalLabel",
-                      "fill": "$text-inverse",
+                      "fill": "#FFFFFF",
                       "content": "TOTAL",
                       "fontFamily": "Urbanist",
                       "fontSize": 11,
@@ -531,7 +531,7 @@
                       "type": "text",
                       "id": "ePyMM",
                       "name": "totalValue",
-                      "fill": "$text-inverse",
+                      "fill": "#FFFFFF",
                       "content": "1.50",
                       "fontFamily": "Urbanist",
                       "fontSize": 32,
@@ -551,7 +551,7 @@
           "width": "fill_container",
           "fill": "#FFFFFF",
           "layout": "vertical",
-          "gap": "$spacing-4",
+          "gap": 4,
           "children": [
             {
               "type": "frame",
@@ -565,7 +565,7 @@
                   "type": "text",
                   "id": "M3BFM",
                   "name": "goeLabel",
-                  "fill": "$text-secondary",
+                  "fill": "#6B7280",
                   "content": "Grade of Execution",
                   "fontFamily": "Urbanist",
                   "fontSize": 14,
@@ -577,7 +577,7 @@
                   "name": "GOE Track",
                   "width": "fill_container",
                   "height": 60,
-                  "fill": "$background-secondary",
+                  "fill": "#F9FAFB",
                   "cornerRadius": 12,
                   "layout": "none",
                   "children": [
@@ -589,7 +589,7 @@
                       "name": "GOE -5",
                       "width": 40,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -599,7 +599,7 @@
                           "type": "text",
                           "id": "j95RB",
                           "name": "m1Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "-5",
                           "fontFamily": "Urbanist",
                           "fontSize": 14,
@@ -615,7 +615,7 @@
                       "name": "GOE 0 Active",
                       "width": 40,
                       "height": 40,
-                      "fill": "$background-video",
+                      "fill": "#1A1A1A",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -625,7 +625,7 @@
                           "type": "text",
                           "id": "VSIhn",
                           "name": "m2Text",
-                          "fill": "$text-inverse",
+                          "fill": "#FFFFFF",
                           "content": "0",
                           "fontFamily": "Urbanist",
                           "fontSize": 16,
@@ -641,7 +641,7 @@
                       "name": "GOE +5",
                       "width": 40,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -651,7 +651,7 @@
                           "type": "text",
                           "id": "B8S7w",
                           "name": "m3Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "+5",
                           "fontFamily": "Urbanist",
                           "fontSize": 14,
@@ -667,7 +667,7 @@
                       "name": "GOE -4",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -677,7 +677,7 @@
                           "type": "text",
                           "id": "594tE",
                           "name": "m4Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "-4",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -693,7 +693,7 @@
                       "name": "GOE -1",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -703,7 +703,7 @@
                           "type": "text",
                           "id": "wDqO1",
                           "name": "m5Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "-1",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -719,7 +719,7 @@
                       "name": "GOE +1",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -729,7 +729,7 @@
                           "type": "text",
                           "id": "hPqHt",
                           "name": "m6Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "+1",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -745,7 +745,7 @@
                       "name": "GOE +2",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -755,7 +755,7 @@
                           "type": "text",
                           "id": "XnSp6",
                           "name": "m7Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "+2",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -771,7 +771,7 @@
                       "name": "GOE +3",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -781,7 +781,7 @@
                           "type": "text",
                           "id": "8f4ut",
                           "name": "m8Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "+3",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -797,7 +797,7 @@
                       "name": "GOE +4",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -807,7 +807,7 @@
                           "type": "text",
                           "id": "lKiGg",
                           "name": "m9Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "+4",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -823,7 +823,7 @@
                       "name": "GOE -3",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -833,7 +833,7 @@
                           "type": "text",
                           "id": "0s7LS",
                           "name": "m10Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "-3",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -849,7 +849,7 @@
                       "name": "GOE -2",
                       "width": 36,
                       "height": 40,
-                      "fill": "$background-primary",
+                      "fill": "#FFFFFF",
                       "cornerRadius": 8,
                       "layout": "vertical",
                       "justifyContent": "center",
@@ -859,7 +859,7 @@
                           "type": "text",
                           "id": "PdWRV",
                           "name": "m11Text",
-                          "fill": "$text-secondary",
+                          "fill": "#6B7280",
                           "content": "-2",
                           "fontFamily": "Urbanist",
                           "fontSize": 12,
@@ -886,6 +886,7 @@
                   "x": 0,
                   "y": 0,
                   "width": "fill_container",
+                  "fill": "#F9FAFB",
                   "descendants": {
                     "oglod": {
                       "flipX": false,
@@ -894,7 +895,8 @@
                       "height": 17,
                       "x": 41,
                       "y": 19.5,
-                      "content": "<<"
+                      "content": "<<",
+                      "fill": "#101828"
                     }
                   }
                 },
@@ -905,11 +907,13 @@
                   "x": 111,
                   "y": 0,
                   "width": "fill_container",
+                  "fill": "#F9FAFB",
                   "descendants": {
                     "oglod": {
                       "content": "Q",
                       "x": 44,
-                      "y": 19.5
+                      "y": 19.5,
+                      "fill": "#101828"
                     }
                   }
                 },
@@ -920,11 +924,13 @@
                   "x": 222,
                   "y": 0,
                   "width": "fill_container",
+                  "fill": "#F9FAFB",
                   "descendants": {
                     "oglod": {
                       "content": "E",
                       "x": 45.5,
-                      "y": 19.5
+                      "y": 19.5,
+                      "fill": "#101828"
                     }
                   }
                 },
@@ -935,11 +941,13 @@
                   "x": 333,
                   "y": 0,
                   "width": "fill_container",
+                  "fill": "#EF4444",
                   "descendants": {
                     "6wPqM": {
                       "content": "F",
                       "x": 46,
-                      "y": 19.5
+                      "y": 19.5,
+                      "fill": "#FFFFFF"
                     }
                   }
                 }
@@ -957,7 +965,7 @@
       "name": "GOE Action Button",
       "reusable": true,
       "height": 56,
-      "fill": "$background-secondary",
+      "fill": "#F9FAFB",
       "cornerRadius": 9999,
       "padding": [
         16,
@@ -970,7 +978,7 @@
           "type": "text",
           "id": "oglod",
           "name": "goeButtonText",
-          "fill": "$text-primary",
+          "fill": "#101828",
           "content": "Under-rotation",
           "fontFamily": "Urbanist",
           "fontSize": 14,
@@ -986,7 +994,7 @@
       "name": "GOE Action Button - Active",
       "reusable": true,
       "height": 56,
-      "fill": "$error-primary",
+      "fill": "#EF4444",
       "cornerRadius": 9999,
       "padding": [
         16,
@@ -999,7 +1007,7 @@
           "type": "text",
           "id": "6wPqM",
           "name": "goeButtonActiveText",
-          "fill": "$text-inverse",
+          "fill": "#FFFFFF",
           "content": "FALL",
           "fontFamily": "Urbanist",
           "fontSize": 14,
@@ -1015,7 +1023,7 @@
       "name": "analyze run through",
       "clip": true,
       "width": 430,
-      "fill": "$background-primary",
+      "fill": "#FFFFFF",
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -1037,12 +1045,12 @@
               "name": "backButton",
               "width": 40,
               "height": 40,
-              "fill": "$background-secondary",
+              "fill": "#F9FAFB",
               "cornerRadius": 9999,
               "stroke": {
                 "align": "inside",
                 "thickness": 2,
-                "fill": "$text-primary"
+                "fill": "#101828"
               },
               "justifyContent": "center",
               "alignItems": "center",
@@ -1051,7 +1059,7 @@
                   "type": "text",
                   "id": "xEZT2",
                   "name": "backIcon",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "←",
                   "fontFamily": "Inter",
                   "fontSize": 24,
@@ -1070,9 +1078,9 @@
                   "type": "text",
                   "id": "A4Bal",
                   "name": "program title",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "Over the rainbow",
-                  "fontFamily": "$font-family-primary",
+                  "fontFamily": "SF Pro Display",
                   "fontSize": 32,
                   "fontWeight": "800"
                 },
@@ -1080,7 +1088,7 @@
                   "type": "text",
                   "id": "m6kUw",
                   "name": "subtitleText",
-                  "fill": "$text-secondary",
+                  "fill": "#6B7280",
                   "content": "Runthrough - Jan 24, 2026",
                   "fontFamily": "Urbanist",
                   "fontSize": 13,
@@ -1091,6 +1099,8 @@
             {
               "type": "frame",
               "id": "g2gVE",
+              "x": 0,
+              "y": 0,
               "name": "headerSubtitle",
               "enabled": false,
               "layout": "vertical",
@@ -1100,7 +1110,7 @@
                   "type": "text",
                   "id": "uujvh",
                   "name": "dateText",
-                  "fill": "$text-secondary",
+                  "fill": "#6B7280",
                   "content": "JAN '24",
                   "fontFamily": "Urbanist",
                   "fontSize": 11,
@@ -1118,7 +1128,7 @@
           "width": "fill_container",
           "height": 260,
           "fill": [
-            "$background-video",
+            "#1A1A1A",
             {
               "type": "image",
               "enabled": true,
@@ -1130,7 +1140,7 @@
           "stroke": {
             "align": "inside",
             "thickness": 2,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "layout": "vertical",
           "gap": 16,
@@ -1195,7 +1205,7 @@
                       "type": "text",
                       "id": "goRG0",
                       "name": "scoreValue",
-                      "fill": "$text-inverse",
+                      "fill": "#FFFFFF",
                       "content": "87.50",
                       "fontFamily": "SF Pro Display",
                       "fontSize": 44,
@@ -1230,7 +1240,7 @@
                   "type": "text",
                   "id": "Xlpxx",
                   "name": "coachNote",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "Great energy! Triple axel needs cleaner landing. Watch rotation on the lutz.",
@@ -1248,7 +1258,7 @@
           "name": "divider",
           "width": "fill_container",
           "height": 1,
-          "fill": "$border-light"
+          "fill": "#E5E7EB"
         },
         {
           "type": "frame",
@@ -1262,7 +1272,7 @@
               "type": "text",
               "id": "Db73B",
               "name": "elementsTitle",
-              "fill": "$text-primary",
+              "fill": "#101828",
               "content": "Elements",
               "fontFamily": "SF Pro Display",
               "fontSize": 20,
@@ -1272,7 +1282,7 @@
               "type": "text",
               "id": "M9yrk",
               "name": "elementsCount",
-              "fill": "$text-secondary",
+              "fill": "#6B7280",
               "content": "8 elements",
               "fontFamily": "Urbanist",
               "fontSize": 14,
@@ -1285,17 +1295,17 @@
           "id": "Vwqqf",
           "name": "element2",
           "width": "fill_container",
-          "fill": "$background-primary",
+          "fill": "#FFFFFF",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$text-primary",
+            "color": "#101828",
             "offset": {
               "x": 4,
               "y": 4
@@ -1311,7 +1321,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -1320,7 +1330,7 @@
                   "type": "text",
                   "id": "lAYhu",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -1340,7 +1350,7 @@
                   "type": "text",
                   "id": "vYzzd",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "QUAD LUTZ",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -1369,7 +1379,7 @@
                   "type": "text",
                   "id": "kQ7xN",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "11.50",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -1384,17 +1394,17 @@
           "id": "1fHih",
           "name": "element3",
           "width": "fill_container",
-          "fill": "$background-primary",
+          "fill": "#FFFFFF",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$text-primary",
+            "color": "#101828",
             "offset": {
               "x": 4,
               "y": 4
@@ -1410,7 +1420,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -1419,7 +1429,7 @@
                   "type": "text",
                   "id": "LP7DM",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -1439,7 +1449,7 @@
                   "type": "text",
                   "id": "98jlm",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "COMBINATION SPIN",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -1468,7 +1478,7 @@
                   "type": "text",
                   "id": "ebBNr",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "3.20",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -1483,17 +1493,17 @@
           "id": "Auh0x",
           "name": "element4",
           "width": "fill_container",
-          "fill": "$background-primary",
+          "fill": "#FFFFFF",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$text-primary",
+            "color": "#101828",
             "offset": {
               "x": 4,
               "y": 4
@@ -1509,7 +1519,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$error-primary",
+              "fill": "#EF4444",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -1518,7 +1528,7 @@
                   "type": "text",
                   "id": "nJlTj",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "errorcross",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -1538,7 +1548,7 @@
                   "type": "text",
                   "id": "7kKyD",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "STEP SEQUENCE",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -1567,7 +1577,7 @@
                   "type": "text",
                   "id": "TKy8C",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "4.80",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -1582,17 +1592,17 @@
           "id": "FNJ2B",
           "name": "element5",
           "width": "fill_container",
-          "fill": "$background-primary",
+          "fill": "#FFFFFF",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$text-primary",
+            "color": "#101828",
             "offset": {
               "x": 4,
               "y": 4
@@ -1608,7 +1618,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$warning-primary",
+              "fill": "#ffbc03",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -1617,7 +1627,7 @@
                   "type": "text",
                   "id": "S4Ln1",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "!",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -1637,7 +1647,7 @@
                   "type": "text",
                   "id": "9YpsQ",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "FLYING CAMEL",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -1666,7 +1676,7 @@
                   "type": "text",
                   "id": "Uw3kN",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "2.90",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -1681,17 +1691,17 @@
           "id": "PX2PL",
           "name": "element6",
           "width": "fill_container",
-          "fill": "$background-primary",
+          "fill": "#FFFFFF",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$text-primary",
+            "color": "#101828",
             "offset": {
               "x": 4,
               "y": 4
@@ -1707,7 +1717,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -1716,7 +1726,7 @@
                   "type": "text",
                   "id": "Nfsrr",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -1736,7 +1746,7 @@
                   "type": "text",
                   "id": "7bxcx",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "LAYBACK SPIN",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -1765,7 +1775,7 @@
                   "type": "text",
                   "id": "RHKYe",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "3.50",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -1780,17 +1790,17 @@
           "id": "n27C8",
           "name": "element7",
           "width": "fill_container",
-          "fill": "$background-primary",
+          "fill": "#FFFFFF",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$text-primary",
+            "color": "#101828",
             "offset": {
               "x": 4,
               "y": 4
@@ -1806,7 +1816,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -1815,7 +1825,7 @@
                   "type": "text",
                   "id": "Imun6",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -1835,7 +1845,7 @@
                   "type": "text",
                   "id": "XDEtR",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "TRIPLE TOE LOOP",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -1864,7 +1874,7 @@
                   "type": "text",
                   "id": "XZ3wZ",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "9.20",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -1880,12 +1890,12 @@
           "name": "addElementButton",
           "width": "fill_container",
           "height": 56,
-          "fill": "$background-video",
+          "fill": "#1A1A1A",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 2,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "justifyContent": "center",
           "alignItems": "center",
@@ -1894,7 +1904,7 @@
               "type": "text",
               "id": "d5Nox",
               "name": "addIcon",
-              "fill": "$text-inverse",
+              "fill": "#FFFFFF",
               "content": "+ Add Element",
               "fontFamily": "SF Pro Display",
               "fontSize": 16,
@@ -1912,7 +1922,7 @@
       "name": "analyze run through",
       "clip": true,
       "width": 430,
-      "fill": "$background-primary",
+      "fill": "#FFFFFF",
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -1940,6 +1950,10 @@
             },
             "m6kUw": {
               "y": 44
+            },
+            "g2gVE": {
+              "width": "fit_content",
+              "height": "fit_content"
             }
           }
         },
@@ -1949,7 +1963,7 @@
           "name": "videoSection",
           "width": "fill_container",
           "height": 260,
-          "fill": "$background-video",
+          "fill": "#1A1A1A",
           "cornerRadius": 20,
           "layout": "vertical",
           "gap": 16,
@@ -1985,7 +1999,7 @@
                       "type": "text",
                       "id": "EMwCB",
                       "name": "scoreValue",
-                      "fill": "$text-inverse",
+                      "fill": "#FFFFFF",
                       "content": "87.50",
                       "fontFamily": "SF Pro Display",
                       "fontSize": 44,
@@ -2038,7 +2052,7 @@
           "name": "divider",
           "width": "fill_container",
           "height": 1,
-          "fill": "$border-light"
+          "fill": "#E5E7EB"
         },
         {
           "type": "frame",
@@ -2052,7 +2066,7 @@
               "type": "text",
               "id": "5nk0E",
               "name": "elementsTitle",
-              "fill": "$text-primary",
+              "fill": "#101828",
               "content": "Elements",
               "fontFamily": "SF Pro Display",
               "fontSize": 20,
@@ -2062,7 +2076,7 @@
               "type": "text",
               "id": "KbPuC",
               "name": "elementsCount",
-              "fill": "$text-secondary",
+              "fill": "#6B7280",
               "content": "8 elements",
               "fontFamily": "Urbanist",
               "fontSize": 14,
@@ -2075,7 +2089,7 @@
           "id": "zSJZm",
           "name": "element3",
           "width": "fill_container",
-          "fill": "$background-secondary",
+          "fill": "#F9FAFB",
           "cornerRadius": 16,
           "gap": 12,
           "padding": 16,
@@ -2087,7 +2101,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -2096,7 +2110,7 @@
                   "type": "text",
                   "id": "7eQmR",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -2116,7 +2130,7 @@
                   "type": "text",
                   "id": "DajzD",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "COMBINATION SPIN",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -2145,7 +2159,7 @@
                   "type": "text",
                   "id": "BAEeD",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "3.20",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -2160,12 +2174,12 @@
           "id": "q411H",
           "name": "element2",
           "width": "fill_container",
-          "fill": "$background-secondary",
+          "fill": "#F9FAFB",
           "cornerRadius": 16,
           "stroke": {
             "align": "inside",
             "thickness": 0,
-            "fill": "$text-primary"
+            "fill": "#101828"
           },
           "gap": 12,
           "padding": 16,
@@ -2177,7 +2191,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -2186,7 +2200,7 @@
                   "type": "text",
                   "id": "kRVlC",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -2206,7 +2220,7 @@
                   "type": "text",
                   "id": "J3fzO",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "QUAD LUTZ",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -2235,7 +2249,7 @@
                   "type": "text",
                   "id": "f0WFg",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "11.50",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -2250,7 +2264,7 @@
           "id": "GOQax",
           "name": "element4",
           "width": "fill_container",
-          "fill": "$background-secondary",
+          "fill": "#F9FAFB",
           "cornerRadius": 16,
           "gap": 12,
           "padding": 16,
@@ -2262,7 +2276,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -2271,7 +2285,7 @@
                   "type": "text",
                   "id": "cS1rJ",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -2291,7 +2305,7 @@
                   "type": "text",
                   "id": "Jwz4J",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "STEP SEQUENCE",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -2320,7 +2334,7 @@
                   "type": "text",
                   "id": "tKv1P",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "4.80",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -2335,7 +2349,7 @@
           "id": "CB2of",
           "name": "element5",
           "width": "fill_container",
-          "fill": "$background-secondary",
+          "fill": "#F9FAFB",
           "cornerRadius": 16,
           "gap": 12,
           "padding": 16,
@@ -2347,7 +2361,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -2356,7 +2370,7 @@
                   "type": "text",
                   "id": "wdPpl",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -2376,7 +2390,7 @@
                   "type": "text",
                   "id": "Qqbxn",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "FLYING CAMEL",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -2405,7 +2419,7 @@
                   "type": "text",
                   "id": "jir0d",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "2.90",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -2420,7 +2434,7 @@
           "id": "kW72x",
           "name": "element6",
           "width": "fill_container",
-          "fill": "$background-secondary",
+          "fill": "#F9FAFB",
           "cornerRadius": 16,
           "gap": 12,
           "padding": 16,
@@ -2432,7 +2446,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -2441,7 +2455,7 @@
                   "type": "text",
                   "id": "n193w",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -2461,7 +2475,7 @@
                   "type": "text",
                   "id": "xF4QQ",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "LAYBACK SPIN",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -2490,7 +2504,7 @@
                   "type": "text",
                   "id": "UhaKM",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "3.50",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -2505,7 +2519,7 @@
           "id": "y8KoF",
           "name": "element7",
           "width": "fill_container",
-          "fill": "$background-secondary",
+          "fill": "#F9FAFB",
           "cornerRadius": 16,
           "gap": 12,
           "padding": 16,
@@ -2517,7 +2531,7 @@
               "name": "iconCircle",
               "width": 48,
               "height": 48,
-              "fill": "$success-primary",
+              "fill": "#69d703",
               "cornerRadius": 9999,
               "justifyContent": "center",
               "alignItems": "center",
@@ -2526,7 +2540,7 @@
                   "type": "text",
                   "id": "MoBBt",
                   "name": "checkIcon",
-                  "fill": "$text-inverse",
+                  "fill": "#FFFFFF",
                   "content": "✓",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 20,
@@ -2546,7 +2560,7 @@
                   "type": "text",
                   "id": "OOzMx",
                   "name": "elementName",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "TRIPLE TOE LOOP",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 18,
@@ -2575,7 +2589,7 @@
                   "type": "text",
                   "id": "pXpft",
                   "name": "scoreText",
-                  "fill": "$text-primary",
+                  "fill": "#101828",
                   "content": "9.20",
                   "fontFamily": "SF Pro Display",
                   "fontSize": 24,
@@ -2634,7 +2648,7 @@
       "name": "RunThrough List View",
       "width": 430,
       "height": 932,
-      "fill": "$background-primary",
+      "fill": "#FFFFFF",
       "layout": "none",
       "children": [
         {
@@ -2667,7 +2681,7 @@
                   "name": "backBtn",
                   "width": 48,
                   "height": 48,
-                  "fill": "$background-secondary",
+                  "fill": "#F9FAFB",
                   "cornerRadius": 12,
                   "stroke": {
                     "align": "inside",
@@ -2690,7 +2704,7 @@
                       "type": "text",
                       "id": "vXjIo",
                       "name": "backIcon",
-                      "fill": "$text-primary",
+                      "fill": "#101828",
                       "content": "←",
                       "fontFamily": "Inter",
                       "fontSize": 24,
@@ -2710,7 +2724,7 @@
                       "type": "text",
                       "id": "0tfXp",
                       "name": "title",
-                      "fill": "$text-primary",
+                      "fill": "#101828",
                       "content": "Emma Chen",
                       "fontFamily": "SF Pro Display",
                       "fontSize": 32,
@@ -2734,7 +2748,7 @@
                   "name": "card1",
                   "rotation": -1.5000000000000002,
                   "width": "fill_container",
-                  "fill": "$warning-badge",
+                  "fill": "#ffe712",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "outside",
@@ -2813,7 +2827,7 @@
                       "name": "score1",
                       "width": 80,
                       "height": 56,
-                      "fill": "$background-video",
+                      "fill": "#1A1A1A",
                       "cornerRadius": 16,
                       "padding": 8,
                       "justifyContent": "center",
@@ -2823,7 +2837,7 @@
                           "type": "text",
                           "id": "vtOdq",
                           "name": "scoreText1",
-                          "fill": "$text-inverse",
+                          "fill": "#FFFFFF",
                           "content": "39.80",
                           "fontFamily": "SF Pro Display",
                           "fontSize": 20,
@@ -2839,7 +2853,7 @@
                   "name": "card2",
                   "rotation": 1.2,
                   "width": "fill_container",
-                  "fill": "$success-badge",
+                  "fill": "#c3f700",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "outside",
@@ -2918,7 +2932,7 @@
                       "name": "score2",
                       "width": 80,
                       "height": 56,
-                      "fill": "$background-video",
+                      "fill": "#1A1A1A",
                       "cornerRadius": 16,
                       "padding": 8,
                       "justifyContent": "center",
@@ -2928,7 +2942,7 @@
                           "type": "text",
                           "id": "ssyYp",
                           "name": "scoreText2",
-                          "fill": "$text-inverse",
+                          "fill": "#FFFFFF",
                           "content": "38.25",
                           "fontFamily": "SF Pro Display",
                           "fontSize": 20,
@@ -2944,7 +2958,7 @@
                   "name": "card3",
                   "rotation": -0.8,
                   "width": "fill_container",
-                  "fill": "$accent-magenta",
+                  "fill": "#FF6B9D",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "outside",
@@ -3023,7 +3037,7 @@
                       "name": "score3",
                       "width": 80,
                       "height": 56,
-                      "fill": "$background-video",
+                      "fill": "#1A1A1A",
                       "cornerRadius": 16,
                       "padding": 8,
                       "justifyContent": "center",
@@ -3033,7 +3047,7 @@
                           "type": "text",
                           "id": "wHq66",
                           "name": "scoreText3",
-                          "fill": "$text-inverse",
+                          "fill": "#FFFFFF",
                           "content": "35.90",
                           "fontFamily": "SF Pro Display",
                           "fontSize": 20,
@@ -3049,7 +3063,7 @@
                   "name": "card4",
                   "rotation": 1.8,
                   "width": "fill_container",
-                  "fill": "$accent-cyan",
+                  "fill": "#00D9FF",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "outside",
@@ -3128,7 +3142,7 @@
                       "name": "score4",
                       "width": 80,
                       "height": 56,
-                      "fill": "$background-video",
+                      "fill": "#1A1A1A",
                       "cornerRadius": 16,
                       "padding": 8,
                       "justifyContent": "center",
@@ -3138,7 +3152,7 @@
                           "type": "text",
                           "id": "RN3G4",
                           "name": "scoreText4",
-                          "fill": "$text-inverse",
+                          "fill": "#FFFFFF",
                           "content": "42.15",
                           "fontFamily": "SF Pro Display",
                           "fontSize": 20,
@@ -3154,7 +3168,7 @@
                   "name": "card5",
                   "rotation": -1.2,
                   "width": "fill_container",
-                  "fill": "$accent-lime",
+                  "fill": "#B4FF39",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "outside",
@@ -3233,7 +3247,7 @@
                       "name": "score5",
                       "width": 80,
                       "height": 56,
-                      "fill": "$background-video",
+                      "fill": "#1A1A1A",
                       "cornerRadius": 16,
                       "padding": 8,
                       "justifyContent": "center",
@@ -3243,7 +3257,7 @@
                           "type": "text",
                           "id": "UFWsX",
                           "name": "scoreText5",
-                          "fill": "$text-inverse",
+                          "fill": "#FFFFFF",
                           "content": "32.40",
                           "fontFamily": "SF Pro Display",
                           "fontSize": 20,
@@ -3270,12 +3284,12 @@
           "stroke": {
             "align": "outside",
             "thickness": 3,
-            "fill": "$warning-badge"
+            "fill": "#ffe712"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$warning-badge",
+            "color": "#ffe712",
             "offset": {
               "x": 5,
               "y": 5
@@ -3288,7 +3302,7 @@
               "type": "text",
               "id": "3mZs2",
               "name": "fabIcon",
-              "fill": "$warning-badge",
+              "fill": "#ffe712",
               "content": "+",
               "fontFamily": "Inter",
               "fontSize": 32,
@@ -3325,248 +3339,1977 @@
           "height": 920
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "u89Kq",
+      "x": 3851,
+      "y": -342,
+      "name": "test",
+      "clip": true,
+      "width": 841,
+      "height": 1382,
+      "fill": "$surfacePage",
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "lfAlt",
+          "x": 129,
+          "y": 181,
+          "fill": "$surfaceCard",
+          "width": 504,
+          "height": 869
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2ds9k",
+      "x": 252,
+      "y": 1546,
+      "name": "Frame 5",
+      "clip": true,
+      "width": 4,
+      "height": 7,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "rectangle",
+      "id": "kY28a",
+      "x": 6361,
+      "y": -1257,
+      "name": "divider",
+      "fill": "$figureSkatingBorder",
+      "width": "fill_container(69)",
+      "height": 1
+    },
+    {
+      "type": "frame",
+      "id": "IrHWx",
+      "x": 6145,
+      "y": -1102,
+      "name": "athelete list",
+      "theme": {
+        "Theme": "Light",
+        "figureSkating": "light"
+      },
+      "clip": true,
+      "width": 402,
+      "height": 874,
+      "fill": "$surfacePage",
+      "layout": "vertical",
+      "gap": "$spacing200",
+      "padding": [
+        "$spacing500",
+        "$spacing200"
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "hu7d8",
+          "layoutPosition": "absolute",
+          "x": 331,
+          "y": 109,
+          "name": "sparkle-outlined-64.svg",
+          "width": 24,
+          "height": 24,
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "HnJ6E",
+              "x": 0,
+              "y": -0.05615214078295594,
+              "geometry": "M28 0l2.8 23.2 25.2 4.8-25.2 4.8-2.8 23.2-2.8-23.2-25.2-4.8 25.2-4.8 2.8-23.2z",
+              "fill": "#fff",
+              "width": 24,
+              "height": 24,
+              "stroke": {
+                "align": "center",
+                "thickness": 0.3,
+                "join": "round",
+                "cap": "round",
+                "fill": "#1C1A17"
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nmbqD",
+          "layoutPosition": "absolute",
+          "x": 284,
+          "y": 83,
+          "name": "sparkle-filled-48.svg",
+          "width": 48,
+          "height": 48,
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "JH8cJ",
+              "x": 4,
+              "y": 4,
+              "geometry": "M20 0l2.2 16.8 17.8 3.2-17.8 3.2-2.2 16.8-2.2-16.8-17.8-3.2 17.8-3.2 2.2-16.8z",
+              "fill": "#E8A820",
+              "width": 40,
+              "height": 40,
+              "stroke": {
+                "align": "center",
+                "thickness": 0.5,
+                "join": "round",
+                "cap": "round",
+                "fill": "#1C1A17"
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UA4YQ",
+          "name": "Frame 9",
+          "clip": true,
+          "width": "fill_container",
+          "height": 40,
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "9CvEY",
+              "fill": "$textPrimary",
+              "content": "Athletes",
+              "fontFamily": "Sharpie",
+              "fontSize": "$typeHeaderXL",
+              "fontWeight": "900"
+            },
+            {
+              "type": "frame",
+              "id": "kTak0",
+              "name": "Frame 10",
+              "clip": true,
+              "fill": "#FFFFFF",
+              "gap": "$spacing200",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "l2S6Q",
+                  "name": "icon button",
+                  "clip": true,
+                  "width": 32,
+                  "height": 32,
+                  "fill": "$fillButtonPrimary",
+                  "cornerRadius": "$radius-pill",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "9DqZ0",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "add",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "fill": "$textInverse"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SaHvO",
+                  "name": "icon button",
+                  "clip": true,
+                  "width": 32,
+                  "height": 32,
+                  "fill": "$fillButtonPrimary",
+                  "cornerRadius": "$radius-pill",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "n6xvn",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "settings",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "fill": "$textInverse"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UHyVj",
+          "name": "athleteCard",
+          "clip": true,
+          "width": 370,
+          "fill": "$surfaceCard",
+          "cornerRadius": "$radius-md",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$figureSkatingBorder"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "$figureSkatingShadow",
+            "offset": {
+              "x": 4,
+              "y": 4
+            }
+          },
+          "gap": "$spacing200",
+          "padding": "$spacing200",
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "dSmOV",
+              "layoutPosition": "absolute",
+              "x": -6,
+              "y": -25,
+              "fill": "$figureSkatingHeatmapLow",
+              "width": 56,
+              "height": 56
+            },
+            {
+              "type": "ellipse",
+              "id": "CYAro",
+              "layoutPosition": "absolute",
+              "x": -37,
+              "y": 96,
+              "fill": "$figureSkatingHeatmapLow",
+              "width": 150,
+              "height": 126
+            },
+            {
+              "type": "ellipse",
+              "id": "TkN7q",
+              "layoutPosition": "absolute",
+              "x": 30,
+              "y": -34,
+              "fill": "$figureSkatingHeatmapLow",
+              "width": 56,
+              "height": 56
+            },
+            {
+              "type": "frame",
+              "id": "OjeQf",
+              "name": "avatar and name",
+              "clip": true,
+              "gap": "$spacing100",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "PlICu",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "",
+                    "mode": "fill"
+                  },
+                  "width": 48,
+                  "height": 48,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$borderSutble"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "C9hPg",
+                  "name": "Name",
+                  "fill": "$textPrimary",
+                  "content": "Emma Chen",
+                  "lineHeight": 1.1,
+                  "fontFamily": "DM Sans",
+                  "fontSize": "$typeHeaderSM",
+                  "fontWeight": "700",
+                  "letterSpacing": -0.3
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hpWVM",
+              "name": "scores",
+              "clip": true,
+              "width": "fill_container",
+              "gap": "$spacing200",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tqaAa",
+                  "name": "Frame 7",
+                  "clip": true,
+                  "layout": "vertical",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PPnvM",
+                      "rotation": 0.03422943785163534,
+                      "fill": "$textSecondary",
+                      "content": "Highest",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Sans",
+                      "fontSize": "$typeCaption",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "mYIgS",
+                      "fill": "$textPrimary",
+                      "content": "15.2",
+                      "lineHeight": 1.1,
+                      "fontFamily": "Sharpie",
+                      "fontSize": "$typeScoreMedium",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xs8GU",
+                  "name": "Frame 7",
+                  "clip": true,
+                  "layout": "vertical",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ONAe8",
+                      "rotation": 0.03422943785163534,
+                      "fill": "$textSecondary",
+                      "content": "Latest",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Sans",
+                      "fontSize": "$typeCaption",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "mF9dd",
+                      "fill": "$textPrimary",
+                      "content": "14.2",
+                      "lineHeight": 1.1,
+                      "fontFamily": "Sharpie",
+                      "fontSize": "$typeScoreMedium",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JkPMi",
+          "name": "athleteCard",
+          "clip": true,
+          "width": 370,
+          "fill": "$surfaceCard",
+          "cornerRadius": "$radius-md",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$figureSkatingBorder"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "$figureSkatingShadow",
+            "offset": {
+              "x": 4,
+              "y": 4
+            }
+          },
+          "gap": "$spacing200",
+          "padding": "$spacing200",
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Ibbzy",
+              "name": "Name",
+              "fill": "$textPrimary",
+              "content": "Emma Chen",
+              "lineHeight": 1.1,
+              "fontFamily": "DM Sans",
+              "fontSize": "$typeHeaderSM",
+              "fontWeight": "600",
+              "letterSpacing": -0.3
+            },
+            {
+              "type": "frame",
+              "id": "vrDu7",
+              "name": "scores",
+              "clip": true,
+              "gap": "$spacing200",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ryVBz",
+                  "name": "Frame 7",
+                  "clip": true,
+                  "layout": "vertical",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TU17F",
+                      "rotation": 0.03422943785163534,
+                      "fill": "$textSecondary",
+                      "content": "Highest",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Sans",
+                      "fontSize": "$typeCaption",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "dEVbA",
+                      "fill": "$textPrimary",
+                      "content": "15.2",
+                      "lineHeight": 1.1,
+                      "fontFamily": "Sharpie",
+                      "fontSize": "$typeScoreMedium",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DHtf9",
+                  "name": "Frame 7",
+                  "clip": true,
+                  "layout": "vertical",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3nEm7",
+                      "rotation": 0.03422943785163534,
+                      "fill": "$textSecondary",
+                      "content": "Latest",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Sans",
+                      "fontSize": "$typeCaption",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "4tSLU",
+                      "fill": "$textPrimary",
+                      "content": "14.2",
+                      "lineHeight": 1.1,
+                      "fontFamily": "Sharpie",
+                      "fontSize": "$typeScoreMedium",
+                      "fontWeight": "600",
+                      "letterSpacing": -0.3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "mZBEd",
+      "layoutPosition": "absolute",
+      "x": 6705,
+      "y": -1256,
+      "fill": "$achievementSparkle",
+      "width": 79,
+      "height": 79
+    },
+    {
+      "type": "frame",
+      "id": "82FtO",
+      "x": 5480,
+      "y": -751,
+      "name": "athleteCard",
+      "clip": true,
+      "width": 370,
+      "fill": "$surfaceCard",
+      "cornerRadius": "$radius-md",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$color-1"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "$color-1",
+        "offset": {
+          "x": 4,
+          "y": 4
+        }
+      },
+      "gap": "$spacing200",
+      "padding": "$spacing200",
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "KSLrF",
+          "name": "Name",
+          "fill": "$textPrimary",
+          "content": "Emma Chen",
+          "lineHeight": 1.1,
+          "fontFamily": "DM Sans",
+          "fontSize": "$typeHeaderSM",
+          "fontWeight": "600",
+          "letterSpacing": -0.3
+        },
+        {
+          "type": "frame",
+          "id": "cKlYW",
+          "name": "scores",
+          "clip": true,
+          "fill": "#FFFFFF",
+          "gap": "$spacing200",
+          "children": [
+            {
+              "type": "frame",
+              "id": "CxUAW",
+              "name": "Frame 7",
+              "clip": true,
+              "fill": "#FFFFFF",
+              "layout": "vertical",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8cnc1",
+                  "rotation": 0.03422943785163534,
+                  "fill": "$textSecondary",
+                  "content": "Highest",
+                  "lineHeight": 1.1,
+                  "fontFamily": "DM Sans",
+                  "fontSize": "$typeCaption",
+                  "fontWeight": "600",
+                  "letterSpacing": -0.3
+                },
+                {
+                  "type": "text",
+                  "id": "DIOJw",
+                  "fill": "$textPrimary",
+                  "content": "15.2",
+                  "lineHeight": 1.1,
+                  "fontFamily": "Sharpie",
+                  "fontSize": "$typeScoreMedium",
+                  "fontWeight": "600",
+                  "letterSpacing": -0.3
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qH4hB",
+              "name": "Frame 7",
+              "clip": true,
+              "fill": "#FFFFFF",
+              "layout": "vertical",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SAPNX",
+                  "rotation": 0.03422943785163534,
+                  "fill": "$textSecondary",
+                  "content": "Latest",
+                  "lineHeight": 1.1,
+                  "fontFamily": "DM Sans",
+                  "fontSize": "$typeCaption",
+                  "fontWeight": "600",
+                  "letterSpacing": -0.3
+                },
+                {
+                  "type": "text",
+                  "id": "vbqYH",
+                  "fill": "$textPrimary",
+                  "content": "14.2",
+                  "lineHeight": 1.1,
+                  "fontFamily": "Sharpie",
+                  "fontSize": "$typeScoreMedium",
+                  "fontWeight": "600",
+                  "letterSpacing": -0.3
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
+  "themes": {
+    "Theme": [
+      "Light",
+      "Dark"
+    ],
+    "figureSkating": [
+      "light",
+      "dark"
+    ],
+    "gymnastics": [
+      "light",
+      "dark"
+    ]
+  },
   "variables": {
-    "background-disabled": {
-      "type": "color",
-      "value": "#e0e1e4"
-    },
-    "background-primary": {
-      "type": "color",
-      "value": "#FFFFFF"
-    },
-    "background-secondary": {
-      "type": "color",
-      "value": "#F9FAFB"
-    },
-    "background-video": {
-      "type": "color",
-      "value": "#1A1A1A"
-    },
-    "border-light": {
-      "type": "color",
-      "value": "#E5E7EB"
-    },
-    "border-medium": {
-      "type": "color",
-      "value": "#D1D5DB"
-    },
-    "error-background": {
-      "type": "color",
-      "value": "#FEF2F2"
-    },
-    "error-badge": {
-      "type": "color",
-      "value": "#FEE2E2"
-    },
-    "error-primary": {
-      "type": "color",
-      "value": "#EF4444"
-    },
-    "font-family-primary": {
-      "type": "string",
-      "value": "SF Pro Display"
-    },
-    "font-family-secondary": {
-      "type": "string",
-      "value": "Urbanist"
-    },
-    "font-size-11": {
-      "type": "number",
-      "value": 11
-    },
-    "font-size-12": {
-      "type": "number",
-      "value": 12
-    },
-    "font-size-13": {
-      "type": "number",
-      "value": 13
-    },
-    "font-size-14": {
-      "type": "number",
-      "value": 14
-    },
-    "font-size-16": {
-      "type": "number",
-      "value": 16
-    },
-    "font-size-18": {
-      "type": "number",
-      "value": 18
-    },
-    "font-size-20": {
-      "type": "number",
-      "value": 20
-    },
-    "font-size-24": {
-      "type": "number",
-      "value": 24
-    },
-    "font-size-32": {
-      "type": "number",
-      "value": 32
-    },
-    "font-size-48": {
-      "type": "number",
-      "value": 48
-    },
-    "font-weight-bold": {
-      "type": "number",
-      "value": 700
-    },
-    "font-weight-heavy": {
-      "type": "number",
-      "value": 800
-    },
-    "font-weight-medium": {
-      "type": "number",
-      "value": 500
-    },
-    "font-weight-regular": {
-      "type": "number",
-      "value": 400
-    },
-    "font-weight-semibold": {
-      "type": "number",
-      "value": 600
-    },
-    "icon-checkmark": {
-      "type": "color",
-      "value": "#00c007"
-    },
-    "icon-cross": {
-      "type": "color",
-      "value": "#ff000f"
-    },
-    "icon-warning": {
-      "type": "color",
-      "value": "#ffeb02"
-    },
-    "neutral-badge": {
-      "type": "color",
-      "value": "#F3F4F6"
-    },
-    "radius-full": {
-      "type": "number",
-      "value": 9999
-    },
     "radius-lg": {
       "type": "number",
-      "value": 16
+      "value": [
+        {
+          "value": 24,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 24,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
     "radius-md": {
       "type": "number",
-      "value": 12
+      "value": [
+        {
+          "value": 16,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 16,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
     "radius-sm": {
       "type": "number",
-      "value": 8
+      "value": [
+        {
+          "value": 12,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 12,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
     "radius-xl": {
       "type": "number",
-      "value": 20
+      "value": [
+        {
+          "value": 32,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 32,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-12": {
+    "surfacePage": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#f2f2f7",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#2c2c2e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "surfaceCard": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#1c1c1e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "surfaceCardSubtle": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#f2f2f7",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#3a3a3c",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "surfaceNavigationBar": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#1c1c1e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "surfaceTabBar": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#1c1c1e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "surfaceInput": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#1c1c1e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "surfaceOverlay": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#00000075",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#000000a1",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "textPrimary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000000",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "textSecondary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#3c3c4399",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ebebf599",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "textTertiary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#3c3c434c",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ebebf54c",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "textInverse": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#1c1c1e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "textPlaceholder": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#3c3c43",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ebebf5",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "borderDefault": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000000",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "borderSutble": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#3c3c434a",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#5454584a",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "borderOpaque": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#c6c6c8",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#38383a",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "fillButtonPrimary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000000",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "fillButtonSecondary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#2c2c2e",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "iconDefault": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000000",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "iconSubtle": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#3c3c434d",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ebebf54d",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "shadowInteractive": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000000",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "shadowInteractivePressed": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000000",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ffffff",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "spacing0": {
       "type": "number",
-      "value": 12
+      "value": [
+        {
+          "value": 0,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 0,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-16": {
+    "spacing50": {
       "type": "number",
-      "value": 16
+      "value": [
+        {
+          "value": 4,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 4,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-20": {
+    "spacing100": {
       "type": "number",
-      "value": 20
+      "value": [
+        {
+          "value": 8,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 8,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-24": {
+    "spacing200": {
       "type": "number",
-      "value": 24
+      "value": [
+        {
+          "value": 16,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 16,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-32": {
+    "spacing300": {
       "type": "number",
-      "value": 32
+      "value": [
+        {
+          "value": 24,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 24,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-4": {
+    "spacing400": {
       "type": "number",
-      "value": 4
+      "value": [
+        {
+          "value": 32,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 32,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "spacing-8": {
+    "spacing500": {
       "type": "number",
-      "value": 8
+      "value": [
+        {
+          "value": 40,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 40,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "success-background": {
-      "type": "color",
-      "value": "#f4ffed"
+    "spacing600": {
+      "type": "number",
+      "value": [
+        {
+          "value": 48,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 48,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "success-badge": {
-      "type": "color",
-      "value": "#c3f700"
+    "spacing800": {
+      "type": "number",
+      "value": [
+        {
+          "value": 64,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 64,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "success-primary": {
-      "type": "color",
-      "value": "#69d703"
+    "radius-pill": {
+      "type": "number",
+      "value": [
+        {
+          "value": 100,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 100,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "text-disabled": {
+    "achivementFill": {
       "type": "color",
-      "value": "#9CA3AF"
+      "value": [
+        {
+          "value": "#e84a30",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ff6b50",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "text-inverse": {
+    "achievementSurface": {
       "type": "color",
-      "value": "#FFFFFF"
+      "value": [
+        {
+          "value": "#f5d0ca",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#2e1410",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "text-primary": {
+    "achievementBorder": {
       "type": "color",
-      "value": "#101828"
+      "value": [
+        {
+          "value": "#e84a30",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ff6b50",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "text-secondary": {
+    "achievementText": {
       "type": "color",
-      "value": "#6B7280"
+      "value": [
+        {
+          "value": "#e84a30",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#ff6b50",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "warning-background": {
+    "achievementSparkle": {
       "type": "color",
-      "value": "#FFFBEB"
+      "value": [
+        {
+          "value": "#e8a820",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#f0c040",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "warning-badge": {
+    "moodSelected": {
       "type": "color",
-      "value": "#ffe712"
+      "value": [
+        {
+          "value": "#ddd0e8",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#2e1a38",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "warning-primary": {
+    "sparkleMotifFilled": {
       "type": "color",
-      "value": "#ffbc03"
+      "value": [
+        {
+          "value": "#e8a820",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#f0c040",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "icon-default": {
+    "sportSurfaceSubtle": {
       "type": "color",
-      "value": "#101828"
+      "value": [
+        {
+          "value": "#f3f1f9",
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": "#f3f1f9",
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
     },
-    "icon-inverse": {
+    "color-1": {
       "type": "color",
-      "value": "#ffffff"
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#e07a55",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
     },
-    "accent-cyan": {
+    "color-2": {
       "type": "color",
-      "value": "#00D9FF"
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
     },
-    "accent-lime": {
+    "color-3": {
       "type": "color",
-      "value": "#B4FF39"
+      "value": [
+        {
+          "value": "#eba820",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#f0c040",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
     },
-    "accent-magenta": {
+    "color-4": {
       "type": "color",
-      "value": "#FF6B9D"
+      "value": [
+        {
+          "value": "#edd5c8",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#261a14",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
     },
-    "accent-orange": {
+    "color-5": {
       "type": "color",
-      "value": "#FF8C42"
+      "value": [
+        {
+          "value": "#f9ede7",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#261a14",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
     },
-    "accent-pink": {
+    "color-6": {
       "type": "color",
-      "value": "#F472B6"
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#e07a55",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
     },
-    "accent-purple": {
+    "color-7": {
       "type": "color",
-      "value": "#A78BFA"
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#7a3520",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
+    },
+    "color-8": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#7a3520",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
+    },
+    "color-9": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#f9ede7",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#261a14",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
+    },
+    "sportHeatmapmid": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#e09070",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#5a3020",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
+    },
+    "color-10": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#e07a55",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
+    },
+    "sportHeatMapHigh": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#c85e3a",
+          "theme": {
+            "gymnastics": "light"
+          }
+        },
+        {
+          "value": "#e07a55",
+          "theme": {
+            "gymnastics": "dark"
+          }
+        }
+      ]
+    },
+    "typeScoreLarge": {
+      "type": "number",
+      "value": [
+        {
+          "value": 56,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 56,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeSocreHero": {
+      "type": "number",
+      "value": [
+        {
+          "value": 72,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 72,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeScoreMedium": {
+      "type": "number",
+      "value": [
+        {
+          "value": 36,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 36,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeHeaderXL": {
+      "type": "number",
+      "value": [
+        {
+          "value": 32,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 32,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeHeaderLG": {
+      "type": "number",
+      "value": [
+        {
+          "value": 26,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 26,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeHeaderMD": {
+      "type": "number",
+      "value": [
+        {
+          "value": 22,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 22,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeHeaderSM": {
+      "type": "number",
+      "value": [
+        {
+          "value": 18,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 18,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeLabelCaps": {
+      "type": "number",
+      "value": [
+        {
+          "value": 11,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 11,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeLabelCapsSM": {
+      "type": "number",
+      "value": [
+        {
+          "value": 10,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 10,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeBodyLG": {
+      "type": "number",
+      "value": [
+        {
+          "value": 17,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 17,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeBodyMD": {
+      "type": "number",
+      "value": [
+        {
+          "value": 15,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 15,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeCaption": {
+      "type": "number",
+      "value": [
+        {
+          "value": 13,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 13,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "typeCaptionXS": {
+      "type": "number",
+      "value": [
+        {
+          "value": 12,
+          "theme": {
+            "Theme": "Light"
+          }
+        },
+        {
+          "value": 12,
+          "theme": {
+            "Theme": "Dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingBorder": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#9b8ac8",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#5e4a90",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingHeatmapHigh": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#9b8ac8",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#5e4a90",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingHeatmapLow": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#f3f1f9",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#181428",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingHeatmapMid": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#bdb0dc",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#2e2448",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingIconBackground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#9b8ac8",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#5e4a90",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingPrimary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#9b8ac8",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#b8a8dc",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingPrimaryText": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#5e3a6e",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#c8b8e8",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingSecondary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#d4637a",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#e88098",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingShadow": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#9b8ac8",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#5e4a90",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
+    },
+    "figureSkatingSurface": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#e4dfef",
+          "theme": {
+            "figureSkating": "light"
+          }
+        },
+        {
+          "value": "#1e1830",
+          "theme": {
+            "figureSkating": "dark"
+          }
+        }
+      ]
     }
   },
   "fonts": [
@@ -3613,6 +5356,30 @@
       "name": "SF Pro Display",
       "url": "SFPRODISPLAYULTRALIGHTITALIC.OTF",
       "weight": 100
+    },
+    {
+      "name": "Sharpie",
+      "url": "Sharpie-Black.otf",
+      "weight": 900
+    },
+    {
+      "name": "Sharpie",
+      "url": "Sharpie-Bold.otf",
+      "weight": 540
+    },
+    {
+      "name": "Sharpie",
+      "url": "Sharpie-Extrabold.otf",
+      "weight": 700
+    },
+    {
+      "name": "Sharpie",
+      "url": "Sharpie-Light.otf",
+      "weight": 300
+    },
+    {
+      "name": "Sharpie",
+      "url": "Sharpie-Regular.otf"
     }
   ]
 }

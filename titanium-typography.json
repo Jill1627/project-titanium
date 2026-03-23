@@ -1,0 +1,157 @@
+{
+  "fontFamily": {
+    "display": {
+      "$type": "fontFamily",
+      "$value": "Sharpie",
+      "$description": "Display / score / header font \u2014 custom font, must be added to Xcode project"
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": "DM Sans",
+      "$description": "Body, captions, labels"
+    }
+  },
+  "fontWeight": {
+    "heavy": {
+      "$type": "number",
+      "$value": 800,
+      "$description": "Sharpie heaviest \u2014 score hero, display"
+    },
+    "bold": {
+      "$type": "number",
+      "$value": 700,
+      "$description": "Sharpie bold \u2014 headers, card titles, all-caps labels"
+    },
+    "regular": {
+      "$type": "number",
+      "$value": 400,
+      "$description": "DM Sans regular \u2014 body text"
+    },
+    "light": {
+      "$type": "number",
+      "$value": 300,
+      "$description": "DM Sans light \u2014 supporting text, captions"
+    }
+  },
+  "fontSize": {
+    "scoreHero": {
+      "$type": "number",
+      "$value": 72,
+      "$description": "Score hero \u2014 Sharpie heavy. Range 48\u201372pt."
+    },
+    "scoreLarge": {
+      "$type": "number",
+      "$value": 56,
+      "$description": "Score large \u2014 Sharpie heavy"
+    },
+    "scoreMedium": {
+      "$type": "number",
+      "$value": 36,
+      "$description": "Score medium \u2014 Sharpie bold"
+    },
+    "headerXL": {
+      "$type": "number",
+      "$value": 32,
+      "$description": "Section header XL \u2014 Sharpie bold"
+    },
+    "headerLG": {
+      "$type": "number",
+      "$value": 26,
+      "$description": "Section header LG \u2014 Sharpie bold"
+    },
+    "headerMD": {
+      "$type": "number",
+      "$value": 22,
+      "$description": "Section header MD \u2014 Sharpie bold"
+    },
+    "headerSM": {
+      "$type": "number",
+      "$value": 18,
+      "$description": "Card header / nav bar title \u2014 Sharpie bold"
+    },
+    "labelCaps": {
+      "$type": "number",
+      "$value": 11,
+      "$description": "All-caps label \u2014 Sharpie or DM Sans bold, tracked"
+    },
+    "labelCapsSM": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "All-caps label small \u2014 DM Sans bold, tracked"
+    },
+    "bodyLG": {
+      "$type": "number",
+      "$value": 17,
+      "$description": "Body large \u2014 DM Sans regular"
+    },
+    "bodyMD": {
+      "$type": "number",
+      "$value": 15,
+      "$description": "Body medium \u2014 DM Sans regular"
+    },
+    "bodyLight": {
+      "$type": "number",
+      "$value": 15,
+      "$description": "Body light \u2014 DM Sans light"
+    },
+    "caption": {
+      "$type": "number",
+      "$value": 13,
+      "$description": "Caption \u2014 DM Sans light"
+    },
+    "captionXS": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "Caption XS \u2014 DM Sans light"
+    }
+  },
+  "lineHeight": {
+    "display": {
+      "$type": "number",
+      "$value": 0.95,
+      "$description": "Score / display type \u2014 tight"
+    },
+    "header": {
+      "$type": "number",
+      "$value": 1.1,
+      "$description": "Headers"
+    },
+    "body": {
+      "$type": "number",
+      "$value": 1.65,
+      "$description": "Body text"
+    },
+    "caption": {
+      "$type": "number",
+      "$value": 1.6,
+      "$description": "Captions"
+    }
+  },
+  "letterSpacing": {
+    "tight": {
+      "$type": "number",
+      "$value": -0.03,
+      "$description": "Score hero \u2014 em units"
+    },
+    "snug": {
+      "$type": "number",
+      "$value": -0.02,
+      "$description": "Headers XL/LG \u2014 em units"
+    },
+    "normal": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "Body text \u2014 no tracking"
+    },
+    "wide": {
+      "$type": "number",
+      "$value": 0.15,
+      "$description": "All-caps labels minimum \u2014 em units"
+    },
+    "wider": {
+      "$type": "number",
+      "$value": 0.18,
+      "$description": "All-caps eyebrow labels \u2014 em units"
+    }
+  }
+}

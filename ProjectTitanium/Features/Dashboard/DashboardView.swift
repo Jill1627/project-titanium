@@ -13,19 +13,28 @@ struct DashboardView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                // Stats summary
+            VStack(spacing: 24) {
+                // Inline Screen Header
+                HStack {
+                    Text("Dashboard")
+                        .headerXLStyle()
+                        .foregroundStyle(Color.textPrimary)
+                    Spacer()
+                }
+                .padding(.top, 40)
+
                 statsHeader
 
-                // Heatmap
                 ConsistencyHeatmapView(viewModel: viewModel)
+                    .padding(.top, 8)
 
-                // Trend
                 TrendSplineView(viewModel: viewModel)
+                    .padding(.top, 8)
             }
-            .padding()
+            .padding(.horizontal, 16)
         }
-        .navigationTitle("Dashboard")
+        .background(Color.surfacePage)
+        .navigationBarHidden(true)
         .onAppear {
             viewModel.loadData(from: allRunThroughs)
         }
@@ -35,7 +44,7 @@ struct DashboardView: View {
     }
 
     private var statsHeader: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 12) {
             StatCard(
                 title: "Run-Throughs",
                 value: "\(viewModel.runThroughs.count)",
@@ -43,45 +52,57 @@ struct DashboardView: View {
             )
 
             StatCard(
-                title: "Best Score",
+                title: "Best",
                 value: String(format: "%.1f", viewModel.runThroughs.map(\.totalScore).max() ?? 0),
-                icon: "star"
+                icon: "star.fill"
             )
 
             StatCard(
                 title: "Elements",
                 value: "\(viewModel.runThroughs.flatMap(\.elements).count)",
-                icon: "list.bullet"
+                icon: "circle.grid.3x3.fill"
             )
         }
     }
 }
 
 struct StatCard: View {
+    @Environment(\.theme) var theme
     let title: String
     let value: String
     let icon: String
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(Color.accentColor)
+                .font(.system(size: 20))
+                .foregroundStyle(theme.primary)
+                .padding(.bottom, 4)
 
             Text(value)
-                .font(.title2)
-                .fontWeight(.bold)
+                .headerMDStyle()
+                .foregroundStyle(Color.textPrimary)
 
             Text(title)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
+                .captionStyle()
+                .foregroundStyle(Color.textSecondary)
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        .padding(.vertical, 16)
+        .padding(.horizontal, 8)
         .background(
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(theme.shadow.opacity(0.6))
+                    .offset(x: 4, y: 4)
+
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.surfaceCard)
+            }
+        )
+        .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.systemBackground))
-                .shadow(color: .black.opacity(0.05), radius: 8, y: 2)
+                .stroke(theme.border.opacity(0.4), lineWidth: 1.5)
         )
     }
 }

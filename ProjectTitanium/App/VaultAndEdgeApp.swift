@@ -4,6 +4,8 @@ import SwiftUI
 @main
 struct VaultAndEdgeApp: App {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("selectedSport") private var selectedSport = SportType.skating.rawValue
+    @State private var themeManager = ThemeManager()
 
     let modelContainer: ModelContainer = {
         let schema = Schema([
@@ -38,43 +40,9 @@ struct VaultAndEdgeApp: App {
             }
         }
         .modelContainer(modelContainer)
-    }
-}
-
-struct MainTabView: View {
-    var body: some View {
-        TabView {
-            AthleteListView()
-                .tabItem {
-                    Label("Athletes", systemImage: "person.3")
-                }
-
-            PPCEditorView()
-                .tabItem {
-                    Label("Programs", systemImage: "list.clipboard")
-                }
-
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
-        }
-        .tint(.black)
-        .onAppear {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithDefaultBackground()
-            appearance.backgroundColor = .systemBackground
-
-            // Unselected state - gray
-            appearance.stackedLayoutAppearance.normal.iconColor = .systemGray
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.systemGray]
-
-            // Selected state - black
-            appearance.stackedLayoutAppearance.selected.iconColor = .black
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.black]
-
-            UITabBar.appearance().standardAppearance = appearance
-            UITabBar.appearance().scrollEdgeAppearance = appearance
+        .environment(themeManager)
+        .onChange(of: selectedSport, initial: true) { _, newValue in
+            themeManager.activeTheme = SportType(rawValue: newValue) ?? .skating
         }
     }
 }

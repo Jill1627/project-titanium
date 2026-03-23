@@ -15,8 +15,7 @@ struct LandingButtonsView: View {
                         Image(systemName: iconName(for: landing))
                             .font(.title3)
                         Text(landing.displayName)
-                            .font(.caption2)
-                            .fontWeight(.medium)
+                            .brandFont(.medium, size: 10, relativeTo: .caption2)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)

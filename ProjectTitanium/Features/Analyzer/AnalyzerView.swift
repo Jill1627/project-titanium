@@ -170,14 +170,14 @@ struct AnalyzerView: View {
                 ),
                 in: 0...max(viewModel.duration, 1)
             )
-            .tint(.accentColor)
+            .tint(.accentMint)
 
             HStack {
                 Text(formatTime(viewModel.currentTime))
                 Spacer()
                 Text(formatTime(viewModel.duration))
             }
-            .font(.caption2)
+            .brandFont(.regular, size: 12, relativeTo: .caption2)
             .monospacedDigit()
             .foregroundStyle(.secondary)
         }
@@ -233,13 +233,13 @@ struct AnalyzerView: View {
             }
         } label: {
             Label("Sync Element", systemImage: "pin.fill")
-                .font(.headline)
+                .brandFont(.bold, size: 18, relativeTo: .headline)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(viewModel.selectedElementCode.isEmpty ? Color.gray : Color.accentColor)
+                        .fill(viewModel.selectedElementCode.isEmpty ? Color.gray : Color.accentMint)
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
@@ -255,7 +255,7 @@ struct AnalyzerView: View {
         Group {
             if showScoreGlow {
                 Text(String(format: "%.1f", viewModel.runThrough.totalScore))
-                    .font(.system(size: 48, weight: .bold))
+                    .brandFont(.black, size: 52, relativeTo: .largeTitle)
                     .foregroundStyle(lastScoredClean ? Color.accentMint : Color.accentCoral)
                     .transition(.scale.combined(with: .opacity))
                     .allowsHitTesting(false)

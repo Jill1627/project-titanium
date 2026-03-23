@@ -17,6 +17,13 @@
 		<string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
 		<string>SFPRODISPLAYTHINITALIC.OTF</string>
 		<string>SFPRODISPLAYULTRALIGHTITALIC.OTF</string>
+		<string>Sharpie-Black.otf</string>
+		<string>Sharpie-Bold.otf</string>
+		<string>Sharpie-Extrabold.otf</string>
+		<string>Sharpie-Light.otf</string>
+		<string>Sharpie-Regular.otf</string>
+		<string>DMSans-VariableFont_opsz,wght.ttf</string>
+		<string>DMSans-Italic-VariableFont_opsz,wght.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -27,7 +27,7 @@ struct ScoringTrayView: View {
                         } else {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(viewModel.selectedElementCode)
-                                    .font(.headline)
+                                    .brandFont(.bold, size: 17, relativeTo: .headline)
                                     .foregroundStyle(.primary)
 
                                 if let element = selectedElement {
@@ -118,7 +118,7 @@ struct ScoringTrayView: View {
                     .fontWeight(.semibold)
                 Spacer()
                 Text(String(format: "%+.1f", viewModel.currentGOE))
-                    .font(.headline)
+                    .brandFont(.bold, size: 17, relativeTo: .headline)
                     .monospacedDigit()
                     .foregroundStyle(viewModel.currentGOE >= 0 ? Color.accentMint : Color.accentCoral)
             }
@@ -138,7 +138,7 @@ struct ScoringTrayView: View {
                     .fontWeight(.semibold)
                 Spacer()
                 Text(String(format: "-%.1f", viewModel.currentDeductions))
-                    .font(.headline)
+                    .brandFont(.bold, size: 17, relativeTo: .headline)
                     .monospacedDigit()
                     .foregroundStyle(.red)
             }

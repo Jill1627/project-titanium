@@ -11,17 +11,16 @@ struct OnboardingView: View {
 
             VStack(spacing: 12) {
                 Text("Vault & Edge")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .scoreMediumStyle()
 
                 Text("Video analysis for coaches")
-                    .font(.title3)
+                    .bodyLGStyle()
                     .foregroundStyle(.secondary)
             }
 
             VStack(spacing: 16) {
                 Text("Choose your sport")
-                    .font(.headline)
+                    .headerSMStyle()
 
                 ForEach(SportType.allCases) { sport in
                     SportSelectionCard(
@@ -41,11 +40,11 @@ struct OnboardingView: View {
                 hasCompletedOnboarding = true
             } label: {
                 Text("Get Started")
-                    .font(.headline)
+                    .headerSMStyle()
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.accentColor)
+                    .background(Color.accentMint)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
             }
             .padding(.horizontal, 32)
@@ -69,8 +68,7 @@ struct SportSelectionCard: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
 
                 Text(sport.displayName)
-                    .font(.body)
-                    .fontWeight(.medium)
+                    .bodyLGStyle()
 
                 Spacer()
 
